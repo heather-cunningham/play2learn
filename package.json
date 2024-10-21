@@ -1,0 +1,10 @@
+{
+  "name": "play-2-learn",
+  "version": "1.0.0",
+  "main": "app.js",
+  "author": "Heather I. Cunningham",
+  "description": "Play2Learn! Math-Facts and Anagram-Hunt - First project (midterm) North Shore Community College's Full Stack Dev program",
+  "dependencies": {
+    "express": "^4.21.1"
+  }
+}
