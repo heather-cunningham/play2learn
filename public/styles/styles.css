@@ -1,0 +1,47 @@
+/* Global Styles */
+
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 18px;
+}
+
+header {
+  position: relative;
+}
+
+#top-nav, #games-sub-nav, #social-media-list {
+  list-style: none;
+}
+
+#top-nav li, #social-media-list li {
+  display: inline-block;
+}
+
+#games-sub-nav li {
+  /* display: block; */
+  display: none;
+}
+
+#header-rule, #footer-rule {
+  position: relative;
+  border: 0.12rem solid black;
+}
+
+cite {
+  font-size: smaller;
+}
+
+button[name="play"] {
+  width: 4rem;
+  height: 2rem;
+  padding: 0.3rem;
+  color: white;
+  background-color: green;
+  font-weight: bold;
+  border: none;
+  box-sizing: border-box;
+}
+
+#footer-div {
+  font-size: smaller;
+}
