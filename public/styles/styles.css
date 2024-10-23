@@ -1,4 +1,4 @@
-/* Global Styles */
+/* Global Styles, Homepage Styles */
 
 body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -9,22 +9,57 @@ header {
   position: relative;
 }
 
-#top-nav, #games-sub-nav, #social-media-list {
+img#logo {
+  width: 4rem;
+  height: auto;
+  margin-top: 0.3rem;
+  margin-left: 1rem;
+  padding: 0;
+  float: left;
+}
+
+/* psuedo-element to maintain logo positioning */
+div#nav-div::after {
+  content: " ";
+  clear: both;
+  display: block;
+}
+
+ul#top-nav {
+  min-width: 453px;
+  float: right;
+  clear: left;
+  position: absolute;
+  right: 1rem;
+  font-size: larger;
+  font-weight: bold;
+}
+
+ul#top-nav, ul#games-sub-nav, #social-media-list {
   list-style: none;
 }
 
-#top-nav li, #social-media-list li {
+ul#top-nav li, ul#social-media-list li {
   display: inline-block;
 }
 
-#games-sub-nav li {
+#top-nav li {
+  margin: 0 0 0 0.3rem;
+  padding: 0 0 0 0.3rem;
+}
+
+ul#games-sub-nav li {
   /* display: block; */
   display: none;
 }
 
+#header-rule {
+  width: 100%;
+  margin: 0.3rem 0;
+}
+
 #header-rule, #footer-rule {
-  position: relative;
-  border: 0.12rem solid black;
+  border: 0.12rem solid darkgray;
 }
 
 cite {
@@ -44,4 +79,30 @@ button[name="play"] {
 
 #footer-div {
   font-size: smaller;
+}
+
+#footer-rule {
+  width: 100%;
+  margin: 0.5rem 0 0.3rem;
+  padding: 0;
+}
+
+#copyright-design, #social-media-list {
+  font-size: smaller;
+}
+
+#copyright-design {
+  margin: 0.3rem 0.3rem 0.3rem 1rem;
+  float: left;
+}
+
+#social-media-list {
+  margin: 0 1rem 0 0.3rem;
+  float: right;
+}
+
+.dot-separator {
+  margin: 0 0.3rem;
+  font-weight: bold;
+  font-size: 1rem;
 }
