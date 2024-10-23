@@ -85,6 +85,31 @@ cite {
   font-size: smaller;
 }
 
+#games-table {
+  display: flex;
+  width: 85%;
+  height: auto;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.game-card {
+  flex: 1;
+  max-width: 34.6rem;
+  min-width: 19rem;
+  margin: 1.3rem;
+  padding: 0.6rem;
+  background-color: floralwhite;
+  border: 1px solid grey;
+  border-radius: 0.6rem;
+  box-shadow: 0.6rem 0.6rem 0.6rem lightgrey;
+  box-sizing: border-box;
+}
+
+.game-card h3 {
+  text-align: center;
+}
+
 button[name="play"] {
   width: 4rem;
   height: 2rem;
