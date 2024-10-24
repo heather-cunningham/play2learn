@@ -85,36 +85,17 @@ main {
   text-align: center;
 }
 
+#site-welcome-div {
+  /*  */
+}
+
 #site-name {
   font-family: cursive;
   font-size: 3.5rem;
 }
 
-#testimonial-div {
-  width: 65%;
-  min-width: 417px;
-  height: 184px;
-  margin-left: auto;
-  margin-right: auto;
-  border: 0.5rem dotted cornflowerblue;
-  border-radius: 8rem;
-  box-sizing: border-box;
-  box-shadow: 0 0 18px 18px #FFFFFF;
-  background-color: #FFFFFF;
-}
-
 h2 {
   font-size: 2rem;
-}
-
-#testimonial-quote:not(cite){
-  color:darkblue;
-  font-style: italic;
-}
-
-cite {
-  font-size: smaller;
-  color: black;
 }
  
 #games-table {
@@ -169,6 +150,29 @@ button[name="play"] {
   border-radius: 0.3rem;
   box-shadow: 0.17rem 0.17rem 0.17rem grey;
   box-sizing: border-box;
+}
+
+#testimonial-div {
+  width: 65%;
+  min-width: 417px;
+  height: 184px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 0.5rem dotted cornflowerblue;
+  border-radius: 8rem;
+  box-sizing: border-box;
+  box-shadow: 0 0 18px 18px #FFFFFF;
+  background-color: floralwhite;
+}
+
+#testimonial-quote:not(cite){
+  color:darkblue;
+  font-style: italic;
+}
+
+cite {
+  font-size: smaller;
+  color: black;
 }
 
 #footer-div {
