@@ -86,17 +86,19 @@ cite {
 }
 
 #games-table {
-  display: flex;
-  width: 85%;
+  width: 75%;
   height: auto;
   margin-right: auto;
   margin-left: auto;
+  display: flex;
+  flex-direction: row;
 }
 
 .game-card {
-  flex: 1;
-  max-width: 34.6rem;
+  max-width: 33rem;
   min-width: 19rem;
+  height: auto;
+  flex: 1;
   margin: 1.3rem;
   padding: 0.6rem;
   background-color: floralwhite;
@@ -106,8 +108,15 @@ cite {
   box-sizing: border-box;
 }
 
-.game-card h3 {
+.game-card h3, .game-card p {
   text-align: center;
+}
+
+.play-btn-div {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: 2rem;
 }
 
 button[name="play"] {
@@ -118,6 +127,8 @@ button[name="play"] {
   background-color: green;
   font-weight: bold;
   border: none;
+  border-radius: 0.3rem;
+  box-shadow: 0.17rem 0.17rem 0.17rem grey;
   box-sizing: border-box;
 }
 
