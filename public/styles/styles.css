@@ -41,7 +41,7 @@ div#nav-div::after {
 }
 
 ul#top-nav {
-  min-width: 453px;
+  min-width: 25rem;
   float: right;
   clear: left;
   position: absolute;
@@ -88,12 +88,12 @@ main {
 #site-welcome-div {
   width: 75%;
   height: auto;
-  min-height: 212px;
+  min-height: 11rem;
   margin-left: auto;
   margin-right: auto;
   background-color: #FFFFFF;
   border-radius: 8rem;
-  box-shadow: 0 0 18px 18px #FFFFFF;
+  box-shadow: 0 0 1rem 1rem #FFFFFF;
 }
 
 #site-welcome-div > p {
@@ -167,15 +167,15 @@ button[name="play"] {
 }
 
 #testimonial-div {
-  width: 65%;
-  min-width: 417px;
-  height: 184px;
+  width: 55%;
+  min-width: 24rem;
+  height: 10rem;
   margin-left: auto;
   margin-right: auto;
   border: 0.5rem dotted cornflowerblue;
   border-radius: 8rem;
   box-sizing: border-box;
-  box-shadow: 0 0 18px 18px #FFFFFF;
+  box-shadow: 0 0 1rem 1rem #FFFFFF;
   background-color: #FFFFFF;
 }
 
