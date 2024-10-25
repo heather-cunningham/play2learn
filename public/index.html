@@ -22,15 +22,26 @@
 
         <nav>
           <ul id="top-nav">
-            <li>Home &nbsp;&verbar;&nbsp;</li>
-            <li>Games &nbsp;&verbar;&nbsp;
+            <li id="nav-home">
+              <a href="./index.html" alt="Play2Learn Home">Home &nbsp;&verbar;&nbsp;</a>
+            </li>
+            <li id="nav-games">
+              <a href="" alt="Games Menu">Games &nbsp;&verbar;&nbsp;</a>
               <ul id="games-sub-nav">
-                <li>Math Facts</li>
-                <li>Anagram Hunt</li>
+                <li id="nav-math-facts">
+                  <a href="./games/math-facts/math-facts.html" alt="Math Facts Game">Math Facts</a>
+                </li>
+                <li id="nav-anagram-hunt">
+                  <a href="./games/anagram-hunt/anagram-hunt.html" alt="Anagram Hunt Game">Anagram Hunt</a>
+                </li>
               </ul>
             </li>
-            <li>About &nbsp;&verbar;&nbsp;</li>
-            <li>Login</li>
+            <li id="nav-about">
+              <a href="./about.html" alt="About Play2Learn">About &nbsp;&verbar;&nbsp;</a>
+            </li>
+            <li id="nav-login">
+              <a href="./login.html" alt="Play2Learn Login">Login</a>
+            </li>
           </ul>
         </nav>
       </div>
@@ -48,7 +59,9 @@
 
       <div id="games-table">
         <div id="math-facts-div" class="game-card">
-          <h3 class="game-title">Math Facts</h3>
+          <h3 class="game-title">
+            <a href="./games/math-facts/math-facts.html" alt="Math Facts Game">Math Facts</a>
+          </h3>
           <p>Practice your math skills with our fun, interactive, arithmetic skills game!</p>
           <div class="play-btn-div">
             <button id="math-facts-play-btn" name="play" type="button" value="Play">Play</button>
@@ -56,7 +69,9 @@
         </div>
         
         <div id="anagram-hunt-div" class="game-card">
-          <h3 class="game-title">Anagram Hunt</h3>
+          <h3 class="game-title">
+            <a href="./games/anagram-hunt/anagram-hunt.html" alt="Anagram Hunt Game">Anagram Hunt</a>
+          </h3>
           <p>See how many words you can create with Anagram Hunt! Can you beat our top score?</p>
           <div class="play-btn-div">
             <button id="anagram-hunt-play-btn" name="play" type="button" value="Play">Play</button>

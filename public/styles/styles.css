@@ -48,6 +48,7 @@ ul#top-nav {
   right: 1rem;
   font-size: larger;
   font-weight: bold;
+  font-family: cursive;
 }
 
 ul#top-nav, ul#games-sub-nav, #social-media-list {
@@ -66,6 +67,23 @@ ul#top-nav li, ul#social-media-list li {
 ul#games-sub-nav li {
   /* display: block; */
   display: none;
+}
+
+nav a, .game-title a {
+  color: darkblue;
+  text-decoration: none;
+}
+
+a:visited {
+  color: darkmagenta;
+}
+
+a:hover {
+  color:blue;
+}
+
+nav a:hover, .game-title a:hover {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 #header-rule {
