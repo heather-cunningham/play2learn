@@ -22,6 +22,7 @@ body {
 
 header {
   position: relative;
+  background-color: rgb(255, 255, 255, 45%);
 }
 
 img#logo {
@@ -31,6 +32,10 @@ img#logo {
   margin-left: 1rem;
   padding: 0;
   float: left;
+}
+
+#logo a {
+  text-decoration: none;
 }
 
 /* psuedo-element to maintain logo positioning */
@@ -45,6 +50,7 @@ ul#top-nav {
   float: right;
   clear: left;
   position: absolute;
+  top: 1rem;
   right: 1rem;
   font-size: larger;
   font-weight: bold;
@@ -53,6 +59,10 @@ ul#top-nav {
 
 ul#top-nav, ul#games-sub-nav, #social-media-list {
   list-style: none;
+}
+
+li#nav-games {
+  position: relative;
 }
 
 ul#top-nav li, ul#social-media-list li {
@@ -64,8 +74,19 @@ ul#top-nav li, ul#social-media-list li {
   padding: 0 0 0 0.3rem;
 }
 
+ul#games-sub-nav {
+  position: absolute;
+  top: 28px;
+  background-color: #FFFFFF;
+  border-radius: 1rem;
+  box-shadow: 0 0 6px 6px #FFFFFF;
+}
+
 ul#games-sub-nav li {
-  /* display: block; */
+  width: 8.5rem;
+  margin: 0.15rem;
+  padding: 0.15rem;
+  font-size: smaller;
   display: none;
 }
 
