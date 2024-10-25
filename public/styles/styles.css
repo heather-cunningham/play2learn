@@ -90,8 +90,11 @@ ul#games-sub-nav li {
   display: none;
 }
 
-nav a, .game-title a {
+a {
   color: darkblue;
+}
+
+nav a, .game-title a {
   text-decoration: none;
 }
 
@@ -250,6 +253,11 @@ cite {
 #social-media-list {
   margin: 0 1rem 0 0.3rem;
   float: right;
+  font-weight: bold;
+}
+
+#social-media-list a {
+  text-decoration: none;
 }
 
 .dot-separator {
