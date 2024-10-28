@@ -222,7 +222,7 @@ button[name="play"] {
   background-color: #FFFFFF;
 }
 
-#testimonial-quote:not(cite){
+.testimonial-quote:not(cite) {
   color:darkblue;
   font-style: italic;
 }
