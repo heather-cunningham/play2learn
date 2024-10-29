@@ -33,8 +33,12 @@ const fetchQuotes = async () => {
       randomTestimonial = getRandomTestimonial(testimonialsJSON);
     } 
     
-    blockQuote.innerHTML = `${randomTestimonial.quote} 
-    <cite id="" class="testimonial-citation" name="testimonial-citation">--${randomTestimonial.citation}</cite>`;
+    blockQuote.id = "quote" + randomTestimonial.id + "_" 
+                      + (randomTestimonial.citation).replaceAll(" ", "")
+                                                    .replace(/[!"#$%&'()*+,\-./:;<=>?@[\\\]^_`{|}~]/g, "")
+                                                    .trim();                                           
+    blockQuote.innerHTML = `"${randomTestimonial.quote.trim()}" \ 
+      <cite class="testimonial-citation" name="testimonial-citation">--${randomTestimonial.citation}</cite>`;
   } catch (error) {
     console.log('Error fetching testimonials:', error)
     blockQuote.innerHTML = `Loading testimonials...`;
