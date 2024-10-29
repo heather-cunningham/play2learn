@@ -45,4 +45,9 @@ const getRandomTestimonial = (testimonialsJSON) => {
   return testimonialsJSON[Math.floor(Math.random() * testimonialsJSON.length)];
 };
 
-window.addEventListener("load", fetchQuotes);
+const cycleQuotes = () => {
+  fetchQuotes();
+  setInterval(fetchQuotes, 10000);
+};
+
+window.addEventListener("load", cycleQuotes);
