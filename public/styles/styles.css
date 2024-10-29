@@ -222,6 +222,10 @@ button[name="play"] {
   background-color: #FFFFFF;
 }
 
+#testimonial-div h2 {
+  margin-bottom: 0;
+}
+
 .testimonial-quote:not(cite) {
   color:darkblue;
   font-style: italic;
