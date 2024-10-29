@@ -26,8 +26,7 @@ const fetchQuotes = async () => {
 };
 
 const getRandomTestimonial = (testimonialsJSON) => {
-  const randomTestimonialObj = testimonialsJSON[Math.floor(Math.random() * testimonialsJSON.length)];
-  return randomTestimonialObj;
+  return testimonialsJSON[Math.floor(Math.random() * testimonialsJSON.length)];
 };
 
 window.addEventListener("load", fetchQuotes);
