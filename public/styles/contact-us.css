@@ -29,7 +29,7 @@ fieldset label, fieldset input {
 }
 
 fieldset textarea {
-  height: 10rem;
+  height: 8rem;
 }
 
 .required::after {

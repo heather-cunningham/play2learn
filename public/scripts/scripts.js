@@ -1,3 +1,4 @@
+// Global Scripts, Homepage Scripts 
 const gamesNav = document.getElementById("nav-games");
 const gamesSubNav = document.querySelectorAll("#games-sub-nav li");
 const blockQuote = document.getElementsByClassName("testimonial-quote")[0];
