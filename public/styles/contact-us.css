@@ -1,0 +1,53 @@
+form {
+  width: 85%;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+fieldset {
+  background-color: floralwhite;
+  border: 1px solid grey;
+  border-radius: 0.6rem;
+  box-shadow: 0.6rem 0.6rem 0.6rem lightgrey;
+  box-sizing: border-box;
+}
+
+fieldset label, fieldset input, fieldset textarea, #send-msg-btn-div {
+  display: block;
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+fieldset label {
+  margin-top: 1rem;
+}
+
+fieldset label, fieldset input {
+  height: 1.5rem;
+}
+
+fieldset textarea {
+  height: 10rem;
+}
+
+.required::after {
+  content: "*";
+  color: red;
+}
+
+#send-msg-btn-div {
+  margin-top: 0.33rem;
+}
+
+#send-msg-btn {
+  display: block;
+  margin-top: 0.66rem;
+}
+
+#contact-disclaimer {
+  font-weight: bold;
+  font-style: italic;
+  color: red;
+}

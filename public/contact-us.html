@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-16" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" href="./styles/normalize.css" />
+  <link rel="stylesheet" href="./styles/styles.css" />
+  <link rel="stylesheet" href="./styles/contact-us.css" />
+
+  <!-- Heather C's Play2Learn-->
+  <title>Contact Us | Play2Learn</title>
+  <!-- All images and graphics used in this web app are free clip art, unless otherwise indicated
+      it was created free with an AI tool, like DALL-E. -->
+</head>
+
+<body>
+  <header>
+    <div id="nav-div">
+      <a href="./index.html" alt="Play2Learn Home">
+        <img id="logo" src="./images/play2Learn_logo.png" alt="Play2Learn Logo" aria-details="AI generated image" />
+      </a>
+
+      <nav>
+        <ul id="top-nav">
+          <li id="nav-home">
+            <a href="./index.html" alt="Play2Learn Home">Home &nbsp;&verbar;&nbsp;</a>
+          </li>
+          <li id="nav-games">
+            <a href="" alt="Games Menu">Games &nbsp;&verbar;&nbsp;</a>
+            <ul id="games-sub-nav">
+              <li id="nav-math-facts">
+                <a href="./games/math-facts/math-facts.html" alt="Math Facts Game">Math Facts</a>
+              </li>
+              <li id="nav-anagram-hunt">
+                <a href="./games/anagram-hunt/anagram-hunt.html" alt="Anagram Hunt Game">Anagram Hunt</a>
+              </li>
+            </ul>
+          </li>
+          <li id="nav-about">
+            <a href="./about.html" alt="About Play2Learn">About &nbsp;&verbar;&nbsp;</a>
+          </li>
+          <li id="nav-login">
+            <a href="./login.html" alt="Play2Learn Login">Login</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <hr id="header-rule" />
+  </header>
+
+  <main>
+    <div class="site-page-div">
+      <h2 class="page-name">Contact Us</h2>
+
+      <form id="contact-us-form" action="javascript:alert('Form Submitted')">
+        <fieldset>
+            <label id="email-lbl" for="email-input" class="required">Email:</label>
+            <input id="email-input" name="email" type="email" placeholder="Ex: email@email.com" 
+              alt="Enter your email address"
+              title="Enter your email address" required />
+          
+            <label id="msg-subject-lbl" for="msg-subject-input" class="required">Subject:</label>
+            <input id="msg-subject-input" name="subject" type="text" placeholder="Enter a subject line" 
+              alt="Enter a subject line for your message" title="Enter a subject line for your message" 
+              required />
+          
+            <label id="message-lbl" for="message-input" class="required">Message:</label>
+            <textarea id="message-input" name="message" type="text" 
+              alt="Enter a message between 10 - 250 characters" 
+              title="Enter a message between 10 - 250 characters" 
+              minlength="10" maxlength="250" required >
+            </textarea>
+          <div id="send-msg-btn-div">
+            <button id="send-msg-btn" type="submit" name="send" value="Send">Send</button>
+          </div>
+        </fieldset>
+      </form>
+
+      <div id="disclaimer">
+        <h3>Disclaimer</h3>
+        <p>
+          The purpose of this website is for me to practice coding across the entire tech stack -- to practice my full
+          stack web development skills. While you or your child/children may play the games on this site, no claim to their
+          educational efficacy should be taken seriously.
+          <br />
+          <br />
+          <span id="contact-disclaimer">
+          Furthermore, no replies will be sent in response to this contact form submission, and no actions will be 
+          taken on any messages sent.
+          </span>
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <hr id="footer-rule" />
+    <div id="footer-div">
+      <p id="copyright-design">
+        <span style="font-weight: bold;">&copy; 2024 Play2Learn</span>
+        &nbsp;&verbar;&nbsp;
+        <cite>Website by
+          <a href="https://github.com/heather-cunningham" alt="See my GitHub portfolio" title="See my GitHub portfolio"
+            target="_blank">
+            Heather I. Cunningham
+          </a>
+        </cite>
+      </p>
+
+      <ul id="social-media-list">
+        <li><a href="./contact-us.html" alt="Contact Us">Contact Us</a> <span class="dot-separator">&middot;</span></li>
+        <li><a href="https://instagram.com" alt="Instagram" target="_blank">Instagram</a> <span
+            class="dot-separator">&middot;</span></li>
+        <li><a href="https://x.com" alt="X formerly known as Twitter" target="_blank">X (fka Twitter)</a> <span
+            class="dot-separator">&middot;</span></li>
+        <li><a href="https://facebook.com" alt="facebook" target="_blank">facebook</li></a>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="./scripts/scripts.js"></script>
+</body>
+
+</html>

@@ -124,11 +124,11 @@ main {
   margin: 0.3rem 1rem 1rem;
 }
 
-#site-welcome-div, #testimonial-div, #site-about-div {
+#site-welcome-div, #testimonial-div {
   text-align: center;
 }
 
-#site-welcome-div, #site-about-div {
+#site-welcome-div, .site-page-div {
   width: 75%;
   height: auto;
   min-height: 11rem;
@@ -139,7 +139,7 @@ main {
   box-shadow: 0 0 1rem 1rem #FFFFFF;
 }
 
-#site-welcome-div > p, #site-about-div > p {
+#site-welcome-div > p, .site-page-div > p {
   margin: 0.6rem 1rem 2.3rem;
   padding: 1rem 1rem 1.5rem;
   font-size: 1.2rem;
@@ -153,12 +153,20 @@ main {
 
 .page-name {
   margin: 2.3rem 0 1.2rem 0;
-  font-size: 3.5rem;
+  font-size: 2.75rem;
+  text-align: center;
 }
-
 
 h2 {
   font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+#disclaimer {
+  text-align: center;
 }
  
 #games-table {
@@ -202,7 +210,7 @@ h3.game-title {
   height: 2rem;
 }
 
-button[name="play"] {
+button[name="play"], button[name="send"] {
   width: 4rem;
   height: 2rem;
   padding: 0.3rem;
