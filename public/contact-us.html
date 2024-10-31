@@ -62,14 +62,22 @@
             alt="Enter your email address" title="Enter your email address" required />
 
           <label id="msg-subject-lbl" for="msg-subject-input" class="required">Subject:</label>
-          <input id="msg-subject-input" name="subject" type="text" placeholder="Enter a subject line"
-            alt="Enter a subject line for your message"
-            title="Enter a subject line for your message (min: 5 characters)" minlength="5" maxlength="125" required />
+          <input id="msg-subject-input" name="subject" type="text" 
+            placeholder="Enter a subject line (5-125 characters)"
+            alt="Enter a subject line for your message (5 to 125 characters)"
+            title="Enter a subject line for your message (5-125 characters)" 
+            minlength="5" maxlength="125" required />
 
           <label id="message-lbl" for="message-input" class="required">Message:</label>
-          <textarea id="message-input" name="message" type="text" alt="Enter a message between 10 - 250 characters"
-            title="Enter a message between 10 - 250 characters" minlength="10" maxlength="250" required>
-            </textarea>
+          <textarea id="message-textarea" 
+            name="message" 
+            placeholder="Enter a message between 10-250 characters"
+            type="text" alt="Enter a message between 10 to 250 characters" 
+            title="Enter a message between 10-250 characters" 
+            minlength="10" 
+            maxlength="250" 
+            required></textarea>
+          
           <div id="send-msg-btn-div">
             <button id="send-msg-btn" type="submit" name="send" value="Send">Send</button>
           </div>
@@ -119,7 +127,7 @@
     </div>
   </footer>
 
-  <!-- <script src="./scripts/scripts.js"></script> -->
+  <script src="./scripts/contact-scripts.js"></script>
 </body>
 
 </html>
