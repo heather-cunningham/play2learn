@@ -55,7 +55,7 @@
     <div class="site-page-div">
       <h2 class="page-name">Contact Us</h2>
 
-      <form id="contact-us-form" action="javascript:alert('Form Submitted')">
+      <form id="contact-us-form" action="javascript:alert('Form Submitted')" novalidate> 
         <fieldset>
           <label id="email-lbl" for="email-input" class="required">Email:</label>
           <input id="email-input" name="email" type="email" placeholder="Ex: email@email.com"
@@ -64,11 +64,11 @@
           <label id="msg-subject-lbl" for="msg-subject-input" class="required">Subject:</label>
           <input id="msg-subject-input" name="subject" type="text" 
             placeholder="Enter a subject line (5-125 characters)"
-            alt="Enter a subject line for your message (5 to 125 characters)"
-            title="Enter a subject line for your message (5-125 characters)" 
+            alt="Enter a subject line between 5 to 125 characters"
+            title="Enter a subject line between 5-125 characters" 
             minlength="5" maxlength="125" required />
 
-          <label id="message-lbl" for="message-input" class="required">Message:</label>
+          <label id="message-lbl" for="message-textarea" class="required">Message:</label>
           <textarea id="message-textarea" 
             name="message" 
             placeholder="Enter a message between 10-250 characters"

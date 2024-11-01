@@ -1,5 +1,5 @@
 form {
-  width: 85%;
+  width: 99%;
   height: auto;
   margin-left: auto;
   margin-right: auto;
@@ -13,15 +13,18 @@ fieldset {
   box-sizing: border-box;
 }
 
-fieldset label, fieldset input, fieldset textarea, #send-msg-btn-div {
+fieldset label {
+  display: block;
+  width: 10%;
+  margin: 1rem 0.17rem 0.17rem 1.2rem;
+  font-weight: bold;
+}
+
+fieldset input, fieldset textarea, #send-msg-btn-div {
   display: block;
   width: 95%;
   margin-left: auto;
   margin-right: auto;
-}
-
-fieldset label {
-  margin-top: 1rem;
 }
 
 fieldset label, fieldset input {
@@ -34,6 +37,23 @@ fieldset textarea {
 
 .required::after {
   content: "*";
+  color: red;
+}
+
+label.error {
+  width: 10%;
+  margin: 1rem 0.17rem 0.17rem 1.2rem;
+  font-weight: bold;
+  font-style: italic;
+  color: red;
+}
+
+div.error {
+  width: 75%;
+  margin: 0.17rem 0 0.17rem 1.2rem;
+  font-weight: normal;
+  font-size: 0.8rem;
+  font-style: italic;
   color: red;
 }
 
