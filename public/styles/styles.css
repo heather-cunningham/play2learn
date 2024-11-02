@@ -223,6 +223,12 @@ button[name="play"], button[name="send"] {
   box-sizing: border-box;
 }
 
+button:active {
+  background-color: gray;
+  border-color: lightgrey;
+  border-style: inset;
+}
+
 #testimonial-div {
   width: 55%;
   min-width: 24rem;

@@ -13,6 +13,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+// Set the homepage to url leg to "/" with Node and send it the homepage, aka `index.html`
 app.get("/", (request, response) => {
   response.sendFile(path.join(__dirname, "public", "index.html"));
 });
@@ -25,4 +26,37 @@ app.get("/testimonials", (request, response) => {
   }
 });
 
-app.listen(port);
+// Contact-Us messages Node response
+app.post("/contact-response-msg", 
+  [
+    check("email", "Invalid email address.").isEmail()
+    // Could not get these to work at all:
+    /* check("subject", "Subject line must be between 5-125 characters.").isLength({min: 5, max: 125}),
+    check("message", "Message must be between 10-250 characters.").isLength({min: 10, max: 250}) */
+  ],
+  (request, response) => {
+    // These are errors from the array of check calls (not Node errors): 
+    const contactErrors = validationResult(request);
+    console.log(contactErrors.array());
+
+    let responseMsg = "";
+    if (contactErrors.isEmpty()) { 
+      responseMsg = `<p id="contact-response-message">Thank you, message sent.</p>`
+    } else{
+      let contactErrorsHtmlList = "";
+
+      for(let error of contactErrors.array()){
+        contactErrorsHtmlList += `<li>${error.msg}</li>`
+      }
+
+      responseMsg = `<ul id="contact-response-message">
+                    Message not sent due to:
+                        ${contactErrorsHtmlList}
+                    </ul>`
+    }
+
+    response.status(200);
+    response.send(responseMsg);
+});
+
+app.listen(port); // 8081

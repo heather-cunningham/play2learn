@@ -12,6 +12,9 @@ const msgLabel = document.getElementById("message-lbl");
 const msgTextareaInput = document.getElementById("message-textarea");
 
 const sendBtn = document.getElementById("send-msg-btn");
+const resetBtn = document.getElementById("reset-form-btn");
+
+const contactResponse = document.getElementById("contact-us-response");
 
 const touchedStatus = "touched";
 
@@ -113,13 +116,6 @@ const handleClickSendBtn = (event) => {
   }
 };
 
-sendBtn.addEventListener("click", handleClickSendBtn);
-
-sendBtn.addEventListener("keydown", (event)=>{
-  if (event.key === "Enter") 
-    handleClickSendBtn(event);
-});
-
 emailInput.addEventListener("keydown", (event)=>{
   if (event.key === "Enter") 
     handleClickSendBtn(event);
@@ -134,4 +130,107 @@ msgTextareaInput.addEventListener("keydown", (event)=>{
   if (event.key === "Enter") 
     handleClickSendBtn(event);
 });
+
+const resetForm = () => {
+  emailInput.value = "";
+  emailInput.innerText = "";
+  removeError(emailInput, emailLabel);
+
+  subjectInput.value = "";
+  subjectInput.innerText = "";
+  removeError(subjectInput, subjectLabel);
+
+  msgTextareaInput.value = "";
+  msgTextareaInput.innerText = "";
+  removeError(msgTextareaInput, msgLabel);
+
+  if(contactResponse && contactResponse.style.display === "block"){
+    contactResponse.innerHTML = "";
+    contactResponse.style.display = "none";
+  }
+};
+
+resetBtn.addEventListener("click", resetForm);
+resetBtn.addEventListener("keydown", (event)=>{
+  if (event.key === "Enter") 
+    resetForm();
+});
+// -------------------------------------- AJAX Validation Fcns-----------------------------------------
+const validateEmailAddySent = (event) => {
+    const emailAddressSent = emailInput.value;
+    const xmlHttpReq = new XMLHttpRequest();
+
+    contactResponse.style.display = "block";
+    contactResponse.innerHTML = "<p>Sending message...</p>";
+
+    xmlHttpReq.open("POST", "/contact-response-msg", false);
+
+    xmlHttpReq.onreadystatechange = () => {
+      if(xmlHttpReq.readyState == XMLHttpRequest.DONE && xmlHttpReq.status == 200){
+        contactResponse.innerHTML = xmlHttpReq.responseText;
+      }
+    };
+
+    xmlHttpReq.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xmlHttpReq.send("email=" + emailAddressSent);
+};
+
+sendBtn.addEventListener("click", (event)=>{
+  handleClickSendBtn(event);
+  validateEmailAddySent(event);
+});
+
+sendBtn.addEventListener("keydown", (event)=>{
+  if (event.key === "Enter") { 
+    handleClickSendBtn(event);
+    validateEmailAddySent(event);
+  }
+});
+
+// Could not get these to work at all:
+
+/* const validateSubjSent = (event) => {
+  const subjSent = subjectInput.value;
+  const xmlHttpReq = new XMLHttpRequest();
+
+  contactResponse.style.display = "block";
+  contactResponse.innerHTML = "<p>Sending message...</p>";
+
+  xmlHttpReq.open("POST", "/contact-response-msg", false);
+
+  xmlHttpReq.onreadystatechange = () => {
+    if(xmlHttpReq.readyState == XMLHttpRequest.DONE && xmlHttpReq.status == 200){
+      contactResponse.innerHTML = xmlHttpReq.responseText;
+    }
+  };
+
+  xmlHttpReq.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+  xmlHttpReq.send("subject=" + subjSent);
+};
+
+const validateMessageSent = (event) => {
+  const msgSent = msgTextareaInput.value;
+  const xmlHttpReq = new XMLHttpRequest();
+
+  contactResponse.style.display = "block";
+  contactResponse.innerHTML = "<p>Sending message...</p>";
+
+  xmlHttpReq.open("POST", "/contact-response-msg", false);
+
+  xmlHttpReq.onreadystatechange = () => {
+    if(xmlHttpReq.readyState == XMLHttpRequest.DONE && xmlHttpReq.status == 200){
+      contactResponse.innerHTML = xmlHttpReq.responseText;
+    }
+  };
+
+  xmlHttpReq.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+  xmlHttpReq.send("message=" + msgSent);
+};
+
+sendBtn.addEventListener("click", validateSubjSent);
+sendBtn.addEventListener("click", validateMessageSent);
+ */
+
+
+
 
