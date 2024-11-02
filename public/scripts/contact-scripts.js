@@ -114,3 +114,24 @@ const handleClickSendBtn = (event) => {
 };
 
 sendBtn.addEventListener("click", handleClickSendBtn);
+
+sendBtn.addEventListener("keydown", (event)=>{
+  if (event.key === "Enter") 
+    handleClickSendBtn(event);
+});
+
+emailInput.addEventListener("keydown", (event)=>{
+  if (event.key === "Enter") 
+    handleClickSendBtn(event);
+});
+
+subjectInput.addEventListener("keydown", (event)=>{
+  if (event.key === "Enter") 
+    handleClickSendBtn(event);
+});
+
+msgTextareaInput.addEventListener("keydown", (event)=>{
+  if (event.key === "Enter") 
+    handleClickSendBtn(event);
+});
+
