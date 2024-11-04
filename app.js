@@ -30,12 +30,11 @@ app.get("/testimonials", (request, response) => {
 app.post("/contact-response-msg", 
   [
     check("email", "Invalid email address.").isEmail()
-    // Could not get these to work at all:
+    // Could not get these to work at all and can't figure out what's wrong:
     /* check("subject", "Subject line must be between 5-125 characters.").isLength({min: 5, max: 125}),
     check("message", "Message must be between 10-250 characters.").isLength({min: 10, max: 250}) */
   ],
   (request, response) => {
-    // These are errors from the array of check calls (not Node errors): 
     const contactErrors = validationResult(request);
     console.log(contactErrors.array());
 

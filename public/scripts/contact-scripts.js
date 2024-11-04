@@ -156,14 +156,14 @@ resetBtn.addEventListener("keydown", (event)=>{
     resetForm();
 });
 // -------------------------------------- AJAX Validation Fcns-----------------------------------------
-const validateEmailAddySent = (event) => {
+const validateEmailAddySent = () => {
     const emailAddressSent = emailInput.value;
     const xmlHttpReq = new XMLHttpRequest();
 
     contactResponse.style.display = "block";
     contactResponse.innerHTML = "<p>Sending message...</p>";
 
-    xmlHttpReq.open("POST", "/contact-response-msg", false);
+    xmlHttpReq.open("POST", "/contact-response-msg", true);
 
     xmlHttpReq.onreadystatechange = () => {
       if(xmlHttpReq.readyState == XMLHttpRequest.DONE && xmlHttpReq.status == 200){
@@ -183,12 +183,11 @@ sendBtn.addEventListener("click", (event)=>{
 sendBtn.addEventListener("keydown", (event)=>{
   if (event.key === "Enter") { 
     handleClickSendBtn(event);
-    validateEmailAddySent(event);
+    validateEmailAddySent();
   }
 });
 
-// Could not get these to work at all:
-
+// Could not get these to work at all and can't figure out what's wrong -- at least, not based on lessons.
 /* const validateSubjSent = (event) => {
   const subjSent = subjectInput.value;
   const xmlHttpReq = new XMLHttpRequest();
