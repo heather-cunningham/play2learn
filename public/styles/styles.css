@@ -281,12 +281,12 @@ cite {
   font-weight: bold;
 }
 
-#social-media-list a {
-  text-decoration: none;
+#social-media-list li {
+  margin-right: 1.5rem;
 }
 
-.dot-separator {
-  margin: 0 0.3rem;
-  font-weight: bold;
-  font-size: 1rem;
+#social-media-list a, i, a i, a:visited i {
+  text-decoration: none;
+  font-size: 2.25rem;
+  color: black;
 }
