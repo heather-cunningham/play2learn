@@ -106,6 +106,12 @@ msgTextareaInput.addEventListener("input", () => {
 });
 
 const handleClickSendBtn = (event) => {
+  contactResponse.style.display = "block";
+  contactResponse.innerHTML = "<p>Message processing...</p>";
+
+  /* const emailIsValid = (checkInput(emailInput, emailLabel) && validateMsgInfoSent(emailInput));
+  const subjectIsValid = (checkInput(subjectInput, subjectLabel) && validateMsgInfoSent(subjectInput));
+  const msgIsValid = (checkInput(msgTextareaInput, msgLabel) && validateMsgInfoSent(msgTextareaInput)); */
   const emailIsValid = checkInput(emailInput, emailLabel);
   const subjectIsValid = checkInput(subjectInput, subjectLabel);
   const msgIsValid = checkInput(msgTextareaInput, msgLabel);
@@ -113,8 +119,22 @@ const handleClickSendBtn = (event) => {
   if(!emailIsValid || !subjectIsValid || !msgIsValid){
     event.preventDefault();
     alert("Please, fix required fields.");
+  } else {
+    alert("Form Submitted");
   }
 };
+
+sendBtn.addEventListener("click", (event)=>{
+  handleClickSendBtn(event);
+  validateEmailAddySent();
+});
+
+sendBtn.addEventListener("keydown", (event)=>{
+  if (event.key === "Enter") { 
+    handleClickSendBtn(event);
+    validateEmailAddySent();
+  }
+});
 
 emailInput.addEventListener("keydown", (event)=>{
   if (event.key === "Enter") 
@@ -151,43 +171,65 @@ const resetForm = () => {
 };
 
 resetBtn.addEventListener("click", resetForm);
+
 resetBtn.addEventListener("keydown", (event)=>{
   if (event.key === "Enter") 
     resetForm();
 });
+
+
 // -------------------------------------- AJAX Validation Fcns-----------------------------------------
 const validateEmailAddySent = () => {
-    const emailAddressSent = emailInput.value;
-    const xmlHttpReq = new XMLHttpRequest();
+  const emailAddressSent = emailInput.value;
+  const xmlHttpReq = new XMLHttpRequest();
 
-    contactResponse.style.display = "block";
-    contactResponse.innerHTML = "<p>Sending message...</p>";
+  contactResponse.style.display = "block";
+  contactResponse.innerHTML = "<p>Message processing...</p>";
 
-    xmlHttpReq.open("POST", "/contact-response-msg", true);
+  xmlHttpReq.open("POST", "/contact-response-msg", true);
 
-    xmlHttpReq.onreadystatechange = () => {
-      if(xmlHttpReq.readyState == XMLHttpRequest.DONE && xmlHttpReq.status == 200){
-        contactResponse.innerHTML = xmlHttpReq.responseText;
-      }
-    };
+  xmlHttpReq.onreadystatechange = () => {
+    if (xmlHttpReq.readyState == XMLHttpRequest.DONE && xmlHttpReq.status == 200) 
+      contactResponse.innerHTML = xmlHttpReq.responseText;
+  };
 
-    xmlHttpReq.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xmlHttpReq.send("email=" + emailAddressSent);
+  xmlHttpReq.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+  xmlHttpReq.send("email=" + emailAddressSent);
 };
 
-sendBtn.addEventListener("click", (event)=>{
-  handleClickSendBtn(event);
-  validateEmailAddySent(event);
-});
 
-sendBtn.addEventListener("keydown", (event)=>{
-  if (event.key === "Enter") { 
-    handleClickSendBtn(event);
-    validateEmailAddySent();
-  }
-});
+// Could not get these to work at all and can't figure out what's wrong.
 
-// Could not get these to work at all and can't figure out what's wrong -- at least, not based on lessons.
+// const validateMsgInfoSent = (input) => {
+//   // const inputValue = input.value;
+//   /* const emailAddressSent = emailInput.value;
+//   const subjSent = subjectInput.value;
+//   const msgSent = msgTextareaInput.value; */
+//   const xmlHttpReq = new XMLHttpRequest();
+//   const isResponseOk = false;
+
+//   // contactResponse.style.display = "block";
+//   // contactResponse.innerHTML = "<p>Message processing...</p>";
+
+//   xmlHttpReq.open("POST", "/contact-response-msg", true);
+
+//   xmlHttpReq.onreadystatechange = () => {
+//     if(xmlHttpReq.readyState == XMLHttpRequest.DONE /* && xmlHttpReq.status == 200 */){
+//       contactResponse.innerHTML = xmlHttpReq.responseText;
+//     }
+
+//     if(xmlHttpReq.status == 200){
+//       isResponseOk = true;
+//     }
+//   };
+
+//   xmlHttpReq.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+//   xmlHttpReq.send(`${input.name}=${input.value}`);
+
+//   return isResponseOk;
+// };
+
+
 /* const validateSubjSent = (event) => {
   const subjSent = subjectInput.value;
   const xmlHttpReq = new XMLHttpRequest();
