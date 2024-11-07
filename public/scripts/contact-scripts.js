@@ -43,7 +43,7 @@ const addError = (inputEl, inputLabel) => {
   if(inputEl.previousElementSibling && inputEl.previousElementSibling.className === "error") {
     return;
   }
-f
+
   const errorDiv = document.createElement("div");
   
   inputLabel.classList.add("error");
