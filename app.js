@@ -28,31 +28,19 @@ app.get("/testimonials", (request, response) => {
 
 // Contact-Us messages Node response
 app.post("/contact-response-msg", 
-  [
-    check("email", "Invalid email address.").isEmail() //,
-    // Could not get these to work at all and can't figure out what's wrong.
-    // These two checks fail regardless if the strings are over the  min length or not.
-    // I even tried w/ only testing the min length and not the max, and these two checks still fail even if
-    // the strings are over the min length.
-    /* check("subject", "Subject line must be between 5-125 characters.").isLength({min: 5, max: 125}),
-    check("message", "Message must be between 10-250 characters.").isLength({min: 10, max: 250}) */
-  ],
+  [ check("email", "Invalid email address.").isEmail() ],
   (request, response) => {
     const contactErrors = validationResult(request);
-    // console.log(contactErrors.array());
 
     let responseMsg = "";
-    //let responseStatus = 0;
-    if (contactErrors.isEmpty()) { 
-      // responseStatus = 200;
-      responseMsg = `<p id="contact-response-message">Thank you, message sent.</p>`
-    } else {
+
+    if (!contactErrors.isEmpty()) {
       let contactErrorsHtmlList = "";
 
       for(let error of contactErrors.array()){
         contactErrorsHtmlList += `<li>${error.msg}</li>`
       }
-      // responseStatus = 500;
+    
       responseMsg = `<ul id="contact-response-message">
                     Message not sent due to:
                         ${contactErrorsHtmlList}
@@ -60,7 +48,6 @@ app.post("/contact-response-msg",
     }
     
     response.status(200);
-    // response.status(responseStatus);
     response.send(responseMsg);
 });
 

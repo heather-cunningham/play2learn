@@ -106,12 +106,6 @@ msgTextareaInput.addEventListener("input", () => {
 });
 
 const handleClickSendBtn = (event) => {
-  contactResponse.style.display = "block";
-  contactResponse.innerHTML = "<p>Message processing...</p>";
-
-  /* const emailIsValid = (checkInput(emailInput, emailLabel) && validateMsgInfoSent(emailInput));
-  const subjectIsValid = (checkInput(subjectInput, subjectLabel) && validateMsgInfoSent(subjectInput));
-  const msgIsValid = (checkInput(msgTextareaInput, msgLabel) && validateMsgInfoSent(msgTextareaInput)); */
   const emailIsValid = checkInput(emailInput, emailLabel);
   const subjectIsValid = checkInput(subjectInput, subjectLabel);
   const msgIsValid = checkInput(msgTextareaInput, msgLabel);
@@ -196,82 +190,3 @@ const validateEmailAddySent = () => {
   xmlHttpReq.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
   xmlHttpReq.send("email=" + emailAddressSent);
 };
-
-
-// Could not get these to work at all and can't figure out what's wrong.
-
-// const validateMsgInfoSent = (input) => {
-//   // const inputValue = input.value;
-//   /* const emailAddressSent = emailInput.value;
-//   const subjSent = subjectInput.value;
-//   const msgSent = msgTextareaInput.value; */
-//   const xmlHttpReq = new XMLHttpRequest();
-//   const isResponseOk = false;
-
-//   // contactResponse.style.display = "block";
-//   // contactResponse.innerHTML = "<p>Message processing...</p>";
-
-//   xmlHttpReq.open("POST", "/contact-response-msg", true);
-
-//   xmlHttpReq.onreadystatechange = () => {
-//     if(xmlHttpReq.readyState == XMLHttpRequest.DONE /* && xmlHttpReq.status == 200 */){
-//       contactResponse.innerHTML = xmlHttpReq.responseText;
-//     }
-
-//     if(xmlHttpReq.status == 200){
-//       isResponseOk = true;
-//     }
-//   };
-
-//   xmlHttpReq.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-//   xmlHttpReq.send(`${input.name}=${input.value}`);
-
-//   return isResponseOk;
-// };
-
-
-/* const validateSubjSent = (event) => {
-  const subjSent = subjectInput.value;
-  const xmlHttpReq = new XMLHttpRequest();
-
-  contactResponse.style.display = "block";
-  contactResponse.innerHTML = "<p>Sending message...</p>";
-
-  xmlHttpReq.open("POST", "/contact-response-msg", false);
-
-  xmlHttpReq.onreadystatechange = () => {
-    if(xmlHttpReq.readyState == XMLHttpRequest.DONE && xmlHttpReq.status == 200){
-      contactResponse.innerHTML = xmlHttpReq.responseText;
-    }
-  };
-
-  xmlHttpReq.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-  xmlHttpReq.send("subject=" + subjSent);
-};
-
-const validateMessageSent = (event) => {
-  const msgSent = msgTextareaInput.value;
-  const xmlHttpReq = new XMLHttpRequest();
-
-  contactResponse.style.display = "block";
-  contactResponse.innerHTML = "<p>Sending message...</p>";
-
-  xmlHttpReq.open("POST", "/contact-response-msg", false);
-
-  xmlHttpReq.onreadystatechange = () => {
-    if(xmlHttpReq.readyState == XMLHttpRequest.DONE && xmlHttpReq.status == 200){
-      contactResponse.innerHTML = xmlHttpReq.responseText;
-    }
-  };
-
-  xmlHttpReq.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-  xmlHttpReq.send("message=" + msgSent);
-};
-
-sendBtn.addEventListener("click", validateSubjSent);
-sendBtn.addEventListener("click", validateMessageSent);
- */
-
-
-
-
