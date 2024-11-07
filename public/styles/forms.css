@@ -25,7 +25,7 @@ fieldset label {
   font-weight: bold;
 }
 
-fieldset input, fieldset textarea, #send-msg-btn-div {
+fieldset input, fieldset textarea {
   display: block;
   width: 95%;
   margin-left: auto;
@@ -62,13 +62,21 @@ div.error {
   color: red;
 }
 
-#send-msg-btn-div {
-  margin-top: 0.33rem;
+#send-msg-btn-div, #login-btn-div {
+  display: block;
+  width: 95%;
+  margin: 0.33rem auto 0 auto;
 }
 
-#send-msg-btn {
+#send-msg-btn, #login-btn {
   display: inline-block;
-  margin: 0.66rem 3px 0 0;
+  margin: 0.66rem 0.17rem 0 0;
+  box-sizing: border-box;
+}
+
+#register-link-div {
+  width: 95%;
+  margin-top: 1.32rem;
 }
 
 #reset-form-btn {

@@ -7,6 +7,7 @@
 
   <link rel="stylesheet" href="./styles/normalize.css" />
   <link rel="stylesheet" href="./styles/styles.css" />
+  <link rel="stylesheet" href="./styles/forms.css" />
 
   <script src="https://kit.fontawesome.com/5edc2e2a09.js" crossorigin="anonymous"></script>
 
@@ -20,11 +21,7 @@
   <header>
     <div id="nav-div">
       <a href="./index.html" alt="Play2Learn Home" title="Play2Learn Home">
-        <img id="logo" 
-          src="./images/play2Learn_logo.png" 
-          alt="Play2Learn Logo" 
-          aria-details="AI generated image" 
-        />
+        <img id="logo" src="./images/play2Learn_logo.png" alt="Play2Learn Logo" aria-details="AI generated image" />
       </a>
 
       <nav>
@@ -59,6 +56,40 @@
   <main>
     <div class="site-page-div">
       <h2 class="page-name">Login</h2>
+
+      <form id="login-form" action="javascript:alert('Form Submitted')" method="post" novalidate>
+        <fieldset>
+          <label id="username-lbl" for="username-input" class="required">Username:</label>
+          <input id="username-input" 
+            name="username" 
+            type="email"
+            placeholder="Enter the email address you registered with, Ex: myEmail@gmail.com"
+            alt="Enter the email address you registered with" 
+            required />
+
+          <label id="password-lbl" for="password-input" class="required">Password:</label>
+          <input id="password-input" 
+            name="password" 
+            type="password" 
+            placeholder="Enter your password"
+            alt="Enter your password" 
+            title="Enter your password" 
+            minlength="8" 
+            maxlength="16" 
+            required />
+
+          <div id="login-btn-div">
+            <button id="login-btn" type="button" name="login" value="Login">Login</button>
+            
+            <div id="register-link-div">
+              <a id="register-link" alt="Register for an account with PLay2Learn" title="Register for an account with PLay2Learn" href="">
+                No account? Register now!
+              </a>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+
     </div>
   </main>
 
