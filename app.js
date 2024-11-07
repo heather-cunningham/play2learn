@@ -26,7 +26,7 @@ app.get("/testimonials", (request, response) => {
   }
 });
 
-// Contact-Us messages Node response
+// Contact-Us messages Node response.  Much no worky.
 app.post("/contact-response-msg", 
   [
     check("email", "Invalid email address.").isEmail() //,
