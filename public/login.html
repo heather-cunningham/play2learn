@@ -54,8 +54,7 @@
   </header>
 
   <main>
-    <!-- style="display: none;" -->
-    <div class="site-page-div">
+    <div id="login-form-div" class="site-page-div" style="display: none;">
       <h2 class="page-name">Login</h2>
 
       <form id="login-form" action="javascript:alert('Form Submitted')" method="post" novalidate>
@@ -81,7 +80,8 @@
 
           <div id="login-btn-div">
             <button id="login-btn" type="submit" name="login" value="Login">Login</button>
-            
+            <button id="reset-form-btn" type="button" name="reset" value="Reset">Reset</button>
+
             <div id="register-link-div">
               <a id="register-link" alt="Register for an account with PLay2Learn" title="Register for an account with PLay2Learn" href="">
                 No account? Register now!
@@ -90,10 +90,10 @@
           </div>
         </fieldset>
       </form>
-
     </div>
 
-    <div class="site-page-div">
+    <!-- style="display: none;"-->
+    <div id="register-form-div" class="site-page-div" >
       <h2 class="page-name">Register</h2>
 
       <form id="registration-form" action="javascript:alert('Form Submitted')" method="post" novalidate>
@@ -151,6 +151,7 @@
 
           <div id="register-btn-div">
             <button id="register-btn" type="submit" name="register" value="Register">Register</button>
+            <button id="reset-register-form-btn" type="button" name="reset" value="Reset">Reset</button>
             
             <div id="login-link-div">
               <a id="login-link" alt="Log in to your PLay2Learn account" title="Log in to your PLay2Learn account" href="">
@@ -160,7 +161,6 @@
           </div>
         </fieldset>
       </form>
-
     </div>
   </main>
 

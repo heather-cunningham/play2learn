@@ -20,7 +20,7 @@ fieldset {
 
 fieldset label {
   display: block;
-  width: 80%;
+  width: 85%;
   margin: 1rem 0.17rem 0.17rem 1.2rem;
   font-weight: bold;
 }
@@ -88,25 +88,32 @@ div.error {
 #send-msg-btn-div, #login-btn-div, #register-btn-div {
   display: block;
   width: 95%;
-  margin: 0.33rem auto 0 auto;
+  margin: 1.32rem auto;
 }
 
 #send-msg-btn, #login-btn, #register-btn {
   display: inline-block;
-  margin: 0.66rem 0.17rem 0 0;
   box-sizing: border-box;
+}
+
+#send-msg-btn, #login-btn {
+  margin: 0.66rem 5.6rem 0 0;
+}
+
+#register-btn {
+  margin: 0.66rem 3.5rem 0 0;
 }
 
 #register-link-div, #login-link-div {
   width: 95%;
-  margin-top: 1.32rem;
+  margin: 1.67rem 0;
 }
 
-#reset-form-btn {
+#reset-form-btn, #reset-register-form-btn {
   display: inline-block;
   width: 4rem;
   height: 2rem;
-  margin: 0.66rem 0 0 3px;
+  margin-top: 0.66rem;
   padding: 0.3rem;
   color: white;
   background-color: red;

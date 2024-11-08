@@ -1,6 +1,7 @@
 // Login page Scripts
-// -------------------------------------- Variables ------------------------------------------------
-const allInputs = document.querySelectorAll("input"); // All inputs are reqd in this form.
+// -------------------------------------- Login form Scripts --------------------------------------
+// -------------------------------------- Login form Variables ------------------------------------------------
+const allInputs = document.querySelectorAll("input"); // All Login form inputs are reqd.
 
 const usernameLabel = document.getElementById("username-lbl");
 const usernameInput = document.getElementById("username-input");
@@ -10,29 +11,33 @@ const passwordInput = document.getElementById("password-input");
 
 const loginBtn = document.getElementById("login-btn");
 
-const errorMessage = "A registered email address and password are required to login.";
+const loginFormDiv = document.getElementById("login-form-div");
+const registerLink = document.getElementById("register-link");
+const registerFormDiv = document.getElementById("register-form-div");
+
+const loginErrorMessage = "A registered email address and password are required to login.";
 const untouchedStatus = "untouched";
 const touchedStatus = "touched";
 const errorClassName = "error";
 
 
-// -------------------------------------- datasets & Custom Error Msgs ----------------------------------
+// -------------------------------------- Login form datasets & Custom Error Msgs ----------------------------------
 for (let input of allInputs) {
   input.dataset.status = untouchedStatus;
 }
 
 loginBtn.dataset.status = untouchedStatus;
 
-usernameInput.dataset.errorMsg = errorMessage;
-passwordInput.dataset.errorMsg = errorMessage;
+usernameInput.dataset.errorMsg = loginErrorMessage;
+passwordInput.dataset.errorMsg = loginErrorMessage;
 
 
-// -------------------------------------- OnLoad Functions ----------------------------------------------
+// -------------------------------------- Login form OnLoad Functions ----------------------------------------------
 const focusUsernameInputOnLoad = () => usernameInput.focus();
 window.addEventListener("load", focusUsernameInputOnLoad);
 
 
-// -------------------------------------- Validation Functions --------------------------------------------
+// -------------------------------------- Login form Validation Functions --------------------------------------------
 const addError = (inputEl, inputLabel) => {
   // If the error is displaying already, don't show again.
   if(inputEl.previousElementSibling && inputEl.previousElementSibling.className === errorClassName) {
@@ -65,7 +70,7 @@ const checkInput = (inputEl, inputLabel) => {
 };
 
 
-// -------------------------------------- Event Listeners & Handlers --------------------------------------
+// -------------------------------------- Login form Event Listeners & Handlers --------------------------------------
 usernameInput.addEventListener("change", () => {
   usernameInput.dataset.status = touchedStatus;
   checkInput(usernameInput, usernameLabel);
@@ -122,3 +127,43 @@ passwordInput.addEventListener("keydown", (event)=>{
     handleClickLoginBtn(event);
   }
 });
+
+const showRegistrationForm = (event)=>{
+  if(registerFormDiv.style.display === "none") {
+    event.preventDefault();
+    loginFormDiv.style.display = "none"
+    registerFormDiv.style.display = "block"
+  }
+};
+
+registerLink.addEventListener("click", showRegistrationForm);
+
+// -------------------------------------- Register form Scripts ----------------------------------------------------
+// -------------------------------------- Register form Variables ---------------------------------------------------
+const loginLink = document.getElementById("login-link");
+
+
+// -------------------------------------- Register form datasets & Custom Error Msgs ----------------------------------
+
+
+
+// -------------------------------------- Register form OnLoad Functions ----------------------------------------------
+
+
+
+// -------------------------------------- Register form Validation Functions --------------------------------------------
+
+
+
+
+// -------------------------------------- Register form Event Listeners & Handlers --------------------------------------
+const showLoginForm = (event)=>{
+  if(loginFormDiv.style.display === "none") {
+    event.preventDefault();
+    registerFormDiv.style.display = "none";
+    loginFormDiv.style.display = "block";
+  }
+};
+
+loginLink.addEventListener("click", showLoginForm);
+
