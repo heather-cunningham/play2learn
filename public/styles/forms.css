@@ -20,16 +20,24 @@ fieldset {
 
 fieldset label {
   display: block;
-  width: 10%;
+  width: 80%;
   margin: 1rem 0.17rem 0.17rem 1.2rem;
   font-weight: bold;
 }
 
-fieldset input, fieldset textarea {
+#create-password-lbl {
+  margin-top: 3rem;
+}
+
+fieldset input, fieldset textarea, #age-verification-div {
   display: block;
   width: 95%;
   margin-left: auto;
   margin-right: auto;
+}
+
+#age-verification-div {
+  margin-top: 1.5rem;
 }
 
 fieldset label, fieldset input {
@@ -40,13 +48,28 @@ fieldset textarea {
   height: 8rem;
 }
 
+#age-verification-ckbx, #age-verification-lbl {
+  display: inline-block;
+}
+
+#age-verification-ckbx {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-left: -0.17rem;
+}
+
+#age-verification-lbl {
+  margin-left: 0.33rem;
+  font-weight: normal;
+}
+
 .required::after {
   content: "*";
   color: red;
 }
 
 label.error {
-  width: 10%;
+  width: 80%;
   margin: 1rem 0.17rem 0.17rem 1.2rem;
   font-weight: bold;
   font-style: italic;
@@ -62,19 +85,19 @@ div.error {
   color: red;
 }
 
-#send-msg-btn-div, #login-btn-div {
+#send-msg-btn-div, #login-btn-div, #register-btn-div {
   display: block;
   width: 95%;
   margin: 0.33rem auto 0 auto;
 }
 
-#send-msg-btn, #login-btn {
+#send-msg-btn, #login-btn, #register-btn {
   display: inline-block;
   margin: 0.66rem 0.17rem 0 0;
   box-sizing: border-box;
 }
 
-#register-link-div {
+#register-link-div, #login-link-div {
   width: 95%;
   margin-top: 1.32rem;
 }

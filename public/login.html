@@ -54,6 +54,7 @@
   </header>
 
   <main>
+    <!-- style="display: none;" -->
     <div class="site-page-div">
       <h2 class="page-name">Login</h2>
 
@@ -84,6 +85,76 @@
             <div id="register-link-div">
               <a id="register-link" alt="Register for an account with PLay2Learn" title="Register for an account with PLay2Learn" href="">
                 No account? Register now!
+              </a>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+
+    </div>
+
+    <div class="site-page-div">
+      <h2 class="page-name">Register</h2>
+
+      <form id="registration-form" action="javascript:alert('Form Submitted')" method="post" novalidate>
+        <fieldset>
+          <label id="create-username-lbl" for="create-username-input" class="required">Create Username:</label>
+          <input id="create-username-input" 
+            name="create-username" 
+            type="email"
+            placeholder="Enter an email address, Ex: email@email.com"
+            alt="Enter an email address to register as a username"
+            title="Enter an email address to register as a username" 
+            required />
+
+          <label id="confirm-username-lbl" for="confirm-username-input" class="required">Confirm Username:</label>
+          <input id="confirm-username-input" 
+            name="confirm-username" 
+            type="email"
+            placeholder="Confirm your email address, Ex: email@email.com"
+            alt="Confirm email address to use as your username"
+            title="Confirm email address to use as your username" 
+            required />
+
+          <label id="create-password-lbl" for="create-password-input" class="required">Create Password:</label>
+          <input id="create-password-input" 
+            name="create-password" 
+            type="password" 
+            placeholder="Create a password between 8 - 16 characters"
+            alt="Create a password between 8 to 16 characters" 
+            minlength="8" 
+            maxlength="16" 
+            required />
+
+          <label id="confirm-password-lbl" for="confirm-password-input" class="required">Confirm Password:</label>
+          <input id="confirm-password-input" 
+            name="confirm-password" 
+            type="password" 
+            placeholder="Re-enter password. (Entries must match.)"
+            alt="Re-enter password. Entries must match." 
+            minlength="8" 
+            maxlength="16" 
+            required />
+
+          <div id="age-verification-div">
+            <input id="age-verification-ckbx"
+              name="age-verification" 
+              type="checkbox"
+              alt="Check this box to verify you're over 13 years old."
+              title="You must be 13 years old or older to register."
+              required />
+            <label id="age-verification-lbl" for="age-verification-ckbx" class="required">
+              I'm over 13 and like playing games.
+            </label>
+          </div>
+  
+
+          <div id="register-btn-div">
+            <button id="register-btn" type="submit" name="register" value="Register">Register</button>
+            
+            <div id="login-link-div">
+              <a id="login-link" alt="Log in to your PLay2Learn account" title="Log in to your PLay2Learn account" href="">
+                Already have an account? Login
               </a>
             </div>
           </div>

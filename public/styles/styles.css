@@ -217,8 +217,7 @@ h3.game-title {
   height: 2rem;
 }
 
-button[name="play"], button[name="send"], button[name="login"] {
-  width: 4rem;
+button[name="play"], button[name="send"], button[name="login"], button[name="register"] {
   height: 2rem;
   padding: 0.3rem;
   color: white;
@@ -228,6 +227,14 @@ button[name="play"], button[name="send"], button[name="login"] {
   border-radius: 0.3rem;
   box-shadow: 0.17rem 0.17rem 0.17rem grey;
   box-sizing: border-box;
+}
+
+button[name="play"], button[name="send"], button[name="login"] {
+  width: 4rem;
+}
+
+button[name="register"] {
+  width: 6rem;
 }
 
 button:active {
