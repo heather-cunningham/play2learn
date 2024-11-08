@@ -11,6 +11,7 @@ const passwordInput = document.getElementById("password-input");
 const loginBtn = document.getElementById("login-btn");
 
 const touchedStatus = "touched";
+const errorClassName = "error";
 
 
 // -------------------------------------- datasets & Custom Error Msgs ----------------------------------
@@ -30,21 +31,21 @@ window.addEventListener("load", focusUsernameInputOnLoad);
 // -------------------------------------- Validation Functions --------------------------------------------
 const addError = (inputEl, inputLabel) => {
   // If the error is displaying already, don't show again.
-  if(inputEl.previousElementSibling && inputEl.previousElementSibling.className === "error") {
+  if(inputEl.previousElementSibling && inputEl.previousElementSibling.className === errorClassName) {
     return;
   }
 
   const errorDiv = document.createElement("div");
   
-  inputLabel.classList.add("error");
-  errorDiv.className = "error";
+  inputLabel.classList.add(errorClassName);
+  errorDiv.className = errorClassName;
   errorDiv.innerHTML = `${inputEl.dataset.errorMsg}`;
   inputEl.parentNode.insertBefore(errorDiv, inputEl);
 };
 
 const removeError = (inputEl, inputLabel) => {
-  if(inputEl.previousElementSibling && inputEl.previousElementSibling.className === "error") {
-    inputLabel.classList.remove("error");
+  if(inputEl.previousElementSibling && inputEl.previousElementSibling.className === errorClassName) {
+    inputLabel.classList.remove(errorClassName);
     inputEl.previousElementSibling.remove();
   }
 };
