@@ -10,17 +10,21 @@ const passwordInput = document.getElementById("password-input");
 
 const loginBtn = document.getElementById("login-btn");
 
+const errorMessage = "A registered email address and password are required to login.";
+const untouchedStatus = "untouched";
 const touchedStatus = "touched";
 const errorClassName = "error";
 
 
 // -------------------------------------- datasets & Custom Error Msgs ----------------------------------
 for (let input of allInputs) {
-  input.dataset.status = "untouched";
+  input.dataset.status = untouchedStatus;
 }
 
-usernameInput.dataset.errorMsg = "A registered email as your username is required to login."
-passwordInput.dataset.errorMsg = "Password is required to login.";
+loginBtn.dataset.status = untouchedStatus;
+
+usernameInput.dataset.errorMsg = errorMessage;
+passwordInput.dataset.errorMsg = errorMessage;
 
 
 // -------------------------------------- OnLoad Functions ----------------------------------------------
@@ -90,22 +94,22 @@ const handleClickLoginBtn = (event) => {
     event.preventDefault();
     alert("Please, fix required fields.");
   } else {
-    //alert("Form Submitted");
-    
-    /* usernameInput.innerText = "";
-    usernameInput.value = "";
-    passwordInput.innerText = "";
-    passwordInput.value = ""; */
+    // Clear the input fields on click of the Ok btn in the form submission alert.
+    // setTimeout() with 0 ms wait allows just enough time for user to click the alert btn before
+    // emptying the fields -- to avoid false negatives and erroring the fields again.  
+    setTimeout(
+      ()=>{
+        usernameInput.innerText = "";
+        usernameInput.value = "";
+        passwordInput.innerText = "";
+        passwordInput.value = "";
+      }, 
+      0
+    );
   }
 };
 
 loginBtn.addEventListener("click", handleClickLoginBtn);
-
-loginBtn.addEventListener("keydown", (event)=>{
-  if (event.key === "Enter") { 
-    handleClickLoginBtn(event);
-  }
-});
 
 usernameInput.addEventListener("keydown", (event)=>{
   if (event.key === "Enter") { 

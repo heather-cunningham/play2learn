@@ -107,24 +107,35 @@ const handleClickSendBtn = (event) => {
   const subjectIsValid = checkInput(subjectInput, subjectLabel);
   const msgIsValid = checkInput(msgTextareaInput, msgLabel);
 
+  validateEmailAddySent();
+
   if(!emailIsValid || !subjectIsValid || !msgIsValid){
     event.preventDefault();
     alert("Please, fix required fields.");
   } else {
     alert("Form Submitted");
+
+    // Clear the input fields on click of the Ok btn in the form submission alert.
+    // setTimeout() with 0 ms wait allows just enough time for user to click the alert btn before
+    // emptying the fields -- to avoid false negatives and erroring the fields again.  
+    setTimeout(
+      ()=>{
+        emailInput.innerText = "";
+        emailInput.value = "";
+
+        subjectInput.innerText = "";
+        subjectInput.value = "";
+
+        msgTextareaInput.innerText = "";
+        msgTextareaInput.value = "";
+      }, 
+      0
+    );
   }
 };
 
 sendBtn.addEventListener("click", (event)=>{
   handleClickSendBtn(event);
-  validateEmailAddySent();
-});
-
-sendBtn.addEventListener("keydown", (event)=>{
-  if (event.key === "Enter") { 
-    handleClickSendBtn(event);
-    validateEmailAddySent();
-  }
 });
 
 emailInput.addEventListener("keydown", (event)=>{
@@ -163,25 +174,18 @@ const resetForm = () => {
 
 resetBtn.addEventListener("click", resetForm);
 
-resetBtn.addEventListener("keydown", (event)=>{
-  if (event.key === "Enter") 
-    resetForm();
-});
-
-
 // -------------------------------------- AJAX Validation Fcns-----------------------------------------
 const validateEmailAddySent = () => {
   const emailAddressSent = emailInput.value;
   const xmlHttpReq = new XMLHttpRequest();
 
-  contactResponse.style.display = "block";
-  contactResponse.innerHTML = "<p>Message processing...</p>";
-
   xmlHttpReq.open("POST", "/contact-response-msg", true);
 
   xmlHttpReq.onreadystatechange = () => {
-    if (xmlHttpReq.readyState == XMLHttpRequest.DONE && xmlHttpReq.status == 200) 
+    if (xmlHttpReq.readyState == XMLHttpRequest.DONE && xmlHttpReq.status == 200) { 
+      contactResponse.style.display = "block";
       contactResponse.innerHTML = xmlHttpReq.responseText;
+    }
   };
 
   xmlHttpReq.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
