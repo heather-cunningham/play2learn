@@ -11,6 +11,7 @@ form {
 }
 
 fieldset {
+  margin-bottom: 2.5rem;
   background-color: floralwhite;
   border: 1px solid grey;
   border-radius: 0.6rem;
