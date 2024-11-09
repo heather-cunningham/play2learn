@@ -54,6 +54,7 @@
   </header>
 
   <main>
+    <!-- style="display: none;" -->
     <div id="login-form-div" class="site-page-div" style="display: none;">
       <h2 class="page-name">Login</h2>
 
@@ -93,7 +94,7 @@
     </div>
 
     <!-- style="display: none;"-->
-    <div id="register-form-div" class="site-page-div" >
+    <div id="register-form-div" class="site-page-div">
       <h2 class="page-name">Register</h2>
 
       <form id="registration-form" action="javascript:alert('Form Submitted')" method="post" novalidate>
@@ -103,17 +104,17 @@
             name="create-username" 
             type="email"
             placeholder="Enter an email address, Ex: email@email.com"
-            alt="Enter an email address to register as a username"
-            title="Enter an email address to register as a username" 
+            alt="Enter an email address to use as your username"
+            title="Enter an email address to use as a username" 
             required />
 
           <label id="confirm-username-lbl" for="confirm-username-input" class="required">Confirm Username:</label>
           <input id="confirm-username-input" 
             name="confirm-username" 
             type="email"
-            placeholder="Confirm your email address, Ex: email@email.com"
-            alt="Confirm email address to use as your username"
-            title="Confirm email address to use as your username" 
+            placeholder="Confirm your email address. (Entries must match.)"
+            alt="Confirm email address to use as your username.  Entries must match."
+            title="Confirm email address to use as your username. (Entries must match.)" 
             required />
 
           <label id="create-password-lbl" for="create-password-input" class="required">Create Password:</label>
@@ -122,6 +123,7 @@
             type="password" 
             placeholder="Create a password between 8 - 16 characters"
             alt="Create a password between 8 to 16 characters" 
+            title=""
             minlength="8" 
             maxlength="16" 
             required />

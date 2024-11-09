@@ -66,7 +66,16 @@ const removeError = (inputEl, inputLabel) => {
 };
 
 const checkInput = (inputEl, inputLabel) => {
-  if(!inputEl.checkValidity() || (inputEl.value).trim() === " ") {
+  const inputID = inputEl.id;
+  let doEntriesMatch = true;
+
+  if(inputID === "confirm-username-input"){
+    doEntriesMatch = confirmEntriesMatch(createUsernameInput.value, inputEl.value);
+  }else if(inputID === "confirm-password-input"){
+    doEntriesMatch = confirmEntriesMatch(createPasswordInput.value, inputEl.value);    
+  }
+
+  if(!doEntriesMatch || !inputEl.checkValidity() || (inputEl.value).trim() === " ") {
     addError(inputEl, inputLabel);
     return false;
   } else {
@@ -109,12 +118,7 @@ const handleClickLoginBtn = (event) => {
     // setTimeout() with 0 ms wait allows just enough time for user to click the alert btn before
     // emptying the fields -- to avoid false negatives and erroring the fields again.  
     setTimeout(
-      ()=>{
-        usernameInput.innerText = "";
-        usernameInput.value = "";
-        passwordInput.innerText = "";
-        passwordInput.value = "";
-      }, 
+      ()=> resetForm(allLoginFormInputs), 
       0
     );
   }
@@ -201,7 +205,7 @@ createUsernameInput.dataset.errorMsg = `Please, enter a valid email to use as yo
 confirmUsernameInput.dataset.errorMsg = confirmInputErrorMsg
 
 createPasswordInput.dataset.errorMsg = 
-  `Must be between ${createPasswordInput.minLength} and ${createPasswordInput.maxLength}`;
+  `Must be between ${createPasswordInput.minLength} and ${createPasswordInput.maxLength} characters.`;
 
 confirmPasswordInput.dataset.errorMsg = confirmInputErrorMsg;
 
@@ -251,6 +255,34 @@ confirmPasswordInput.addEventListener("input", () => {
   if(confirmPasswordInput.dataset.status === touchedStatus)
     checkInput(confirmPasswordInput, confirmPasswordLbl);
 });
+
+const confirmEntriesMatch = (inputVal, reenteredVal) => {
+  return inputVal === reenteredVal ? true : false;
+};
+
+const handleClickRegisterBtn = (event) => {
+  const createdUsernameIsValid = checkInput(createUsernameInput, createUsernameLbl);
+  const confirmedUsernameIsValid = checkInput(confirmUsernameInput, confirmUsernameLbl);
+
+  const createdPasswordIsValid = checkInput(createPasswordInput, createPasswordLbl);
+  const confirmedPasswordIsValid = checkInput(confirmPasswordInput, confirmPasswordLbl);
+
+  if(!createdUsernameIsValid || !confirmedUsernameIsValid 
+      || !createdPasswordIsValid || !confirmedPasswordIsValid) {
+    event.preventDefault();
+    alert("Please, fix required fields.");
+  } else {
+    // Clear the input fields on click of the Ok btn in the form submission alert.
+    // setTimeout() with 0 ms wait allows just enough time for user to click the alert btn before
+    // emptying the fields -- to avoid false negatives and erroring the fields again.  
+    setTimeout(
+      ()=> resetForm(allRegisterFormInputs), 
+      0
+    );
+  }
+};
+
+registerBtn.addEventListener("click", handleClickRegisterBtn);
 
 resetRegisterFormBtn.addEventListener("click", ()=>{
   resetForm(allRegisterFormInputs);
