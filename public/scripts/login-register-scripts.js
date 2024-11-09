@@ -2,6 +2,7 @@
 // -------------------------------------- Login form Scripts --------------------------------------
 // -------------------------------------- Login form Variables ------------------------------------------------
 const allInputs = document.querySelectorAll("input"); // All Login form inputs are reqd.
+const allLoginFormInputs = document.querySelectorAll("#login-form input");
 
 const usernameLabel = document.getElementById("username-lbl");
 const usernameInput = document.getElementById("username-input");
@@ -10,6 +11,7 @@ const passwordLabel = document.getElementById("password-lbl");
 const passwordInput = document.getElementById("password-input");
 
 const loginBtn = document.getElementById("login-btn");
+const resetLoginFormBtn = document.getElementById("reset-form-btn");
 
 const loginFormDiv = document.getElementById("login-form-div");
 const registerLink = document.getElementById("register-link");
@@ -22,11 +24,9 @@ const errorClassName = "error";
 
 
 // -------------------------------------- Login form datasets & Custom Error Msgs ----------------------------------
-for (let input of allInputs) {
-  input.dataset.status = untouchedStatus;
-}
-
-loginBtn.dataset.status = untouchedStatus;
+// for (let input of allInputs) {
+//   input.dataset.status = untouchedStatus;
+// }
 
 usernameInput.dataset.errorMsg = loginErrorMessage;
 passwordInput.dataset.errorMsg = loginErrorMessage;
@@ -34,7 +34,17 @@ passwordInput.dataset.errorMsg = loginErrorMessage;
 
 // -------------------------------------- Login form OnLoad Functions ----------------------------------------------
 const focusUsernameInputOnLoad = () => usernameInput.focus();
-window.addEventListener("load", focusUsernameInputOnLoad);
+
+const setAllLoginInputsToUntouched = () => {
+  for(let loginInput of allLoginFormInputs){
+    loginInput.dataset.status = untouchedStatus;
+  }
+};
+
+window.addEventListener("load", ()=>{
+  setAllLoginInputsToUntouched();
+  focusUsernameInputOnLoad();
+});
 
 
 // -------------------------------------- Login form Validation Functions --------------------------------------------
@@ -60,7 +70,7 @@ const removeError = (inputEl, inputLabel) => {
 };
 
 const checkInput = (inputEl, inputLabel) => {
-  if(!inputEl.checkValidity()) {
+  if(!inputEl.checkValidity() || (inputEl.value).trim() === " ") {
     addError(inputEl, inputLabel);
     return false;
   } else {
@@ -128,40 +138,139 @@ passwordInput.addEventListener("keydown", (event)=>{
   }
 });
 
+const resetForm = (listOfInputs) => {
+  for(let input of listOfInputs){
+    input.value = "";
+    input.innerText = "";
+
+    let inputLabel = document.querySelector(`label[for="${input.id}"]`);
+    removeError(input, inputLabel);
+
+    input.dataset.status = untouchedStatus;
+
+    listOfInputs[0].focus();
+  }
+};
+
+resetLoginFormBtn.addEventListener("click", ()=>{
+  resetForm(allLoginFormInputs);
+});
+
 const showRegistrationForm = (event)=>{
   if(registerFormDiv.style.display === "none") {
     event.preventDefault();
+
     loginFormDiv.style.display = "none"
     registerFormDiv.style.display = "block"
+
+    for (let registerInput of allRegisterFormInputs) {
+      registerInput.dataset.status = untouchedStatus;
+    }
+
+    createUsernameInput.focus();
   }
 };
 
 registerLink.addEventListener("click", showRegistrationForm);
 
+
 // -------------------------------------- Register form Scripts ----------------------------------------------------
 // -------------------------------------- Register form Variables ---------------------------------------------------
+const allRegisterFormInputs = document.querySelectorAll("#registration-form input");
+
+const createUsernameInput = document.getElementById("create-username-input");
+const createUsernameLbl = document.getElementById("create-username-lbl");
+
+const confirmUsernameInput = document.getElementById("confirm-username-input");
+const confirmUsernameLbl = document.getElementById("confirm-username-lbl");;
+
+const createPasswordInput = document.getElementById("create-password-input");
+const createPasswordLbl = document.getElementById("create-password-lbl");
+
+const confirmPasswordInput = document.getElementById("confirm-password-input");
+const confirmPasswordLbl = document.getElementById("confirm-password-lbl");
+
+const registerBtn = document.getElementById("register-btn");
+const resetRegisterFormBtn = document.getElementById("reset-register-form-btn");
+
 const loginLink = document.getElementById("login-link");
+
+const confirmInputErrorMsg = "Entries do not match.";
 
 
 // -------------------------------------- Register form datasets & Custom Error Msgs ----------------------------------
+createUsernameInput.dataset.errorMsg = `Please, enter a valid email to use as your username.`;
 
+confirmUsernameInput.dataset.errorMsg = confirmInputErrorMsg
 
+createPasswordInput.dataset.errorMsg = 
+  `Must be between ${createPasswordInput.minLength} and ${createPasswordInput.maxLength}`;
 
-// -------------------------------------- Register form OnLoad Functions ----------------------------------------------
-
-
+confirmPasswordInput.dataset.errorMsg = confirmInputErrorMsg;
 
 // -------------------------------------- Register form Validation Functions --------------------------------------------
 
 
-
-
 // -------------------------------------- Register form Event Listeners & Handlers --------------------------------------
+createUsernameInput.addEventListener("change", () => {
+  createUsernameInput.dataset.status = touchedStatus;
+  checkInput(createUsernameInput, createUsernameLbl);
+});
+
+createUsernameInput.addEventListener("input", () => {
+  if(createUsernameInput.dataset.status === touchedStatus)
+    checkInput(createUsernameInput, createUsernameLbl);
+});
+
+
+confirmUsernameInput.addEventListener("change", () => {
+  confirmUsernameInput.dataset.status = touchedStatus;
+  checkInput(confirmUsernameInput, confirmUsernameLbl);
+});
+
+confirmUsernameInput.addEventListener("input", () => {
+  if(confirmUsernameInput.dataset.status === touchedStatus)
+    checkInput(confirmUsernameInput, confirmUsernameLbl);
+});
+
+
+createPasswordInput.addEventListener("change", () => {
+  createPasswordInput.dataset.status = touchedStatus;
+  checkInput(createPasswordInput, createPasswordLbl);
+});
+
+createUsernameInput.addEventListener("input", () => {
+  if(createUsernameInput.dataset.status === touchedStatus)
+    checkInput(createUsernameInput, createUsernameLbl);
+});
+
+
+confirmPasswordInput.addEventListener("change", () => {
+  confirmPasswordInput.dataset.status = touchedStatus;
+  checkInput(confirmPasswordInput, confirmPasswordLbl);
+});
+
+confirmPasswordInput.addEventListener("input", () => {
+  if(confirmPasswordInput.dataset.status === touchedStatus)
+    checkInput(confirmPasswordInput, confirmPasswordLbl);
+});
+
+resetRegisterFormBtn.addEventListener("click", ()=>{
+  resetForm(allRegisterFormInputs);
+});
+
 const showLoginForm = (event)=>{
   if(loginFormDiv.style.display === "none") {
     event.preventDefault();
+
     registerFormDiv.style.display = "none";
     loginFormDiv.style.display = "block";
+
+    for (let loginInput of allLoginFormInputs) {
+      loginInput.dataset.status = untouchedStatus;
+    }
+    
+    usernameInput.focus();
   }
 };
 

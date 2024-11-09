@@ -125,7 +125,7 @@ div.error {
   box-sizing: border-box;
 }
 
-#reset-form-btn:active {
+#reset-form-btn:active, #reset-register-form-btn:active {
   background-color: gray;
   border-color: lightgrey;
   border-style: inset;
