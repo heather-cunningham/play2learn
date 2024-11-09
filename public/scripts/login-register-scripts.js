@@ -152,22 +152,23 @@ resetLoginFormBtn.addEventListener("click", ()=>{
   resetForm(allLoginFormInputs);
 });
 
-const showRegistrationForm = (event)=>{
-  if(registerFormDiv.style.display === "none") {
+const showForm = (event, formDivToShow, formDivToHide, formInputsList)=>{
+  if(formDivToShow.style.display === "none") {
     event.preventDefault();
 
-    loginFormDiv.style.display = "none"
-    registerFormDiv.style.display = "block"
+    formDivToHide.style.display = "none"
+    formDivToShow.style.display = "block"
 
-    for (let registerInput of allRegisterFormInputs) {
-      registerInput.dataset.status = untouchedStatus;
-    }
+    resetForm(formInputsList);
 
-    createUsernameInput.focus();
+    formInputsList[0].focus();
   }
 };
 
-registerLink.addEventListener("click", showRegistrationForm);
+registerLink.addEventListener("click", (event)=>{
+  // @params = event, form to show, form to hide, list of the form to show's inputs
+  showForm(event, registerFormDiv, loginFormDiv, allRegisterFormInputs);
+});
 
 
 // -------------------------------------- Register form Scripts ----------------------------------------------------
@@ -255,20 +256,8 @@ resetRegisterFormBtn.addEventListener("click", ()=>{
   resetForm(allRegisterFormInputs);
 });
 
-const showLoginForm = (event)=>{
-  if(loginFormDiv.style.display === "none") {
-    event.preventDefault();
-
-    registerFormDiv.style.display = "none";
-    loginFormDiv.style.display = "block";
-
-    for (let loginInput of allLoginFormInputs) {
-      loginInput.dataset.status = untouchedStatus;
-    }
-    
-    usernameInput.focus();
-  }
-};
-
-loginLink.addEventListener("click", showLoginForm);
+loginLink.addEventListener("click", (event)=>{
+  // @params = event, form to show, form to hide, list of the form to show's inputs 
+  showForm(event, loginFormDiv, registerFormDiv, allLoginFormInputs);
+});
 
