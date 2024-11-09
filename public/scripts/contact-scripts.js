@@ -119,16 +119,7 @@ const handleClickSendBtn = (event) => {
     // setTimeout() with 0 ms wait allows just enough time for user to click the alert btn before
     // emptying the fields -- to avoid false negatives and erroring the fields again.  
     setTimeout(
-      ()=>{
-        emailInput.innerText = "";
-        emailInput.value = "";
-
-        subjectInput.innerText = "";
-        subjectInput.value = "";
-
-        msgTextareaInput.innerText = "";
-        msgTextareaInput.value = "";
-      }, 
+      () => resetContactForm(), 
       0
     );
   }
@@ -154,25 +145,19 @@ msgTextareaInput.addEventListener("keydown", (event)=>{
 });
 
 const resetContactForm = () => {
-  emailInput.value = "";
-  emailInput.innerText = "";
-  removeError(emailInput, emailLabel);
+  for (let input of allInputs) {
+    input.value = "";
+    input.innerText = "";
 
-  subjectInput.value = "";
-  subjectInput.innerText = "";
-  removeError(subjectInput, subjectLabel);
+    let inputLabel = document.querySelector(`label[for="${input.id}"]`);
+    removeError(input, inputLabel);
 
-  msgTextareaInput.value = "";
-  msgTextareaInput.innerText = "";
-  removeError(msgTextareaInput, msgLabel);
+    input.dataset.status = "untouched";
+  }
 
   if(contactResponse && contactResponse.style.display === "block"){
     contactResponse.innerHTML = "";
     contactResponse.style.display = "none";
-  }
-
-  for (let input of allInputs) {
-    input.dataset.status = "untouched";
   }
 };
 
