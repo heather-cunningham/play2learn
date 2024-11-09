@@ -34,15 +34,19 @@ const fetchQuotes = async () => {
       randomTestimonial = getRandomTestimonial(testimonialsJSON);
     } 
     
-    blockQuote.id = "quote" + randomTestimonial.id + "_" 
-                      + (randomTestimonial.citation).replaceAll(" ", "")
-                                                    .replace(/[!"#$%&'()*+,\-./:;<=>?@[\\\]^_`{|}~]/g, "")
-                                                    .trim();                                           
-    blockQuote.innerHTML = `"${randomTestimonial.quote.trim()}" \ 
-      <cite class="testimonial-citation" name="testimonial-citation">--${randomTestimonial.citation}</cite>`;
+    if (blockQuote) {
+      blockQuote.id = "quote" + randomTestimonial.id + "_" 
+                        + (randomTestimonial.citation).replaceAll(" ", "")
+                                                      .replace(/[!"#$%&'()*+,\-./:;<=>?@[\\\]^_`{|}~]/g, "")
+                                                      .trim();                                           
+      blockQuote.innerHTML = `"${randomTestimonial.quote.trim()}" \ 
+        <cite class="testimonial-citation" name="testimonial-citation">--${randomTestimonial.citation}</cite>`;
+    }
   } catch (error) {
-    console.log('Error fetching testimonials:', error)
-    blockQuote.innerHTML = `Loading testimonials...`;
+    if (blockQuote) {
+      console.log('Error fetching testimonials:', error)
+      blockQuote.innerHTML = `Loading testimonials...`;
+    }
   }
 };
 

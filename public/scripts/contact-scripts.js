@@ -12,7 +12,7 @@ const msgLabel = document.getElementById("message-lbl");
 const msgTextareaInput = document.getElementById("message-textarea");
 
 const sendBtn = document.getElementById("send-msg-btn");
-const resetBtn = document.getElementById("reset-form-btn");
+const resetContactFormBtn = document.getElementById("reset-form-btn");
 
 const contactResponse = document.getElementById("contact-us-response");
 
@@ -61,7 +61,7 @@ const removeError = (inputEl, inputLabel) => {
 };
 
 const checkInput = (inputEl, inputLabel) => {
-  if(!inputEl.checkValidity()) {
+  if(!inputEl.checkValidity() || (inputEl.value).trim() === " ") {
     addError(inputEl, inputLabel);
     return false;
   } else {
@@ -153,7 +153,7 @@ msgTextareaInput.addEventListener("keydown", (event)=>{
     handleClickSendBtn(event);
 });
 
-const resetForm = () => {
+const resetContactForm = () => {
   emailInput.value = "";
   emailInput.innerText = "";
   removeError(emailInput, emailLabel);
@@ -170,9 +170,13 @@ const resetForm = () => {
     contactResponse.innerHTML = "";
     contactResponse.style.display = "none";
   }
+
+  for (let input of allInputs) {
+    input.dataset.status = "untouched";
+  }
 };
 
-resetBtn.addEventListener("click", resetForm);
+resetContactFormBtn.addEventListener("click", resetContactForm);
 
 // -------------------------------------- AJAX Validation Fcns-----------------------------------------
 const validateEmailAddySent = () => {
