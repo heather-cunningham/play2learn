@@ -1,8 +1,7 @@
 // Login page Scripts
 // -------------------------------------- Login form Scripts --------------------------------------
 // -------------------------------------- Login form Variables ------------------------------------------------
-const allInputs = document.querySelectorAll("input"); // All Login form inputs are reqd.
-const allLoginFormInputs = document.querySelectorAll("#login-form input");
+const allLoginFormInputs = document.querySelectorAll("#login-form input"); // All Login form inputs are reqd.
 
 const usernameLabel = document.getElementById("username-lbl");
 const usernameInput = document.getElementById("username-input");
@@ -24,9 +23,6 @@ const errorClassName = "error";
 
 
 // -------------------------------------- Login form datasets & Custom Error Msgs ----------------------------------
-// for (let input of allInputs) {
-//   input.dataset.status = untouchedStatus;
-// }
 
 usernameInput.dataset.errorMsg = loginErrorMessage;
 passwordInput.dataset.errorMsg = loginErrorMessage;
@@ -176,7 +172,7 @@ registerLink.addEventListener("click", showRegistrationForm);
 
 // -------------------------------------- Register form Scripts ----------------------------------------------------
 // -------------------------------------- Register form Variables ---------------------------------------------------
-const allRegisterFormInputs = document.querySelectorAll("#registration-form input");
+const allRegisterFormInputs = document.querySelectorAll("#registration-form input"); // All Login form inputs are reqd.
 
 const createUsernameInput = document.getElementById("create-username-input");
 const createUsernameLbl = document.getElementById("create-username-lbl");
