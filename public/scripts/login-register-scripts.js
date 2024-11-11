@@ -46,9 +46,8 @@ window.addEventListener("load", ()=>{
 // -------------------------------------- Login form Validation Functions --------------------------------------------
 const addError = (inputEl, inputLabel) => {
   // If the error is displaying already, don't show again.
-  if(inputEl.previousElementSibling && inputEl.previousElementSibling.className === errorClassName) {
+  if(inputEl.previousElementSibling && inputEl.previousElementSibling.className === errorClassName)
     return;
-  }
 
   const errorDiv = document.createElement("div");
   
@@ -69,6 +68,8 @@ const checkInput = (inputEl, inputLabel) => {
   const inputID = inputEl.id;
   let doEntriesMatch = true;
 
+  inputEl.dataset.status = touchedStatus;
+
   if(inputID === "confirm-username-input"){
     doEntriesMatch = confirmEntriesMatch(createUsernameInput.value, inputEl.value);
   }else if(inputID === "confirm-password-input"){
@@ -87,7 +88,6 @@ const checkInput = (inputEl, inputLabel) => {
 
 // -------------------------------------- Login form Event Listeners & Handlers --------------------------------------
 usernameInput.addEventListener("change", () => {
-  usernameInput.dataset.status = touchedStatus;
   checkInput(usernameInput, usernameLabel);
 });
 
@@ -97,7 +97,6 @@ usernameInput.addEventListener("input", () => {
 });
 
 passwordInput.addEventListener("change", ()=>{
-  passwordInput.dataset.status = touchedStatus;
   checkInput(passwordInput, passwordLabel);
 });
 
@@ -127,15 +126,13 @@ const handleClickLoginBtn = (event) => {
 loginBtn.addEventListener("click", handleClickLoginBtn);
 
 usernameInput.addEventListener("keydown", (event)=>{
-  if (event.key === "Enter") { 
+  if (event.key === "Enter")
     handleClickLoginBtn(event);
-  }
 });
 
 passwordInput.addEventListener("keydown", (event)=>{
-  if (event.key === "Enter") { 
+  if (event.key === "Enter") 
     handleClickLoginBtn(event);
-  }
 });
 
 const resetForm = (listOfInputs) => {
@@ -147,6 +144,13 @@ const resetForm = (listOfInputs) => {
     removeError(input, inputLabel);
 
     input.dataset.status = untouchedStatus;
+
+    if(input.type === "checkbox" && input.checked){
+      input.checked = false;
+      input.value = "false";
+      if(input.hasAttribute(checkedAttr)) 
+        input.removeAttribute(checkedAttr);
+    }
 
     listOfInputs[0].focus();
   }
@@ -191,12 +195,17 @@ const createPasswordLbl = document.getElementById("create-password-lbl");
 const confirmPasswordInput = document.getElementById("confirm-password-input");
 const confirmPasswordLbl = document.getElementById("confirm-password-lbl");
 
+const ageVerificationCkbox = document.getElementById("age-verification-ckbx");
+const ageVerificationLbl = document.getElementById("age-verification-lbl");
+
 const registerBtn = document.getElementById("register-btn");
 const resetRegisterFormBtn = document.getElementById("reset-register-form-btn");
 
 const loginLink = document.getElementById("login-link");
 
 const confirmInputErrorMsg = "Entries do not match.";
+
+const checkedAttr = "checked";
 
 
 // -------------------------------------- Register form datasets & Custom Error Msgs ----------------------------------
@@ -209,12 +218,14 @@ createPasswordInput.dataset.errorMsg =
 
 confirmPasswordInput.dataset.errorMsg = confirmInputErrorMsg;
 
+ageVerificationCkbox.dataset.errorMsg = "You must attest you're 13 years old or older to proceed.";
+
+
 // -------------------------------------- Register form Validation Functions --------------------------------------------
 
 
 // -------------------------------------- Register form Event Listeners & Handlers --------------------------------------
 createUsernameInput.addEventListener("change", () => {
-  createUsernameInput.dataset.status = touchedStatus;
   checkInput(createUsernameInput, createUsernameLbl);
 });
 
@@ -225,7 +236,6 @@ createUsernameInput.addEventListener("input", () => {
 
 
 confirmUsernameInput.addEventListener("change", () => {
-  confirmUsernameInput.dataset.status = touchedStatus;
   checkInput(confirmUsernameInput, confirmUsernameLbl);
 });
 
@@ -236,7 +246,6 @@ confirmUsernameInput.addEventListener("input", () => {
 
 
 createPasswordInput.addEventListener("change", () => {
-  createPasswordInput.dataset.status = touchedStatus;
   checkInput(createPasswordInput, createPasswordLbl);
 });
 
@@ -245,15 +254,29 @@ createUsernameInput.addEventListener("input", () => {
     checkInput(createUsernameInput, createUsernameLbl);
 });
 
-
 confirmPasswordInput.addEventListener("change", () => {
-  confirmPasswordInput.dataset.status = touchedStatus;
   checkInput(confirmPasswordInput, confirmPasswordLbl);
 });
 
 confirmPasswordInput.addEventListener("input", () => {
   if(confirmPasswordInput.dataset.status === touchedStatus)
     checkInput(confirmPasswordInput, confirmPasswordLbl);
+});
+
+const updateCheckbox = (checkboxEl) => {
+  if(checkboxEl.checked) {
+    checkboxEl.setAttribute(checkedAttr, "");
+    checkboxEl.value = "true";
+  } else {
+    checkboxEl.removeAttribute(checkedAttr);
+    checkboxEl.checked = false;
+    checkboxEl.value = "false";
+  }
+};
+
+ageVerificationCkbox.addEventListener("click", () => {
+  checkInput(ageVerificationCkbox, ageVerificationLbl);
+  updateCheckbox(ageVerificationCkbox);
 });
 
 const confirmEntriesMatch = (inputVal, reenteredVal) => {
@@ -267,10 +290,20 @@ const handleClickRegisterBtn = (event) => {
   const createdPasswordIsValid = checkInput(createPasswordInput, createPasswordLbl);
   const confirmedPasswordIsValid = checkInput(confirmPasswordInput, confirmPasswordLbl);
 
+  const ageVerificationCkboxIsValid = checkInput(ageVerificationCkbox, ageVerificationLbl);
+
   if(!createdUsernameIsValid || !confirmedUsernameIsValid 
-      || !createdPasswordIsValid || !confirmedPasswordIsValid) {
+      || !createdPasswordIsValid || !confirmedPasswordIsValid
+      || !ageVerificationCkboxIsValid) {
     event.preventDefault();
     alert("Please, fix required fields.");
+    
+    ageVerificationCkbox.checked = false;
+    ageVerificationCkbox.value = "false";
+
+    if(ageVerificationCkbox.hasAttribute(checkedAttr)){
+      ageVerificationCkbox.removeAttribute(checkedAttr);
+    }
   } else {
     // Clear the input fields on click of the Ok btn in the form submission alert.
     // setTimeout() with 0 ms wait allows just enough time for user to click the alert btn before
@@ -285,25 +318,29 @@ const handleClickRegisterBtn = (event) => {
 registerBtn.addEventListener("click", handleClickRegisterBtn);
 
 createUsernameInput.addEventListener("keydown", (event)=>{
-  if(event.key === "Enter"){
+  if(event.key === "Enter")
     handleClickRegisterBtn(event);
-  }
 });
 
 confirmUsernameInput.addEventListener("keydown", (event)=>{
-  if(event.key === "Enter"){
+  if(event.key === "Enter")
     handleClickRegisterBtn(event);
-  }
 });
 
 createPasswordInput.addEventListener("keydown", (event)=>{
-  if(event.key === "Enter"){
+  if(event.key === "Enter")
     handleClickRegisterBtn(event);
-  }
 });
 
 confirmPasswordInput.addEventListener("keydown", (event)=>{
-  if(event.key === "Enter"){
+  if(event.key === "Enter")
+    handleClickRegisterBtn(event);
+});
+
+ageVerificationCkbox.addEventListener("keydown", (event)=>{
+  if(event.key === "Enter") {
+    ageVerificationCkbox.checked = true;
+    updateCheckbox(ageVerificationCkbox);
     handleClickRegisterBtn(event);
   }
 });
