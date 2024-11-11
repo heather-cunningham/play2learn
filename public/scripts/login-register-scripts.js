@@ -284,6 +284,30 @@ const handleClickRegisterBtn = (event) => {
 
 registerBtn.addEventListener("click", handleClickRegisterBtn);
 
+createUsernameInput.addEventListener("keydown", (event)=>{
+  if(event.key === "Enter"){
+    handleClickRegisterBtn(event);
+  }
+});
+
+confirmUsernameInput.addEventListener("keydown", (event)=>{
+  if(event.key === "Enter"){
+    handleClickRegisterBtn(event);
+  }
+});
+
+createPasswordInput.addEventListener("keydown", (event)=>{
+  if(event.key === "Enter"){
+    handleClickRegisterBtn(event);
+  }
+});
+
+confirmPasswordInput.addEventListener("keydown", (event)=>{
+  if(event.key === "Enter"){
+    handleClickRegisterBtn(event);
+  }
+});
+
 resetRegisterFormBtn.addEventListener("click", ()=>{
   resetForm(allRegisterFormInputs);
 });
