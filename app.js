@@ -56,7 +56,4 @@ app.post("/contact-response-msg",
     response.send(responseMsg);
 });
 
-
-// ------------------------------------------ Login page ------------------------------------------------
-
 app.listen(port); // 8081

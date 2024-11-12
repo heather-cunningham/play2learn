@@ -221,9 +221,6 @@ confirmPasswordInput.dataset.errorMsg = confirmInputErrorMsg;
 ageVerificationCkbox.dataset.errorMsg = "You must attest you're 13 years old or older to proceed.";
 
 
-// -------------------------------------- Register form Validation Functions --------------------------------------------
-
-
 // -------------------------------------- Register form Event Listeners & Handlers --------------------------------------
 createUsernameInput.addEventListener("change", () => {
   checkInput(createUsernameInput, createUsernameLbl);
