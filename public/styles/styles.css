@@ -175,6 +175,12 @@ h3 {
 #disclaimer {
   text-align: center;
 }
+
+#under-construction-image {
+  width: 65%;
+  height: 65%;
+  margin-left: 12%;
+}
  
 #games-table {
   width: 75%;
