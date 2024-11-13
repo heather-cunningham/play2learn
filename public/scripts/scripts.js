@@ -1,4 +1,5 @@
 // Global Scripts, Homepage Scripts 
+const topNav = document.getElementById("top-nav");
 const gamesNav = document.getElementById("nav-games");
 const gamesSubNav = document.querySelectorAll("#games-sub-nav li");
 const blockQuote = document.getElementsByClassName("testimonial-quote")[0];
@@ -16,6 +17,7 @@ const hideGamesSubNav = () => {
   }  
 };
 gamesNav.addEventListener("mouseleave", hideGamesSubNav);
+
 
 // Note to Jared or the grading instructor:  I could not get the XMLHttpRequest type 
 // syntax to work with loading the quotes.  The readystate never changed to DONE or 4,
@@ -59,4 +61,38 @@ const cycleQuotes = () => {
   setInterval(fetchQuotes, 10000);
 };
 
-window.addEventListener("load", cycleQuotes);
+// ----------------------------- Responsive / Mobile Scripts -----------------------------------------------
+const mobileMenuIconDiv = document.getElementById("mobile-menu-icon-div");
+const mobileMenuIcon = document.getElementById("mobile-menu-icon");
+
+const onWindowLoad = ()=>{
+  if (window.innerWidth > 1024) {
+    mobileMenuIconDiv.style.display = "none";
+  } else {
+    mobileMenuIconDiv.style.display = "block";
+  }
+};
+
+window.addEventListener("load", ()=>{
+  cycleQuotes();
+  onWindowLoad();
+});
+
+const onWindowResize = ()=>{
+  if (window.innerWidth > 1024) {
+    mobileMenuIconDiv.style.display = "none";
+  } else {
+    mobileMenuIconDiv.style.display = "block";
+  }
+};
+window.addEventListener("resize", onWindowResize);
+
+const showMobileMenu = () => {
+  if(topNav && topNav.style.display === "block"){
+    topNav.style.display = "none";
+  } else {
+    topNav.style.display = "block";
+  }
+};
+
+mobileMenuIcon.addEventListener("click", showMobileMenu);

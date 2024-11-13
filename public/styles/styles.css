@@ -84,11 +84,11 @@ ul#games-sub-nav {
 }
 
 ul#games-sub-nav li {
-  width: 10rem;
-  margin: 0 0.15rem 0.15rem;
-  padding: 0 0.15rem 0.15rem;
-  font-size: smaller;
   display: none;
+  width: 10rem;
+  margin: 0 0 0.15rem;
+  padding: 0 0 0.15rem;
+  font-size: smaller;
 }
 
 a {
@@ -233,6 +233,7 @@ button[name="play"], button[name="send"], button[name="login"], button[name="reg
   border-radius: 0.3rem;
   box-shadow: 0.17rem 0.17rem 0.17rem grey;
   box-sizing: border-box;
+  cursor: pointer;
 }
 
 button[name="play"], button[name="send"], button[name="login"] {
@@ -309,4 +310,17 @@ cite {
   text-decoration: none;
   font-size: 2.25rem;
   color: black;
+}
+
+/* ------------------------------------ Media Queries for Mobile Responisveness -------------------------------  */
+
+/* Portrait width of a 13" Surface Pro tablet or an iPad Pro */
+@media (max-width: 1024px) {
+
+  #mobile-menu-icon-div {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+  }  
+   
 }
