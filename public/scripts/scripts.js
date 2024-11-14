@@ -65,7 +65,24 @@ const cycleQuotes = () => {
 const mobileMenuIconDiv = document.getElementById("mobile-menu-icon-div");
 const mobileMenuIcon = document.getElementById("mobile-menu-icon");
 
-const onWindowLoad = ()=>{
+const mobileSideNav = document.getElementById("mobile-side-nav");
+
+const mobileNavGames = document.getElementById("mobile-nav-games"); // Menu List item
+const mobileGamesSubNav = document.getElementById("mobile-sub-nav-games"); // sub menu list
+
+
+const toggleMobileGamesSubNav = ()=>{
+  mobileGamesSubNav.style.display = mobileGamesSubNav.style.display === "block" 
+                                      ? "none" 
+                                      : "block";
+};
+/**
+ * This event listened to needs to be `click`, since there's no mouseenter or mouseleave events
+ * on mobile devices with touchscreens. 
+ */
+mobileNavGames.addEventListener("click", toggleMobileGamesSubNav);
+
+const onMobileWindowLoad = ()=>{
   if (window.innerWidth > 1024) {
     mobileMenuIconDiv.style.display = "none";
   } else {
@@ -75,7 +92,7 @@ const onWindowLoad = ()=>{
 
 window.addEventListener("load", ()=>{
   cycleQuotes();
-  onWindowLoad();
+  onMobileWindowLoad();
 });
 
 const onWindowResize = ()=>{

@@ -360,6 +360,7 @@ cite {
   }
 
   ul#mobile-sub-nav-games {
+    display: none;
     position: absolute;
     width: 6rem;
     height: auto;
