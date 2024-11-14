@@ -46,10 +46,10 @@ div#nav-div::after {
 }
 
 ul#top-nav {
+  position: absolute;
   min-width: 25rem;
   float: right;
   clear: left;
-  position: absolute;
   top: 1rem;
   right: 1rem;
   font-size: larger;
@@ -57,11 +57,11 @@ ul#top-nav {
   font-family: cursive;
 }
 
-ul#top-nav, ul#games-sub-nav, #social-media-list {
+ul#top-nav, ul#top-sub-nav-games, #social-media-list {
   list-style: none;
 }
 
-li#nav-games {
+li#top-nav-games {
   position: relative;
 }
 
@@ -74,7 +74,7 @@ ul#top-nav li, ul#social-media-list li {
   padding: 0 0 0 0.3rem;
 }
 
-ul#games-sub-nav {
+ul#top-sub-nav-games {
   position: absolute;
   top: 1.5rem;
   left: -1.5rem;
@@ -83,7 +83,7 @@ ul#games-sub-nav {
   box-shadow: 0 0 3px 3px #FFFFFF;
 }
 
-ul#games-sub-nav li {
+ul#top-sub-nav-games li {
   display: none;
   width: 10rem;
   margin: 0 0 0.15rem;
@@ -320,7 +320,42 @@ cite {
   #mobile-menu-icon-div {
     position: absolute;
     top: 1rem;
-    right: 1rem;
+    right: 0.5rem;
   }  
-   
+  
+  #mobile-menu-btn {
+    width: 5rem;
+    height: 3.67rem;
+    background-color: floralwhite;
+    border: 1px solid gray;
+    border-radius: 0.22rem;
+    box-shadow: 0.22rem 0.22rem 0.22rem lightgrey;
+  }
+
+  /* Mobile Menu */
+  ul#mobile-side-nav {
+    position: absolute;
+    width: 5rem;
+    height: auto;
+    margin: 0;
+    padding: 0.33rem;
+    top: 4.6rem;
+    right: 0.5rem;
+    font-size: larger;
+    font-weight: bold;
+    font-family: cursive;
+    text-align: right;
+    list-style: none;
+    background-color: floralwhite;
+    border: 1px solid grey;
+    border-radius: 0.22rem;
+    box-shadow: 0.22rem 0.22rem 0.22rem lightgrey;
+    box-sizing: border-box;
+  }
+
+  #mobile-side-nav li {
+    margin: 1rem 0.33rem;
+    padding: 0.22rem;
+    box-sizing: border-box;
+  }
 }

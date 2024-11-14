@@ -1,7 +1,7 @@
 // Global Scripts, Homepage Scripts 
 const topNav = document.getElementById("top-nav");
-const gamesNav = document.getElementById("nav-games");
-const gamesSubNav = document.querySelectorAll("#games-sub-nav li");
+const gamesNav = document.getElementById("top-nav-games");
+const gamesSubNav = document.querySelectorAll("#top-sub-nav-games li");
 const blockQuote = document.getElementsByClassName("testimonial-quote")[0];
 
 const showGamesSubNav = () => {
