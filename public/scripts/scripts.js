@@ -82,27 +82,23 @@ const toggleMobileGamesSubNav = ()=>{
  */
 mobileNavGames.addEventListener("click", toggleMobileGamesSubNav);
 
-const onMobileWindowLoad = ()=>{
-  if (window.innerWidth > 1024) {
-    mobileMenuIconDiv.style.display = "none";
-  } else {
-    mobileMenuIconDiv.style.display = "block";
-  }
-};
-
-window.addEventListener("load", ()=>{
-  cycleQuotes();
-  onMobileWindowLoad();
-});
-
 const onWindowResize = ()=>{
   if (window.innerWidth > 1024) {
+    topNav.style.display = "block";
     mobileMenuIconDiv.style.display = "none";
+    mobileSideNav.style.display = "none";
   } else {
+    topNav.style.display = "none";
     mobileMenuIconDiv.style.display = "block";
+    mobileMenuIcon.style.display = "block";
   }
 };
 window.addEventListener("resize", onWindowResize);
+
+window.addEventListener("load", ()=>{
+  cycleQuotes();
+  onWindowResize();
+});
 
 const showMobileMenu = () => {
   if(topNav && topNav.style.display === "block"){

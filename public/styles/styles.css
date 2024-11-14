@@ -312,14 +312,21 @@ cite {
   color: black;
 }
 
+ul#mobile-side-nav, #mobile-menu-icon-div {
+  display: none;
+}
+
 /* ------------------------------------ Media Queries for Mobile Responisveness -------------------------------  */
 
 /* Portrait width of a 13" Surface Pro tablet or an iPad Pro */
 @media (max-width: 1024px) {
+  ul#top-nav {
+    display: none;
+  }
 
   #mobile-menu-icon-div {
     position: absolute;
-    top: 1rem;
+    top: 0.5rem;
     right: 0.5rem;
   }  
   
@@ -334,6 +341,7 @@ cite {
 
   /* Mobile Menu */
   ul#mobile-side-nav {
+    display: none;
     position: absolute;
     width: 5.8rem;
     height: auto;
