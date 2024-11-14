@@ -324,7 +324,7 @@ cite {
   }  
   
   #mobile-menu-btn {
-    width: 5rem;
+    width: 5.8rem;
     height: 3.67rem;
     background-color: floralwhite;
     border: 1px solid gray;
@@ -335,7 +335,7 @@ cite {
   /* Mobile Menu */
   ul#mobile-side-nav {
     position: absolute;
-    width: 5rem;
+    width: 5.8rem;
     height: auto;
     margin: 0;
     padding: 0.33rem;
@@ -353,9 +353,32 @@ cite {
     box-sizing: border-box;
   }
 
-  #mobile-side-nav li {
+  ul#mobile-side-nav li {
     margin: 1rem 0.33rem;
     padding: 0.22rem;
+    box-sizing: border-box;
+  }
+
+  ul#mobile-sub-nav-games {
+    position: absolute;
+    width: 6rem;
+    height: auto;
+    margin: 0;
+    padding: 0.33rem;
+    top: 4.2rem;
+    right: 90px;
+    list-style: none;
+    font-size: 0.95rem;
+    background-color: floralwhite;
+    border: 1px solid grey;
+    border-radius: 0.22rem;
+    box-shadow: 0.22rem 0.22rem 0.22rem lightgrey;
+    box-sizing: border-box;
+  }
+
+  ul#mobile-sub-nav-games li {
+    margin: 0.33rem;
+    padding: 0.33rem;
     box-sizing: border-box;
   }
 }
