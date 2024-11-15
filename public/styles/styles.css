@@ -74,6 +74,7 @@ ul#top-nav li, ul#social-media-list li {
   padding: 0 0 0 0.3rem;
 }
 
+/* Games Sub Nav */
 ul#top-sub-nav-games {
   position: absolute;
   top: 1.5rem;
@@ -84,7 +85,6 @@ ul#top-sub-nav-games {
 }
 
 ul#top-sub-nav-games li {
-  display: none;
   width: 10rem;
   margin: 0 0 0.15rem;
   padding: 0 0 0.15rem;
@@ -318,8 +318,8 @@ ul#mobile-side-nav, #mobile-menu-icon-div {
 
 /* ------------------------------------ Media Queries for Mobile Responisveness -------------------------------  */
 
-/* Portrait width of a 13" Surface Pro tablet or an iPad Pro */
-@media (max-width: 1024px) {
+/* ~ Landscape width of a 13" Surface Pro tablet or an iPad Pro */
+@media (max-width: 1370px) {
   ul#top-nav {
     display: none;
   }
@@ -367,6 +367,7 @@ ul#mobile-side-nav, #mobile-menu-icon-div {
     box-sizing: border-box;
   }
 
+  /* Games Mobile Sub Nav */
   ul#mobile-sub-nav-games {
     display: none;
     position: absolute;

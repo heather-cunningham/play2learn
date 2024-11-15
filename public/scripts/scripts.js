@@ -1,23 +1,27 @@
 // Global Scripts, Homepage Scripts 
 const topNav = document.getElementById("top-nav");
-const gamesNav = document.getElementById("top-nav-games");
-const gamesSubNav = document.querySelectorAll("#top-sub-nav-games li");
+const gamesNav = document.getElementById("top-nav-games"); // Top nav Menu List item
+const gamesSubNav = document.getElementById("top-sub-nav-games"); // Top nav's sub nav
 const blockQuote = document.getElementsByClassName("testimonial-quote")[0];
 
+
 const showGamesSubNav = () => {
-  for(let node of gamesSubNav){
-    node.style.display = "block";
-  }  
+  gamesSubNav.style.display = "block";
 };
 gamesNav.addEventListener("mouseenter", showGamesSubNav);
 
 const hideGamesSubNav = () => {
-  for(let node of gamesSubNav){
-    node.style.display = "none";
-  }  
+  gamesSubNav.style.display = "none";  
 };
 gamesNav.addEventListener("mouseleave", hideGamesSubNav);
 
+const toggleGamesSubNav = () => {
+  gamesSubNav.style.display = gamesSubNav.style.display === "none" 
+                                  ? "block" 
+                                  : "none";
+}
+gamesNav.addEventListener("click", toggleGamesSubNav);
+gamesNav.addEventListener("mousedown", toggleGamesSubNav);
 
 // Note to Jared or the grading instructor:  I could not get the XMLHttpRequest type 
 // syntax to work with loading the quotes.  The readystate never changed to DONE or 4,
@@ -64,9 +68,7 @@ const cycleQuotes = () => {
 // ----------------------------- Responsive / Mobile Scripts -----------------------------------------------
 const mobileMenuIconDiv = document.getElementById("mobile-menu-icon-div");
 const mobileMenuIcon = document.getElementById("mobile-menu-icon");
-
 const mobileSideNav = document.getElementById("mobile-side-nav");
-
 const mobileNavGames = document.getElementById("mobile-nav-games"); // Menu List item
 const mobileGamesSubNav = document.getElementById("mobile-sub-nav-games"); // sub menu list
 
@@ -96,7 +98,7 @@ const toggleMobileGamesSubNav = ()=>{
 mobileNavGames.addEventListener("click", toggleMobileGamesSubNav);
 
 const onWindowResize = ()=>{
-  if (window.innerWidth > 1024) {
+  if (window.innerWidth > 1370) {
     topNav.style.display = "block";
     mobileMenuIconDiv.style.display = "none";
     mobileSideNav.style.display = "none";
