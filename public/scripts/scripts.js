@@ -71,6 +71,19 @@ const mobileNavGames = document.getElementById("mobile-nav-games"); // Menu List
 const mobileGamesSubNav = document.getElementById("mobile-sub-nav-games"); // sub menu list
 
 
+const toggleMobileMenu = ()=>{
+  if(mobileMenuIcon.classList.contains("fa-bars")){
+    mobileMenuIcon.classList.remove("fa-bars");
+    mobileMenuIcon.classList.add("fa-times");
+    mobileSideNav.style.display = "block";  
+  }else {
+    mobileMenuIcon.classList.remove("fa-times");
+    mobileMenuIcon.classList.add("fa-bars");
+    mobileSideNav.style.display = "none";
+  }
+};
+mobileMenuIcon.addEventListener("click", toggleMobileMenu);
+
 const toggleMobileGamesSubNav = ()=>{
   mobileGamesSubNav.style.display = mobileGamesSubNav.style.display === "block" 
                                       ? "none" 
@@ -91,6 +104,12 @@ const onWindowResize = ()=>{
     topNav.style.display = "none";
     mobileMenuIconDiv.style.display = "block";
     mobileMenuIcon.style.display = "block";
+
+    if(mobileMenuIcon.classList.contains("fa-times") 
+      && mobileSideNav.style.display === "none") {
+        mobileMenuIcon.classList.remove("fa-times");
+        mobileMenuIcon.classList.add("fa-bars");
+    }
   }
 };
 window.addEventListener("resize", onWindowResize);
@@ -99,13 +118,3 @@ window.addEventListener("load", ()=>{
   cycleQuotes();
   onWindowResize();
 });
-
-const showMobileMenu = () => {
-  if(topNav && topNav.style.display === "block"){
-    topNav.style.display = "none";
-  } else {
-    topNav.style.display = "block";
-  }
-};
-
-mobileMenuIcon.addEventListener("click", showMobileMenu);

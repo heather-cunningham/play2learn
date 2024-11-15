@@ -39,7 +39,7 @@ img#logo {
 }
 
 /* psuedo-element to maintain logo positioning */
-div#nav-div::after {
+div#logo-div::after {
   content: " ";
   clear: both;
   display: block;
@@ -347,7 +347,7 @@ ul#mobile-side-nav, #mobile-menu-icon-div {
     height: auto;
     margin: 0;
     padding: 0.33rem;
-    top: 4.6rem;
+    top: 4.8rem;
     right: 0.5rem;
     font-size: larger;
     font-weight: bold;
