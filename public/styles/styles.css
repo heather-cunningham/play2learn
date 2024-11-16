@@ -107,7 +107,16 @@ a:hover {
   color:blue;
 }
 
-nav a:hover, .game-title a:hover {
+a:active, a.active {
+  color:blue;
+}
+
+#top-nav a:hover, 
+#top-nav a:active, 
+#top-sub-nav-games a:hover,
+ #top-sub-nav-games a:active,
+.game-title a:hover,
+.game-title a:active {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
@@ -318,7 +327,7 @@ ul#mobile-side-nav, #mobile-menu-icon-div {
 
 /* ------------------------------------ Media Queries for Mobile Responisveness -------------------------------  */
 
-/* ~ Landscape width of a 13" Surface Pro tablet or an iPad Pro */
+/* BEGIN ~ Landscape width of a 13" Surface Pro tablet or an iPad Pro */
 @media (max-width: 1370px) {
   ul#top-nav {
     display: none;
@@ -391,4 +400,10 @@ ul#mobile-side-nav, #mobile-menu-icon-div {
     padding: 0.33rem;
     box-sizing: border-box;
   }
-}
+
+  .active, .hover {
+    color:blue;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+} 
+/* END @media (max-width: 1370px) */

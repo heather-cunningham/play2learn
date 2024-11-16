@@ -21,7 +21,6 @@ const toggleGamesSubNav = () => {
                                   : "none";
 }
 gamesNav.addEventListener("click", toggleGamesSubNav);
-gamesNav.addEventListener("mousedown", toggleGamesSubNav);
 
 // Note to Jared or the grading instructor:  I could not get the XMLHttpRequest type 
 // syntax to work with loading the quotes.  The readystate never changed to DONE or 4,
@@ -70,15 +69,51 @@ const mobileMenuIconDiv = document.getElementById("mobile-menu-icon-div");
 const mobileMenuIcon = document.getElementById("mobile-menu-icon");
 const mobileSideNav = document.getElementById("mobile-side-nav");
 const mobileNavGames = document.getElementById("mobile-nav-games"); // Menu List item
+const mobileGamesMenuLink = document.getElementById("mobile-games-menu-link"); // Menu List item link
 const mobileGamesSubNav = document.getElementById("mobile-sub-nav-games"); // sub menu list
+const mobileMenuLinks = document.querySelectorAll("#mobile-side-nav a")
 
+
+/**
+ * Hover mobile menu links for 13", small, laptop screens  
+ */
+const mouseEnterMobileMenuLink = (event)=>{
+  const link = event.target;
+
+  if(!link.classList.contains("hover"))
+    link.classList.add("hover")
+};
+for(let link of mobileMenuLinks){
+  link.addEventListener("mouseenter", mouseEnterMobileMenuLink);
+}
+
+/**
+ * Unhover mobile menu links for 13", small, laptop screens  
+ */
+const mouseLeaveMobileMenuLink = (event)=>{
+  const link = event.target;
+
+  if(link.classList.contains("hover"))
+    link.classList.remove("hover")
+};
+for(let link of mobileMenuLinks){
+  link.addEventListener("mouseleave", mouseLeaveMobileMenuLink);
+}
 
 const toggleMobileMenu = ()=>{
+  // Ensure the Games sub menu is closed
+  mobileGamesSubNav.style.display = "none";
+  if(mobileGamesMenuLink.classList.contains("active")){
+    mobileGamesMenuLink.classList.remove("active");
+    mobileGamesMenuLink.classList.remove("hover");
+  }
+  
+  // Open the mobile menu
   if(mobileMenuIcon.classList.contains("fa-bars")){
     mobileMenuIcon.classList.remove("fa-bars");
     mobileMenuIcon.classList.add("fa-times");
-    mobileSideNav.style.display = "block";  
-  }else {
+    mobileSideNav.style.display = "block";
+  }else { // Close the mobile menu
     mobileMenuIcon.classList.remove("fa-times");
     mobileMenuIcon.classList.add("fa-bars");
     mobileSideNav.style.display = "none";
@@ -87,9 +122,15 @@ const toggleMobileMenu = ()=>{
 mobileMenuIcon.addEventListener("click", toggleMobileMenu);
 
 const toggleMobileGamesSubNav = ()=>{
+  if(mobileGamesMenuLink.classList.contains("active")){
+    mobileGamesMenuLink.classList.remove("active");
+    mobileGamesMenuLink.classList.remove("hover");
+  } else {
+    mobileGamesMenuLink.classList.add("active");
+  }
   mobileGamesSubNav.style.display = mobileGamesSubNav.style.display === "block" 
-                                      ? "none" 
-                                      : "block";
+                                    ? "none" 
+                                    : "block";
 };
 /**
  * This event listened to needs to be `click`, since there's no mouseenter or mouseleave events
