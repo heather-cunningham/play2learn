@@ -19,7 +19,7 @@
 
 <body>
   <header>
-    <div id="nav-div">
+    <div id="logo-div">
       <a href="./index.html" alt="Play2Learn Home" title="Play2Learn Home">
         <img id="logo" 
           src="./images/play2Learn_logo.png" 
@@ -27,33 +27,64 @@
           aria-details="AI generated image" 
         />
       </a>
-
-      <nav>
-        <ul id="top-nav">
-          <li id="nav-home">
-            <a href="./index.html" alt="Play2Learn Home">Home &nbsp;&verbar;&nbsp;</a>
-          </li>
-          <li id="nav-games">
-            <a href="" alt="Games Menu">Games &nbsp;&verbar;&nbsp;</a>
-            <ul id="games-sub-nav">
-              <li id="nav-math-facts">
-                <a href="./games/math-facts/math-facts.html" alt="Math Facts Game">Math Facts</a>
-              </li>
-              <li id="nav-anagram-hunt">
-                <a href="./games/anagram-hunt/anagram-hunt.html" alt="Anagram Hunt Game">Anagram Hunt</a>
-              </li>
-            </ul>
-          </li>
-          <li id="nav-about">
-            <a href="./about.html" alt="About Play2Learn">About &nbsp;&verbar;&nbsp;</a>
-          </li>
-          <li id="nav-login">
-            <a href="./login.html" alt="Play2Learn Login">Login</a>
-          </li>
-        </ul>
-      </nav>
     </div>
 
+    <nav>
+      <ul id="top-nav">
+        <li id="top-nav-home">
+          <a href="./index.html" alt="Play2Learn Home">Home &nbsp;&verbar;&nbsp;</a>
+        </li>
+        <li id="top-nav-games">
+          <a href="#" alt="Games Menu">Games &nbsp;&verbar;&nbsp;</a>
+          <ul id="top-sub-nav-games" style="display: none;">
+            <li id="top-nav-math-facts">
+              <a href="./games/math-facts/math-facts.html" alt="Math Facts Game">Math Facts</a>
+            </li>
+            <li id="top-nav-anagram-hunt">
+              <a href="./games/anagram-hunt/anagram-hunt.html" alt="Anagram Hunt Game">Anagram Hunt</a>
+            </li>
+          </ul>
+        </li>
+        <li id="top-nav-about">
+          <a href="./about.html" alt="About Play2Learn">About &nbsp;&verbar;&nbsp;</a>
+        </li>
+        <li id="top-nav-login">
+          <a href="./login.html" alt="Play2Learn Login">Login</a>
+        </li>
+      </ul>
+    </nav>
+
+    <nav>
+      <div id="mobile-menu-icon-div">
+        <button id="mobile-menu-btn" type="button" alt="Open and close the main menu." title="Open and close the main menu.">
+          <i id="mobile-menu-icon" class="fas fa-bars"></i>
+        </button>
+      </div>
+
+      <ul id="mobile-side-nav">
+        <li id="mobile-nav-home">
+          <a href="./index.html" alt="Play2Learn Home">Home</a>
+        </li>
+        <li id="mobile-nav-games">
+          <a href="#" id="mobile-games-menu-link" alt="Games Menu">Games</a>
+          <ul id="mobile-sub-nav-games">
+            <li id="mobile-nav-math-facts">
+              <a href="./games/math-facts/math-facts.html" alt="Math Facts Game">Math Facts</a>
+            </li>
+            <li id="mobile-nav-anagram-hunt">
+              <a href="./games/anagram-hunt/anagram-hunt.html" alt="Anagram Hunt Game">Anagram Hunt</a>
+            </li>
+          </ul>
+        </li>
+        <li id="mobile-nav-about">
+          <a href="./about.html" alt="About Play2Learn">About</a>
+        </li>
+        <li id="mobile-nav-login">
+          <a href="./login.html" alt="Play2Learn Login">Login</a>
+        </li>
+      </ul>
+    </nav>
+    
     <hr id="header-rule" />
   </header>
 
