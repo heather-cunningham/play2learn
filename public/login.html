@@ -18,228 +18,229 @@
 </head>
 
 <body>
-  <header>
-    <div id="logo-div">
-      <a href="./index.html" alt="Play2Learn Home" title="Play2Learn Home">
-        <img id="logo" 
-          src="./images/play2Learn_logo.png" 
-          alt="Play2Learn Logo" 
-          aria-details="AI generated image" 
-        />
-      </a>
-    </div>
-
-    <nav>
-      <ul id="top-nav">
-        <li id="top-nav-home">
-          <a href="./index.html" alt="Play2Learn Home">Home &nbsp;&verbar;&nbsp;</a>
-        </li>
-        <li id="top-nav-games">
-          <a href="#" alt="Games Menu">Games &nbsp;&verbar;&nbsp;</a>
-          <ul id="top-sub-nav-games" style="display: none;">
-            <li id="top-nav-math-facts">
-              <a href="./games/math-facts/math-facts.html" alt="Math Facts Game">Math Facts</a>
-            </li>
-            <li id="top-nav-anagram-hunt">
-              <a href="./games/anagram-hunt/anagram-hunt.html" alt="Anagram Hunt Game">Anagram Hunt</a>
-            </li>
-          </ul>
-        </li>
-        <li id="top-nav-about">
-          <a href="./about.html" alt="About Play2Learn">About &nbsp;&verbar;&nbsp;</a>
-        </li>
-        <li id="top-nav-login">
-          <a href="./login.html" alt="Play2Learn Login">Login</a>
-        </li>
-      </ul>
-    </nav>
-
-    <nav>
-      <div id="mobile-menu-icon-div">
-        <button id="mobile-menu-btn" type="button" alt="Open and close the main menu." title="Open and close the main menu.">
-          <i id="mobile-menu-icon" class="fas fa-bars"></i>
-        </button>
+  <div class="wrapper">
+    <header>
+      <div id="logo-div">
+        <a href="./index.html" alt="Play2Learn Home" title="Play2Learn Home">
+          <img id="logo" 
+            src="./images/play2Learn_logo.png" 
+            alt="Play2Learn Logo" 
+            aria-details="AI generated image" 
+          />
+        </a>
       </div>
 
-      <ul id="mobile-side-nav">
-        <li id="mobile-nav-home">
-          <a href="./index.html" alt="Play2Learn Home">Home</a>
-        </li>
-        <li id="mobile-nav-games">
-          <a href="#" id="mobile-games-menu-link" alt="Games Menu">Games</a>
-          <ul id="mobile-sub-nav-games">
-            <li id="mobile-nav-math-facts">
-              <a href="./games/math-facts/math-facts.html" alt="Math Facts Game">Math Facts</a>
-            </li>
-            <li id="mobile-nav-anagram-hunt">
-              <a href="./games/anagram-hunt/anagram-hunt.html" alt="Anagram Hunt Game">Anagram Hunt</a>
-            </li>
-          </ul>
-        </li>
-        <li id="mobile-nav-about">
-          <a href="./about.html" alt="About Play2Learn">About</a>
-        </li>
-        <li id="mobile-nav-login">
-          <a href="./login.html" alt="Play2Learn Login">Login</a>
-        </li>
-      </ul>
-    </nav>
-    
-    <hr id="header-rule" />
-  </header>
+      <nav>
+        <ul id="top-nav">
+          <li id="top-nav-home">
+            <a href="./index.html" alt="Play2Learn Home">Home &nbsp;&verbar;&nbsp;</a>
+          </li>
+          <li id="top-nav-games">
+            <a href="#" alt="Games Menu">Games &nbsp;&verbar;&nbsp;</a>
+            <ul id="top-sub-nav-games" style="display: none;">
+              <li id="top-nav-math-facts">
+                <a href="./games/math-facts/math-facts.html" alt="Math Facts Game">Math Facts</a>
+              </li>
+              <li id="top-nav-anagram-hunt">
+                <a href="./games/anagram-hunt/anagram-hunt.html" alt="Anagram Hunt Game">Anagram Hunt</a>
+              </li>
+            </ul>
+          </li>
+          <li id="top-nav-about">
+            <a href="./about.html" alt="About Play2Learn">About &nbsp;&verbar;&nbsp;</a>
+          </li>
+          <li id="top-nav-login">
+            <a href="./login.html" alt="Play2Learn Login">Login</a>
+          </li>
+        </ul>
+      </nav>
 
-  <main>
-    <div id="login-form-div" class="site-page-div">
-      <h2 class="page-name">Login</h2>
+      <nav>
+        <div id="mobile-menu-icon-div">
+          <button id="mobile-menu-btn" type="button" alt="Open and close the main menu." title="Open and close the main menu.">
+            <i id="mobile-menu-icon" class="fas fa-bars"></i>
+          </button>
+        </div>
 
-      <form id="login-form" action="javascript:alert('Form Submitted')" method="post" novalidate>
-        <fieldset>
-          <label id="username-lbl" for="username-input" class="required">Username:</label>
-          <input id="username-input" 
-            name="username" 
-            type="email"
-            placeholder="Registered email address, Ex: email@email.com"
-            alt="Enter the email address you registered with" 
-            required />
+        <ul id="mobile-side-nav">
+          <li id="mobile-nav-home">
+            <a href="./index.html" alt="Play2Learn Home">Home</a>
+          </li>
+          <li id="mobile-nav-games">
+            <a href="#" id="mobile-games-menu-link" alt="Games Menu">Games</a>
+            <ul id="mobile-sub-nav-games">
+              <li id="mobile-nav-math-facts">
+                <a href="./games/math-facts/math-facts.html" alt="Math Facts Game">Math Facts</a>
+              </li>
+              <li id="mobile-nav-anagram-hunt">
+                <a href="./games/anagram-hunt/anagram-hunt.html" alt="Anagram Hunt Game">Anagram Hunt</a>
+              </li>
+            </ul>
+          </li>
+          <li id="mobile-nav-about">
+            <a href="./about.html" alt="About Play2Learn">About</a>
+          </li>
+          <li id="mobile-nav-login">
+            <a href="./login.html" alt="Play2Learn Login">Login</a>
+          </li>
+        </ul>
+      </nav>
+      
+      <hr id="header-rule" />
+    </header>
 
-          <label id="password-lbl" for="password-input" class="required">Password:</label>
-          <input id="password-input" 
-            name="password" 
-            type="password" 
-            placeholder="Enter your password"
-            alt="Enter your password" 
-            title="Enter your password" 
-            minlength="8" 
-            maxlength="16" 
-            required />
+    <main>
+      <div id="login-form-div" class="site-page-div">
+        <h2 class="page-name">Login</h2>
 
-          <div id="login-btn-div">
-            <button id="login-btn" type="submit" name="login" value="Login">Login</button>
-            <button id="reset-form-btn" type="button" name="reset" value="Reset">Reset</button>
-
-            <div id="register-link-div">
-              <a id="register-link" alt="Register for an account with PLay2Learn" title="Register for an account with PLay2Learn" href="#">
-                No account? Register now!
-              </a>
-            </div>
-          </div>
-        </fieldset>
-      </form>
-    </div>
-
-
-    <div id="register-form-div" class="site-page-div" style="display: none;">
-      <h2 class="page-name">Register</h2>
-
-      <form id="registration-form" action="javascript:alert('Form Submitted')" method="post" novalidate>
-        <fieldset>
-          <label id="create-username-lbl" for="create-username-input" class="required">Create Username:</label>
-          <input id="create-username-input" 
-            name="create-username" 
-            type="email"
-            placeholder="Enter an email address, Ex: email@email.com"
-            alt="Enter an email address to use as your username"
-            title="Enter an email address to use as a username" 
-            required />
-
-          <label id="confirm-username-lbl" for="confirm-username-input" class="required">Confirm Username:</label>
-          <input id="confirm-username-input" 
-            name="confirm-username" 
-            type="email"
-            placeholder="Confirm your email address. (Entries must match.)"
-            alt="Confirm email address to use as your username.  Entries must match."
-            title="Confirm email address to use as your username. (Entries must match.)" 
-            required />
-
-          <label id="create-password-lbl" for="create-password-input" class="required">Create Password:</label>
-          <input id="create-password-input" 
-            name="create-password" 
-            type="password" 
-            placeholder="Create a password between 8 - 16 characters"
-            alt="Create a password between 8 to 16 characters" 
-            title=""
-            minlength="8" 
-            maxlength="16" 
-            required />
-
-          <label id="confirm-password-lbl" for="confirm-password-input" class="required">Confirm Password:</label>
-          <input id="confirm-password-input" 
-            name="confirm-password" 
-            type="password" 
-            placeholder="Re-enter password. (Entries must match.)"
-            alt="Re-enter password. Entries must match." 
-            minlength="8" 
-            maxlength="16" 
-            required />
-
-          <div id="age-verification-div">
-            <input id="age-verification-ckbx"
-              name="age-verification" 
-              type="checkbox"
-              alt="Check this box to verify you're over 13 years old."
-              title="You must be 13 years old or older to register."
+        <form id="login-form" action="javascript:alert('Form Submitted')" method="post" novalidate>
+          <fieldset>
+            <label id="username-lbl" for="username-input" class="required">Username:</label>
+            <input id="username-input" 
+              name="username" 
+              type="email"
+              placeholder="Registered email address, Ex: email@email.com"
+              alt="Enter the email address you registered with" 
               required />
-            <label id="age-verification-lbl" for="age-verification-ckbx" class="required">
-              I'm 13 years old or older, and like playing games.
-            </label>
-          </div>
-  
 
-          <div id="register-btn-div">
-            <button id="register-btn" type="submit" name="register" value="Register">Register</button>
-            <button id="reset-register-form-btn" type="button" name="reset" value="Reset">Reset</button>
-            
-            <div id="login-link-div">
-              <a id="login-link" alt="Log in to your PLay2Learn account" title="Log in to your PLay2Learn account" href="#">
-                Already have an account? Login
-              </a>
+            <label id="password-lbl" for="password-input" class="required">Password:</label>
+            <input id="password-input" 
+              name="password" 
+              type="password" 
+              placeholder="Enter your password"
+              alt="Enter your password" 
+              title="Enter your password" 
+              minlength="8" 
+              maxlength="16" 
+              required />
+
+            <div id="login-btn-div">
+              <button id="login-btn" type="submit" name="login" value="Login">Login</button>
+              <button id="reset-form-btn" type="button" name="reset" value="Reset">Reset</button>
+
+              <div id="register-link-div">
+                <a id="register-link" alt="Register for an account with PLay2Learn" title="Register for an account with PLay2Learn" href="#">
+                  No account? Register now!
+                </a>
+              </div>
             </div>
-          </div>
-        </fieldset>
-      </form>
-    </div>
-  </main>
+          </fieldset>
+        </form>
+      </div>
 
-  <footer>
-    <hr id="footer-rule" />
-    <div id="footer-div">
-      <p id="copyright-design">
-        <span style="font-weight: bold;">&copy; 2024 Play2Learn</span>
-        &nbsp;&verbar;&nbsp;
-        <cite>Website by
-          <a href="https://github.com/heather-cunningham" alt="See my GitHub portfolio" title="See my GitHub portfolio"
-            target="_blank">
-            Heather I. Cunningham
-          </a>
-        </cite>
-      </p>
 
-      <ul id="social-media-list">
-        <li>
-          <a href="./contact-us.html" alt="Contact Play2Learn" title="Contact Us">
-            <i class="fa-solid fa-square-envelope"></i>
-          </a>
-        </li>
-        <li>
-          <a href="https://instagram.com" alt="Open Instagram in a new window" title="Instagram" target="_blank">
-            <i class="fa-brands fa-square-instagram"></i>
-          </a>
-        </li>
-        <li>
-          <a href="https://x.com" alt="Open X, formerly known as Twitter, in a new window" title="X (fka Twitter)"
-            target="_blank">
-            <i class="fa-brands fa-square-x-twitter"></i>
-          </a>
-        </li>
-        <li>
-          <a href="https://facebook.com" alt="Open facebook in a new window" title="facebook" target="_blank">
-            <i class="fa-brands fa-square-facebook"></i>
-          </a>
-        </li>
-      </ul>
-    </div>
-  </footer>
+      <div id="register-form-div" class="site-page-div" style="display: none;">
+        <h2 class="page-name">Register</h2>
 
+        <form id="registration-form" action="javascript:alert('Form Submitted')" method="post" novalidate>
+          <fieldset>
+            <label id="create-username-lbl" for="create-username-input" class="required">Create Username:</label>
+            <input id="create-username-input" 
+              name="create-username" 
+              type="email"
+              placeholder="Enter an email address, Ex: email@email.com"
+              alt="Enter an email address to use as your username"
+              title="Enter an email address to use as a username" 
+              required />
+
+            <label id="confirm-username-lbl" for="confirm-username-input" class="required">Confirm Username:</label>
+            <input id="confirm-username-input" 
+              name="confirm-username" 
+              type="email"
+              placeholder="Confirm your email address. (Entries must match.)"
+              alt="Confirm email address to use as your username.  Entries must match."
+              title="Confirm email address to use as your username. (Entries must match.)" 
+              required />
+
+            <label id="create-password-lbl" for="create-password-input" class="required">Create Password:</label>
+            <input id="create-password-input" 
+              name="create-password" 
+              type="password" 
+              placeholder="Create a password between 8 - 16 characters"
+              alt="Create a password between 8 to 16 characters" 
+              title=""
+              minlength="8" 
+              maxlength="16" 
+              required />
+
+            <label id="confirm-password-lbl" for="confirm-password-input" class="required">Confirm Password:</label>
+            <input id="confirm-password-input" 
+              name="confirm-password" 
+              type="password" 
+              placeholder="Re-enter password. (Entries must match.)"
+              alt="Re-enter password. Entries must match." 
+              minlength="8" 
+              maxlength="16" 
+              required />
+
+            <div id="age-verification-div">
+              <input id="age-verification-ckbx"
+                name="age-verification" 
+                type="checkbox"
+                alt="Check this box to verify you're over 13 years old."
+                title="You must be 13 years old or older to register."
+                required />
+              <label id="age-verification-lbl" for="age-verification-ckbx" class="required">
+                I'm 13 years old or older, and like playing games.
+              </label>
+            </div>
+    
+
+            <div id="register-btn-div">
+              <button id="register-btn" type="submit" name="register" value="Register">Register</button>
+              <button id="reset-register-form-btn" type="button" name="reset" value="Reset">Reset</button>
+              
+              <div id="login-link-div">
+                <a id="login-link" alt="Log in to your PLay2Learn account" title="Log in to your PLay2Learn account" href="#">
+                  Already have an account? Login
+                </a>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </main>
+
+    <footer>
+      <hr id="footer-rule" />
+      <div id="footer-div">
+        <p id="copyright-design">
+          <span style="font-weight: bold;">&copy; 2024 Play2Learn</span>
+          &nbsp;&verbar;&nbsp;
+          <cite>Website by
+            <a href="https://github.com/heather-cunningham" alt="See my GitHub portfolio" title="See my GitHub portfolio"
+              target="_blank">
+              Heather I. Cunningham
+            </a>
+          </cite>
+        </p>
+
+        <ul id="social-media-list">
+          <li>
+            <a href="./contact-us.html" alt="Contact Play2Learn" title="Contact Us">
+              <i class="fa-solid fa-square-envelope"></i>
+            </a>
+          </li>
+          <li>
+            <a href="https://instagram.com" alt="Open Instagram in a new window" title="Instagram" target="_blank">
+              <i class="fa-brands fa-square-instagram"></i>
+            </a>
+          </li>
+          <li>
+            <a href="https://x.com" alt="Open X, formerly known as Twitter, in a new window" title="X (fka Twitter)"
+              target="_blank">
+              <i class="fa-brands fa-square-x-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a href="https://facebook.com" alt="Open facebook in a new window" title="facebook" target="_blank">
+              <i class="fa-brands fa-square-facebook"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </footer>
+  </div>
   <script src="./scripts/scripts.js"></script>
   <script src="./scripts/login-register-scripts.js"></script>
 </body>
