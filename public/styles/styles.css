@@ -270,11 +270,10 @@ button:active {
 }
 
 #testimonial-div {
-  width: 55%;
+  width: 65%;
   min-width: 24rem;
-  height: 10rem;
-  margin-left: auto;
-  margin-right: auto;
+  height: auto;
+  margin: 2rem auto;
   border: 0.5rem dotted cornflowerblue;
   border-radius: 8rem;
   box-shadow: 0 0 1rem 1rem #FFFFFF;
@@ -399,7 +398,7 @@ ul#mobile-side-nav, #mobile-menu-icon-div {
     margin: 0;
     padding: 0.33rem;
     top: 4.8rem;
-    right: 0.75rem;
+    right: 2.4rem;
     font-size: larger;
     font-weight: bold;
     font-family: cursive;
@@ -443,8 +442,50 @@ ul#mobile-side-nav, #mobile-menu-icon-div {
     color:blue;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
   }
+
+  #testimonial-div > h2 {
+    font-size: 1.5rem;
+  }
+
+  #social-media-list {
+    margin-bottom: 1.33rem; 
+  }
 } 
 /* END @media (max-width: 1370px) */
+
+
+/* BEGIN @media (max-width: 768px) 
+~ Screen width in portrait mode of iPad Mini */
+@media (max-width: 768px) {
+  #mobile-menu-icon-div {
+    right: 0.75rem;
+  }
+
+  ul#mobile-side-nav {
+    right: 0.75rem;
+  }
+
+  #games-table {
+    width: 55%;
+  }
+
+  .game-card {
+    min-width: 15rem;
+  }
+
+  #copyright-design {
+    margin-left: 0.95rem;
+  }
+
+  #social-media-list {
+    margin: 0.33rem 0 0.67rem 0;
+    padding-left: 0.95rem;
+    float: left;
+    clear: left;
+  }
+}
+/*  END @media (max-width: 768px) 
+~ Screen width in portrait mode of iPad Mini & Surface Duo - unfolded */
 
 
 /* BEGIN @media (max-width: 440px) 
@@ -465,6 +506,10 @@ ul#mobile-side-nav, #mobile-menu-icon-div {
   }
 
   #mobile-menu-icon-div {
+    right: 0.75rem;
+  }
+
+  ul#mobile-side-nav {
     right: 0.75rem;
   }
 
@@ -542,6 +587,7 @@ ul#mobile-side-nav, #mobile-menu-icon-div {
     margin: 0.33rem 0 0.67rem 0;
     padding-left: 0.95rem;
     float: left;
+    clear: left;
   }
 }
 /* END @media (max-width: 440px) */
