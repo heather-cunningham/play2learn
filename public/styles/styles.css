@@ -399,7 +399,7 @@ ul#mobile-side-nav, #mobile-menu-icon-div {
     margin: 0;
     padding: 0.33rem;
     top: 4.8rem;
-    right: 0.5rem;
+    right: 0.75rem;
     font-size: larger;
     font-weight: bold;
     font-family: cursive;
@@ -449,15 +449,27 @@ ul#mobile-side-nav, #mobile-menu-icon-div {
 
 /* BEGIN @media (max-width: 440px) 
 ~ Screen width in portrait mode of iPhone 16 Pro Max & Samsung Galaxy Ultra 24 */
-@media (max-width: 440px) {
+@media (max-width: 540px) {
   * {
     box-sizing: border-box;
   }  
+
+  html, body {
+    font-size: 16px;
+  }
 
   header {
     width: 100%;
     margin: 0;
     padding: 0;
+  }
+
+  #mobile-menu-icon-div {
+    right: 0.75rem;
+  }
+
+  img#logo {
+    margin-left: 0.75rem;
   }
 
   #header-rule {
@@ -479,6 +491,10 @@ ul#mobile-side-nav, #mobile-menu-icon-div {
     font-size: 2.5rem;
   }
 
+  .page-name {
+    font-size: 2.5rem;
+  }
+
   #site-welcome-div > p {
     display: none;
   }
@@ -487,23 +503,45 @@ ul#mobile-side-nav, #mobile-menu-icon-div {
     min-height: 2.89rem;
   }
 
+  h3 {
+    margin-top: 12px 0 12px 0;
+  }
+
+  .site-page-div > p {
+    font-size: 1rem;
+    margin: 0;
+  }
+
   #games-table {
     width: 100%;
+    height: auto;
     display: flex;
-    margin-right: auto;
-    margin-left: auto;
+    margin: 0 auto 4rem auto;
     flex-direction: column;
     justify-content: center;
     align-content: center;
   }
 
   .game-card {
-    max-width: 19rem;
+    max-width: 17rem;
     min-width: 9rem;
     margin-right: auto;
     margin-left: auto;
     padding: 0 0.67rem 0.67rem;
   }
   
+  #testimonial-div {
+    display: none;
+  }
+
+  #copyright-design {
+    margin-left: 0.95rem;
+  }
+
+  #social-media-list {
+    margin: 0.33rem 0 0.67rem 0;
+    padding-left: 0.95rem;
+    float: left;
+  }
 }
 /* END @media (max-width: 440px) */
