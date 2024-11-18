@@ -1,4 +1,8 @@
 /* Global Styles, Homepage Styles */
+* {
+  box-sizing: border-box;
+}
+
 html, body {
   width: 100%;
   height: 100%;
@@ -21,6 +25,9 @@ body {
 }
 
 header {
+  width: 100%;
+  margin: 0;
+  padding: 0;
   position: relative;
   background-color: rgb(255, 255, 255, 45%);
 }
@@ -29,7 +36,7 @@ img#logo {
   width: 4rem;
   height: auto;
   margin-top: 0.3rem;
-  margin-left: 1rem;
+  margin-left: 1.2rem;
   padding: 0;
   float: left;
 }
@@ -51,7 +58,7 @@ ul#top-nav {
   float: right;
   clear: left;
   top: 1rem;
-  right: 1rem;
+  right: 2.4rem;
   font-size: larger;
   font-weight: bold;
   font-family: cursive;
@@ -121,16 +128,19 @@ a:active, a.active {
 }
 
 #header-rule {
-  width: 100%;
   margin: 0.3rem 0;
 }
 
 #header-rule, #footer-rule {
+  width: 100%;
+  padding: 0;
   border: 1px solid darkgray;
 }
 
 main {
-  margin: 0.3rem 1rem 1rem;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 #site-welcome-div, #testimonial-div {
@@ -152,7 +162,7 @@ main {
 }
 
 .site-page-div {
-  min-height: 32rem;
+  min-height: 100%;
 }
 
 #site-welcome-div > p, .site-page-div > p {
@@ -182,6 +192,7 @@ h3 {
 }
 
 #disclaimer {
+  margin-bottom: 3rem;
   text-align: center;
 }
 
@@ -199,7 +210,6 @@ h3 {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  box-sizing: border-box;
 }
 
 .game-card {
@@ -213,7 +223,6 @@ h3 {
   border: 1px solid grey;
   border-radius: 0.6rem;
   box-shadow: 0.6rem 0.6rem 0.6rem lightgrey;
-  box-sizing: border-box;
 }
 
 .game-card h3, .game-card p {
@@ -241,7 +250,6 @@ button[name="play"], button[name="send"], button[name="login"], button[name="reg
   border: none;
   border-radius: 0.3rem;
   box-shadow: 0.17rem 0.17rem 0.17rem grey;
-  box-sizing: border-box;
   cursor: pointer;
 }
 
@@ -267,7 +275,6 @@ button:active {
   margin-right: auto;
   border: 0.5rem dotted cornflowerblue;
   border-radius: 8rem;
-  box-sizing: border-box;
   box-shadow: 0 0 1rem 1rem #FFFFFF;
   background-color: #FFFFFF;
 }
@@ -286,13 +293,19 @@ cite {
   color: black;
 }
 
+footer {
+  width: 100%;
+  height: auto;
+}
+
 #footer-div {
+  width: 100%;
+  height: auto;
   font-size: smaller;
 }
 
 #footer-rule {
-  width: 100%;
-  margin: 0.5rem 0 0.3rem;
+  margin: 1rem 0 0.3rem 0;
   padding: 0;
 }
 
@@ -301,7 +314,7 @@ cite {
 }
 
 #copyright-design {
-  margin: 0.3rem 0.3rem 0.3rem 1rem;
+  margin: 0.3rem 0.3rem 0.3rem 1.2rem;
   float: left;
 }
 
@@ -325,10 +338,35 @@ ul#mobile-side-nav, #mobile-menu-icon-div {
   display: none;
 }
 
-/* ------------------------------------ Media Queries for Mobile Responisveness -------------------------------  */
+/* ------------------------------------ Media Queries for Mobile Responsiveness -------------------------------  */
 
-/* BEGIN ~ Landscape width of a 13" Surface Pro tablet or an iPad Pro */
+/* BEGIN @media (max-width: 1370px) 
+~ Landscape width of a 13" Surface Pro tablet or an iPad Pro */
 @media (max-width: 1370px) {
+  * {
+    box-sizing: border-box;
+  }  
+
+  header, main {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  #header-rule {
+    margin: 0.3rem 0;  
+  }
+
+  #header-rule, #footer-rule { 
+    width: 100%; 
+    padding: 0; 
+    border: 1px solid darkgray; 
+  }
+
+  #footer-rule {
+    margin: 1rem 0 0.3rem 0;
+  }
+
   ul#top-nav {
     display: none;
   }
@@ -336,7 +374,7 @@ ul#mobile-side-nav, #mobile-menu-icon-div {
   #mobile-menu-icon-div {
     position: absolute;
     top: 0.5rem;
-    right: 0.5rem;
+    right: 2.4rem;
   }  
   
   #mobile-menu-btn {
@@ -367,13 +405,11 @@ ul#mobile-side-nav, #mobile-menu-icon-div {
     border: 1px solid grey;
     border-radius: 0.22rem;
     box-shadow: 0.22rem 0.22rem 0.22rem lightgrey;
-    box-sizing: border-box;
   }
 
   ul#mobile-side-nav li {
     margin: 1rem 0.33rem;
     padding: 0.22rem;
-    box-sizing: border-box;
   }
 
   /* Games Mobile Sub Nav */
@@ -392,13 +428,11 @@ ul#mobile-side-nav, #mobile-menu-icon-div {
     border: 1px solid grey;
     border-radius: 0.22rem;
     box-shadow: 0.22rem 0.22rem 0.22rem lightgrey;
-    box-sizing: border-box;
   }
 
   ul#mobile-sub-nav-games li {
     margin: 0.33rem;
     padding: 0.33rem;
-    box-sizing: border-box;
   }
 
   .active, .hover {
@@ -407,3 +441,65 @@ ul#mobile-side-nav, #mobile-menu-icon-div {
   }
 } 
 /* END @media (max-width: 1370px) */
+
+
+/* BEGIN @media (max-width: 440px) 
+~ Screen width in portrait mode of iPhone 16 Pro Max & Samsung Galaxy Ultra 24 */
+@media (max-width: 440px) {
+  * {
+    box-sizing: border-box;
+  }  
+
+  header, main {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  #header-rule {
+    margin: 0.3rem 0;  
+  }
+
+  #header-rule, #footer-rule { 
+    width: 100%; 
+    padding: 0; 
+    border: 1px solid darkgray; 
+  }
+
+  #footer-rule {
+    margin: 1rem 0 0.3rem 0;
+  }
+  
+  #site-name {
+    font-family: cursive;
+    font-size: 2.5rem;
+  }
+
+  #site-welcome-div > p {
+    display: none;
+  }
+
+  #site-welcome-div {
+    min-height: 2.89rem;
+  }
+
+  #games-table {
+    width: 100%;
+    display: flex;
+    margin-right: auto;
+    margin-left: auto;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+  }
+
+  .game-card {
+    max-width: 19rem;
+    min-width: 9rem;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 0 0.67rem 0.67rem;
+  }
+  
+}
+/* END @media (max-width: 440px) */
