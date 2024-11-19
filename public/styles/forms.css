@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 #contact-us-response {
   display: none;
   font-size: 0.65rem;
@@ -11,42 +15,48 @@ form {
 }
 
 fieldset {
+  display: flex;
+  width: 100%;
+  height: auto;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: start;
   margin-bottom: 2.5rem;
   background-color: floralwhite;
   border: 1px solid grey;
   border-radius: 0.6rem;
   box-shadow: 0.6rem 0.6rem 0.6rem lightgrey;
-  box-sizing: border-box;
 }
 
 fieldset label {
   display: block;
-  width: 85%;
-  margin: 1rem 0.17rem 0.17rem 1.2rem;
+  width: 95%;
+  height: auto;
+  margin: 1rem auto 0.33rem auto;
   font-weight: bold;
+}
+
+fieldset input, #age-verification-div {
+  width: 95%;
+}
+
+fieldset input, fieldset textarea, #age-verification-div {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+fieldset textarea {
+  width: 93%;
+  height: 8rem;
 }
 
 #create-password-lbl {
   margin-top: 3rem;
 }
 
-fieldset input, fieldset textarea, #age-verification-div {
-  display: block;
-  width: 95%;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 #age-verification-div {
   margin-top: 1.5rem;
-}
-
-fieldset label, fieldset input {
-  height: 1.5rem;
-}
-
-fieldset textarea {
-  height: 8rem;
 }
 
 #age-verification-ckbx, #age-verification-lbl {
@@ -86,36 +96,23 @@ div.error {
   color: red;
 }
 
-#send-msg-btn-div, #login-btn-div, #register-btn-div {
-  display: block;
+#send-msg-btn-div, #login-btn-div, #register-btn-div  {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   width: 95%;
-  margin: 1.32rem auto;
+  height: 2.5rem;
+  margin: 2rem auto;
+  justify-content: space-between;
 }
 
-#send-msg-btn, #login-btn, #register-btn {
-  display: inline-block;
-  box-sizing: border-box;
-}
-
-#send-msg-btn, #login-btn {
-  margin: 0.66rem 5.6rem 0 0;
-}
-
-#register-btn {
-  margin: 0.66rem 3.5rem 0 0;
-}
-
-#register-link-div, #login-link-div {
-  width: 95%;
-  margin: 1.67rem 0;
+#send-msg-btn, #reset-form-btn, #login-btn, #reset-register-form-btn {
+  width: 6rem;
+  height: 2.5rem;
+  padding: 0.33rem;
 }
 
 #reset-form-btn, #reset-register-form-btn {
-  display: inline-block;
-  width: 6rem;
-  height: 2.5rem;
-  margin-top: 0.66rem;
-  padding: 0.3rem;
   color: white;
   background-color: red;
   font-weight: bold;
@@ -123,7 +120,16 @@ div.error {
   border: none;
   border-radius: 0.3rem;
   box-shadow: 0.17rem 0.17rem 0.17rem grey;
-  box-sizing: border-box;
+}
+
+#register-link-div, #login-link-div {
+  display: flex;
+  width: 95%;
+  height: auto;
+  margin: 0 auto 1rem auto;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: start;
 }
 
 #reset-form-btn:active, #reset-register-form-btn:active {
@@ -137,3 +143,45 @@ div.error {
   font-style: italic;
   color: red;
 }
+
+
+/* ------------------------------------ Media Queries for Mobile Responsiveness -------------------------------  */
+
+/* BEGIN @media (max-width: 1370px) 
+~ Landscape width of a 13" Surface Pro tablet or an iPad Pro */
+@media (max-width: 1370px){
+  * {
+    box-sizing: border-box;
+  }
+
+  fieldset label {
+    width: 93%;
+    margin: 2rem auto 0.33rem auto;
+  }
+  
+  fieldset input {
+    width: 93%;
+    height: 2.2rem;
+  }
+
+  #create-password-lbl {
+    margin-top: 2.8rem;
+  }
+
+  #age-verification-div {
+    width: 93%;
+  }
+
+  #login-btn-div  {
+    width: 93%;
+    height: 2.5rem;
+    margin: 2.4rem auto;
+  }
+
+  #register-link-div, #login-link-div {
+    width: 93%;
+    margin: 0.5rem auto 1.8rem auto;
+  }
+}
+/* END @media (max-width: 1370px) 
+~ Landscape width of a 13" Surface Pro tablet or an iPad Pro */
