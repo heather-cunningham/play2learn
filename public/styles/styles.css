@@ -529,7 +529,7 @@ ul#mobile-side-nav, #mobile-menu-icon-div {
 ~ Screen width in portrait mode of iPad Mini & Surface Duo - unfolded */
 
 
-/* BEGIN @media (max-width: 440px) 
+/* BEGIN @media (max-width: 540px) 
 ~ Screen width in portrait mode of iPhone 16 Pro Max & Samsung Galaxy Ultra 24 */
 @media (max-width: 540px) {
   * {
@@ -644,4 +644,4 @@ ul#mobile-side-nav, #mobile-menu-icon-div {
     clear: left;
   }
 }
-/* END @media (max-width: 440px) */
+/* END @media (max-width: 540px) */
