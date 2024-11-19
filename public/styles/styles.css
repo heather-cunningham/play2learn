@@ -28,10 +28,10 @@ body {
 }
 
 header {
+  position: relative;
   width: 100%;
   margin: 0;
   padding: 0;
-  position: relative;
   background-color: rgb(255, 255, 255, 45%);
 }
 
@@ -215,12 +215,13 @@ h3 {
 }
 
 .game-card {
+  position: relative;
   max-width: 33rem;
   min-width: 19rem;
   height: auto;
   flex: 1;
   margin: 1.3rem;
-  padding: 0.6rem;
+  padding: 0.6rem 0.6rem 3rem;
   background-color: floralwhite;
   border: 1px solid grey;
   border-radius: 0.6rem;
@@ -238,35 +239,57 @@ h3.game-title {
 
 .play-btn-div {
   display: flex;
+  position: absolute;
+  width: 6rem;
+  height: 2.5rem;
+  bottom: 0.75rem;
+  left: 50%;
+  transform: translateX(-50%);
   align-items: flex-end;
   justify-content: center;
-  height: 2rem;
+}
+
+button {
+  cursor: pointer;
 }
 
 button[name="play"], button[name="send"], button[name="login"], button[name="register"] {
-  height: 2rem;
+  height: 2.5rem;
   padding: 0.3rem;
   color: white;
   background-color: green;
   font-weight: bold;
+  font-size: larger;
   border: none;
   border-radius: 0.3rem;
   box-shadow: 0.17rem 0.17rem 0.17rem grey;
-  cursor: pointer;
 }
 
 button[name="play"], button[name="send"], button[name="login"] {
-  width: 4rem;
+  width: 6rem;
 }
 
 button[name="register"] {
-  width: 6rem;
+  width: 8rem;
 }
 
 button:active {
   background-color: gray;
   border-color: lightgrey;
   border-style: inset;
+}
+
+button a {
+  color: white;
+  text-decoration: none;
+}
+
+button a:active, button a:hover, button a:visited {
+  color: white;
+}
+
+input[type="checkbox"], input[type="radio"] {
+  cursor: pointer;
 }
 
 #testimonial-div {
@@ -387,6 +410,7 @@ ul#mobile-side-nav, #mobile-menu-icon-div {
     border: 1px solid gray;
     border-radius: 0.22rem;
     box-shadow: 0.22rem 0.22rem 0.22rem lightgrey;
+    cursor: pointer;
   }
 
   /* Mobile Menu */
@@ -408,6 +432,7 @@ ul#mobile-side-nav, #mobile-menu-icon-div {
     border: 1px solid grey;
     border-radius: 0.22rem;
     box-shadow: 0.22rem 0.22rem 0.22rem lightgrey;
+    z-index: 2;
   }
 
   ul#mobile-side-nav li {
@@ -441,6 +466,22 @@ ul#mobile-side-nav, #mobile-menu-icon-div {
   .active, .hover {
     color:blue;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+
+  .game-card {
+    padding-bottom: 4rem;
+  }
+
+  .play-btn-div {
+    width: 6rem;
+    height: 2.5rem;
+    bottom: 1rem;
+  }
+
+  button[name="play"] {
+    width: 6rem;
+    height: 2.5rem;
+    font-size: larger;
   }
 
   #testimonial-div > h2 {
@@ -572,7 +613,20 @@ ul#mobile-side-nav, #mobile-menu-icon-div {
     min-width: 9rem;
     margin-right: auto;
     margin-left: auto;
-    padding: 0 0.67rem 0.67rem;
+    padding: 0 0.67rem 4rem;
+  }
+
+  .play-btn-div {
+    width: 6rem;
+    height: 2.5rem;
+    height: auto;
+    bottom: 1rem;
+  }
+
+  button[name="play"] {
+    width: 6rem;
+    height: 2.5rem;
+    font-size: larger;
   }
   
   #testimonial-div {

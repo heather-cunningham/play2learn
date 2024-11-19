@@ -112,13 +112,14 @@ div.error {
 
 #reset-form-btn, #reset-register-form-btn {
   display: inline-block;
-  width: 4rem;
-  height: 2rem;
+  width: 6rem;
+  height: 2.5rem;
   margin-top: 0.66rem;
   padding: 0.3rem;
   color: white;
   background-color: red;
   font-weight: bold;
+  font-size: larger;
   border: none;
   border-radius: 0.3rem;
   box-shadow: 0.17rem 0.17rem 0.17rem grey;
