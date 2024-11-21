@@ -1,19 +1,19 @@
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 p.game-description {
-    font-size: 1.2rem;
+  font-size: 1.2rem;
 }
 
 p.game-description, #math-facts-select-lbl {
-    text-align: center;
+  text-align: center;
 }
 
 #math-facts-select-lbl {
-    font-size: 1.5rem;
-    font-weight: bold;
-    font-family: cursive;
-    color: rgb(224, 18, 128); 
-    /* hot pink, but actual hot pink, not the bubble gum pink material calls "hotpink" */
+  display: block;
+  font-size: 1.5rem;
+  font-weight: bold;
+  font-family: cursive;
+  color: rgb(224, 18, 128); /* hot pink, but actual hot pink, not the bubble gum pink material calls "hotpink" */
 }
