@@ -411,7 +411,7 @@ ul#mobile-side-nav, #mobile-menu-icon-div {
   }  
   
   #mobile-menu-btn {
-    width: 5.8rem;
+    width: 6.6rem;
     height: 3.67rem;
     background-color: floralwhite;
     border: 1px solid gray;
@@ -424,7 +424,7 @@ ul#mobile-side-nav, #mobile-menu-icon-div {
   ul#mobile-side-nav {
     display: none;
     position: absolute;
-    width: 5.8rem;
+    width: 6.6rem;
     height: auto;
     margin: 0;
     padding: 0.33rem;
@@ -597,7 +597,7 @@ ul#mobile-side-nav, #mobile-menu-icon-div {
   }
 
   h3 {
-    margin-top: 12px 0 12px 0;
+    margin: 12px 0 12px 0;
   }
 
   .site-page-div > p {
