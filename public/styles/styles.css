@@ -590,7 +590,7 @@ ul#mobile-side-nav, #mobile-menu-icon-div {
   }
 
   h3 {
-    margin-top: 12px 0 12px 0;
+    margin: 12px 0 12px 0;
   }
 
   .site-page-div > p {
@@ -619,7 +619,6 @@ ul#mobile-side-nav, #mobile-menu-icon-div {
   .play-btn-div {
     width: 6rem;
     height: 2.5rem;
-    height: auto;
     bottom: 1rem;
   }
 
