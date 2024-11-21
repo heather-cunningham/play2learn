@@ -2,15 +2,15 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <link rel="stylesheet" href="../../styles/normalize.css" />
-  <link rel="stylesheet" href="../../styles/styles.css" />
-  <link rel="stylesheet" href="../../styles/games.css" />
-
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  
+  <link rel="stylesheet" href="../../styles/normalize.css"/>
+  <link rel="stylesheet" href="../../styles/styles.css"/>
+  <link rel="stylesheet" href="../../styles/games.css"/>
+  
   <script src="https://kit.fontawesome.com/5edc2e2a09.js" crossorigin="anonymous"></script>
-
+  
   <!-- Heather C's Play2Learn-->
   <title>Math Facts | Play2Learn</title>
   <!-- All images and graphics used in this web app are free clip art, unless otherwise indicated
@@ -18,95 +18,97 @@
 </head>
 
 <body>
-  <div class="wrapper">
-    <header>
-      <div id="logo-div">
-        <a href="../../index.html" alt="Play2Learn Home" title="Play2Learn Home">
-          <img id="logo" 
-            src="../../images/play2Learn_logo.png" 
-            alt="Play2Learn Logo" 
-            aria-description="AI generated image"
-          />
-        </a>
+<div class="wrapper">
+  <header>
+    <div id="logo-div">
+      <a href="../../index.html" alt="Play2Learn Home" title="Play2Learn Home">
+        <img id="logo"
+         src="../../images/play2Learn_logo.png"
+         alt="Play2Learn Logo"
+         aria-description="AI generated image"
+        />
+      </a>
+    </div>
+    
+    <nav>
+      <ul id="top-nav">
+        <li id="top-nav-home">
+          <a href="../../index.html" alt="Play2Learn Home">Home &nbsp;&verbar;&nbsp;</a>
+        </li>
+        <li id="top-nav-games">
+          <a href="#" alt="Games Menu">Games &nbsp;&verbar;&nbsp;</a>
+          <ul id="top-sub-nav-games" style="display: none;">
+            <li id="top-nav-math-facts">
+              <a href="../math-facts/math-facts.html" alt="Math Facts Game">Math Facts</a>
+            </li>
+            <li id="top-nav-anagram-hunt">
+              <a href="../anagram-hunt/anagram-hunt.html" alt="Anagram Hunt Game">Anagram Hunt</a>
+            </li>
+          </ul>
+        </li>
+        <li id="top-nav-about">
+          <a href="../../about.html" alt="About Play2Learn">About &nbsp;&verbar;&nbsp;</a>
+        </li>
+        <li id="top-nav-contact-us">
+          <a href="../../contact-us.html" alt="Contact Play2Learn">Contact Us &nbsp;&verbar;&nbsp;</a>
+        </li>
+        <li id="top-nav-login">
+          <a href="../../login.html" alt="Play2Learn Login">Login</a>
+        </li>
+      </ul>
+    </nav>
+    
+    <nav>
+      <div id="mobile-menu-icon-div">
+        <button id="mobile-menu-btn" type="button" alt="Open and close the main menu."
+                title="Open and close the main menu.">
+          <i id="mobile-menu-icon" class="fas fa-bars"></i>
+        </button>
       </div>
-
-      <nav>
-        <ul id="top-nav">
-          <li id="top-nav-home">
-            <a href="../../index.html" alt="Play2Learn Home">Home &nbsp;&verbar;&nbsp;</a>
-          </li>
-          <li id="top-nav-games">
-            <a href="#" alt="Games Menu">Games &nbsp;&verbar;&nbsp;</a>
-            <ul id="top-sub-nav-games" style="display: none;">
-              <li id="top-nav-math-facts">
-                <a href="../math-facts/math-facts.html" alt="Math Facts Game">Math Facts</a>
-              </li>
-              <li id="top-nav-anagram-hunt">
-                <a href="../anagram-hunt/anagram-hunt.html" alt="Anagram Hunt Game">Anagram Hunt</a>
-              </li>
-            </ul>
-          </li>
-          <li id="top-nav-about">
-            <a href="../../about.html" alt="About Play2Learn">About &nbsp;&verbar;&nbsp;</a>
-          </li>
-          <li id="top-nav-contact-us">
-            <a href="../../contact-us.html" alt="Contact Play2Learn">Contact Us &nbsp;&verbar;&nbsp;</a>
-          </li>
-          <li id="top-nav-login">
-            <a href="../../login.html" alt="Play2Learn Login">Login</a>
-          </li>
-        </ul>
-      </nav>
-
-      <nav>
-        <div id="mobile-menu-icon-div">
-          <button id="mobile-menu-btn" type="button" alt="Open and close the main menu." title="Open and close the main menu.">
-            <i id="mobile-menu-icon" class="fas fa-bars"></i>
-          </button>
-        </div>
-
-        <ul id="mobile-side-nav">
-          <li id="mobile-nav-home">
-            <a href="../../index.html" alt="Play2Learn Home">Home</a>
-          </li>
-          <li id="mobile-nav-games">
-            <a href="#" id="mobile-games-menu-link" alt="Games Menu">Games</a>
-            <ul id="mobile-sub-nav-games">
-              <li id="mobile-nav-math-facts">
-                <a href="../math-facts/math-facts.html" alt="Math Facts Game">Math Facts</a>
-              </li>
-              <li id="mobile-nav-anagram-hunt">
-                <a href="../anagram-hunt/anagram-hunt.html" alt="Anagram Hunt Game">Anagram Hunt</a>
-              </li>
-            </ul>
-          </li>
-          <li id="mobile-nav-about">
-            <a href="../../about.html" alt="About Play2Learn">About</a>
-          </li>
-          <li id="mobile-nav-contact-us">
-            <a href="../../contact-us.html" alt="Contact Play2Learn">Contact</a>
-          </li>
-          <li id="mobile-nav-login">
-            <a href="../../login.html" alt="Play2Learn Login">Login</a>
-          </li>
-        </ul>
-      </nav>
       
-      <hr id="header-rule" />
-    </header>
-
-    <main>
-      <div class="site-page-div">
-        <h2 class="page-name">Math Facts</h2>
-        
-        <p class="game-description">
-          This game is for practicing arithmetic operations: addition, subtraction, multiplication, or division.
-        </p>
-
-        <label style="display: block;" id="math-facts-select-lbl" for="math-facts-select">
-          Which arithmetic operation would you like to practice?
-        </label>
-        
+      <ul id="mobile-side-nav">
+        <li id="mobile-nav-home">
+          <a href="../../index.html" alt="Play2Learn Home">Home</a>
+        </li>
+        <li id="mobile-nav-games">
+          <a href="#" id="mobile-games-menu-link" alt="Games Menu">Games</a>
+          <ul id="mobile-sub-nav-games">
+            <li id="mobile-nav-math-facts">
+              <a href="../math-facts/math-facts.html" alt="Math Facts Game">Math Facts</a>
+            </li>
+            <li id="mobile-nav-anagram-hunt">
+              <a href="../anagram-hunt/anagram-hunt.html" alt="Anagram Hunt Game">Anagram Hunt</a>
+            </li>
+          </ul>
+        </li>
+        <li id="mobile-nav-about">
+          <a href="../../about.html" alt="About Play2Learn">About</a>
+        </li>
+        <li id="mobile-nav-contact-us">
+          <a href="../../contact-us.html" alt="Contact Play2Learn">Contact</a>
+        </li>
+        <li id="mobile-nav-login">
+          <a href="../../login.html" alt="Play2Learn Login">Login</a>
+        </li>
+      </ul>
+    </nav>
+    
+    <hr id="header-rule"/>
+  </header>
+  
+  <main>
+    <div class="site-page-div">
+      <h2 class="page-name">Math Facts</h2>
+      
+      <p class="game-description">
+        This game is for practicing arithmetic operations: addition, subtraction, multiplication, or division.
+      </p>
+      
+      <label id="math-facts-select-lbl" for="math-facts-select">
+        Which arithmetic operation would you like to practice?
+      </label>
+      
+      <div class="game-select-div">
         <select id="math-facts-select">
           <option>Please, select one</option>
           <option value="addition">Addition</option>
@@ -114,61 +116,64 @@
           <option value="multiplication">Multiplication</option>
           <option value="division">Division</option>
         </select>
-
+        
         <button id="math-facts-go-btn" type="button" name="math-facts-go" value="Go">
           Go!
         </button>
-
+      </div>
+      
+      <div class="game-rules-list-div">
         <ol class="game-rules-list">
           <li>Select an arithmetic operation to practice.</li>
           <li>Press "Go!"</li>
           <li>How many problems you can solve in 30 seconds?</li>
         </ol>
       </div>
-    </main>
+    </div>
+  </main>
+  
+  <footer>
+    <hr id="footer-rule"/>
+    <div id="footer-div">
+      <p id="copyright-design">
+        <span style="font-weight: bold;">&copy; 2024 Play2Learn</span>
+        &nbsp;&verbar;&nbsp;
+        <cite>Website by
+          <a href="https://github.com/heather-cunningham" alt="See my GitHub portfolio" title="See my GitHub portfolio"
+             target="_blank">
+            Heather I. Cunningham
+          </a>
+        </cite>
+      </p>
+      
+      <ul id="social-media-list">
+        <li>
+          <a href="../../contact-us.html" alt="Contact Play2Learn" title="Contact Us">
+            <i class="fa-solid fa-square-envelope"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://instagram.com" alt="Open Instagram in a new window" title="Instagram" target="_blank">
+            <i class="fa-brands fa-square-instagram"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://x.com" alt="Open X, formerly known as Twitter, in a new window" title="X (fka Twitter)"
+             target="_blank">
+            <i class="fa-brands fa-square-x-twitter"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://facebook.com" alt="Open facebook in a new window" title="facebook" target="_blank">
+            <i class="fa-brands fa-square-facebook"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </footer>
+</div>
 
-    <footer>
-      <hr id="footer-rule" />
-      <div id="footer-div">
-        <p id="copyright-design">
-          <span style="font-weight: bold;">&copy; 2024 Play2Learn</span>
-          &nbsp;&verbar;&nbsp;
-          <cite>Website by
-            <a href="https://github.com/heather-cunningham" alt="See my GitHub portfolio" title="See my GitHub portfolio"
-              target="_blank">
-              Heather I. Cunningham
-            </a>
-          </cite>
-        </p>
-
-        <ul id="social-media-list">
-          <li>
-            <a href="../../contact-us.html" alt="Contact Play2Learn" title="Contact Us">
-              <i class="fa-solid fa-square-envelope"></i>
-            </a>
-          </li>
-          <li>
-            <a href="https://instagram.com" alt="Open Instagram in a new window" title="Instagram" target="_blank">
-              <i class="fa-brands fa-square-instagram"></i>
-            </a>
-          </li>
-          <li>
-            <a href="https://x.com" alt="Open X, formerly known as Twitter, in a new window" title="X (fka Twitter)"
-              target="_blank">
-              <i class="fa-brands fa-square-x-twitter"></i>
-            </a>
-          </li>
-          <li>
-            <a href="https://facebook.com" alt="Open facebook in a new window" title="facebook" target="_blank">
-              <i class="fa-brands fa-square-facebook"></i>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </footer>
-  </div>
-
-  <script src="../../scripts/scripts.js"></script>
+<script src="../../scripts/scripts.js"></script>
 </body>
 
 </html>
