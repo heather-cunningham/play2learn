@@ -7,6 +7,7 @@
 
   <link rel="stylesheet" href="../../styles/normalize.css" />
   <link rel="stylesheet" href="../../styles/styles.css" />
+  <link rel="stylesheet" href="../../styles/games.css" />
 
   <script src="https://kit.fontawesome.com/5edc2e2a09.js" crossorigin="anonymous"></script>
 
@@ -88,10 +89,35 @@
       <hr id="header-rule" />
     </header>
 
-
     <main>
       <div class="site-page-div">
         <h2 class="page-name">Math Facts</h2>
+        
+        <p class="game-description">
+          This game is for practicing arithmetic operations: addition, subtraction, multiplication, or division.
+        </p>
+
+        <label style="display: block;" id="math-facts-select-lbl" for="math-facts-select">
+          Which arithmetic operation would you like to practice?
+        </label>
+        
+        <select id="math-facts-select">
+          <option>Please, select one</option>
+          <option value="addition">Addition</option>
+          <option value="subtraction">Subtraction</option>
+          <option value="multiplication">Multiplication</option>
+          <option value="division">Division</option>
+        </select>
+
+        <button id="math-facts-go-btn" type="button" name="math-facts-go" value="Go">
+          Go!
+        </button>
+
+        <ol class="game-rules-list">
+          <li>Select an arithmetic operation to practice.</li>
+          <li>Press "Go!"</li>
+          <li>How many problems you can solve in 30 seconds?</li>
+        </ol>
       </div>
     </main>
 
@@ -135,6 +161,7 @@
       </div>
     </footer>
   </div>
+
   <script src="../../scripts/scripts.js"></script>
 </body>
 
