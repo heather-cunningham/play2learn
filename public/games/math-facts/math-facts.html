@@ -101,7 +101,10 @@
       <h2 class="page-name">Math Facts</h2>
       
       <p class="game-description">
-        This game is for practicing arithmetic operations: addition, subtraction, multiplication, or division.
+        This game is for practicing arithmetic operations:
+      </p>
+      <p class="game-description">
+        Addition, subtraction, multiplication, or division.
       </p>
       
       <label id="math-facts-select-lbl" for="math-facts-select">
@@ -109,8 +112,8 @@
       </label>
       
       <div class="game-select-div">
-        <select id="math-facts-select">
-          <option>Please, select one</option>
+        <select id="math-facts-select" name="operation-selection">
+          <option value="0">Please, select one</option>
           <option value="addition">Addition</option>
           <option value="subtraction">Subtraction</option>
           <option value="multiplication">Multiplication</option>
@@ -125,7 +128,7 @@
       <div class="game-rules-list-div">
         <ol class="game-rules-list">
           <li>Select an arithmetic operation to practice.</li>
-          <li>Press "Go!"</li>
+          <li>Press "<strong>Go!</strong>"</li>
           <li>How many problems you can solve in 30 seconds?</li>
         </ol>
       </div>
