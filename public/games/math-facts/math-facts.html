@@ -136,7 +136,7 @@
     
     <!-- style="display: none" -->
     <div id="math-facts-game" class="site-page-div">
-      <h3 id="math-operation-selected">Addition</h3>
+      <h3 id="math-operation-selected-header">Addition</h3>
       
       <div id="math-question-answer-div" class="question-answer-div">
         <label id="math-question-lbl"
@@ -153,17 +153,19 @@
       
       <div id="calculator">
         <div id="calculator-buttons">
-          <button>1</button>
-          <button>2</button>
-          <button>3</button>
-          <button>4</button>
-          <button>5</button>
-          <button>6</button>
-          <button>7</button>
-          <button>8</button>
-          <button>9</button>
-          <button>0</button>
-          <button>CLEAR</button>
+          <button type="button" name="1" value="1">1</button>
+          <button type="button" name="2" value="2">2</button>
+          <button type="button" name="3" value="3">3</button>
+          <button type="button" name="4" value="4">4</button>
+          <button type="button" name="5" value="5">5</button>
+          <button type="button" name="6" value="6">6</button>
+          <button type="button" name="7" value="7">7</button>
+          <button type="button" name="8" value="8">8</button>
+          <button type="button" name="9" value="9">9</button>
+          <button type="button" name="0" value="0">0</button>
+          <button id="calculator-clear-btn" type="button" name="clear" value="clear">
+            CLEAR
+          </button>
         </div>
       </div>
       
@@ -177,6 +179,7 @@
           <input id="math-score-input"
                  class="score-input"
                  type="text"
+                 placeholder="0"
                  value=""
                  readonly />
         </div>

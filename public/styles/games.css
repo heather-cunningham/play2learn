@@ -63,6 +63,124 @@ p.game-description, #math-facts-select-lbl, .game-select-div {
   padding: 0.33rem;
 }
 
+.question-answer-div {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: center;
+}
+
+.question-lbl {
+  height: 2.5rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.answer-input {
+  width: 19rem;
+  height: 2.5rem;
+  margin: 1rem auto;
+  padding: 0.67rem;
+  border: 1px solid grey;
+  box-shadow: 0.17rem 0.17rem 0.17rem grey;
+}
+
+.score-form {
+  width: 19rem;
+  height: auto;
+  margin: 24px auto;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
+
+.score-input-div, .time-left-div {
+  width: 100%;
+  height: auto;
+  margin-bottom: 1rem;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  font-size: larger;
+  align-content: start;
+}
+
+.score-input-div label,
+.time-left-div label {
+  width: 36%;
+  height: 1.67rem;
+  margin-right: 0.33rem;
+  padding: 0;
+  text-align: right;
+}
+
+.score-input-div input,
+.time-left-div input {
+  width: 62%;
+  height: 1.67rem;
+  margin: 0;
+  padding-bottom: 0.33rem;
+  border: none;
+}
+
+/* ------------------------------------ CSS for playing Math Facts operations -------------------------------  */
+div#math-facts-game {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: center;
+  text-align: center;
+}
+
+#math-question-answer-div > * {
+  display: block;
+}
+
+div#calculator {
+  display: flex;
+  width: 19rem;
+  height: auto;
+  margin: 1rem auto;
+  padding: 0;
+  justify-content: center;
+  align-items: center;
+}
+
+div#calculator-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.67rem;
+}
+
+#calculator-buttons button {
+  min-width: 5rem;
+  min-height: 2.5rem;
+  padding: 0.67rem;
+  color: white;
+  font-size: larger;
+  font-weight: bold;
+  background-color: green;
+  border: 2px solid darkslategrey;
+  box-shadow: 0.17rem 0.17rem 0.17rem grey;
+  cursor: pointer;
+}
+
+#calculator-buttons button:hover {
+  background-color: gray;
+  border-color: lightgrey;
+}
+
+#calculator-buttons button:active {
+  border: 2px inset white;
+}
+
+#calculator-clear-btn {
+  grid-column: span 2;
+}
+
 /* ------------------------------------ Media Queries for Mobile Responsiveness -------------------------------  */
 /* BEGIN @media (max-width: 1370px)
 ~ Landscape width of a 13" Surface Pro tablet or an iPad Pro */
