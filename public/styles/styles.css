@@ -253,9 +253,9 @@ button {
   cursor: pointer;
 }
 
-button[name="play"], 
-button[name="send"], 
-button[name="login"], 
+button[name="play"],
+button[name="send"],
+button[name="login"],
 button[name="register"],
 button[name="math-facts-go"] {
   height: 2.5rem;
@@ -270,7 +270,7 @@ button[name="math-facts-go"] {
 }
 
 button[name="play"],
-button[name="send"], 
+button[name="send"],
 button[name="login"],
 button[name="math-facts-go"] {
   width: 6rem;
