@@ -32,20 +32,26 @@ gamesNav.addEventListener("click", toggleGamesSubNav);
 const fetchQuotes = async () => {
   try{
     const response = await fetch("/testimonials");
-    const testimonialsJSON = await response.json();
-    let randomTestimonial;
-
-    if(testimonialsJSON && testimonialsJSON.length > 0) {
-      randomTestimonial = getRandomTestimonial(testimonialsJSON);
-    } 
     
-    if (blockQuote) {
-      blockQuote.id = "quote" + randomTestimonial.id + "_" 
-                        + (randomTestimonial.citation).replaceAll(" ", "")
-                                                      .replace(/[!"#$%&'()*+,\-./:;<=>?@[\\\]^_`{|}~]/g, "")
-                                                      .trim();                                           
-      blockQuote.innerHTML = `"${randomTestimonial.quote.trim()}" \ 
+    if(response && response.status !== 404){
+      const testimonialsJSON = await response.json();
+      let randomTestimonial;
+      
+      if(testimonialsJSON && testimonialsJSON.length > 0) {
+        randomTestimonial = getRandomTestimonial(testimonialsJSON);
+      }
+      
+      if (blockQuote) {
+        blockQuote.id = "quote" + randomTestimonial.id + "_"
+          + (randomTestimonial.citation).replaceAll(" ", "")
+            .replace(/[!"#$%&'()*+,\-./:;<=>?@[\\\]^_`{|}~]/g, "")
+            .trim();
+        blockQuote.innerHTML = `"${randomTestimonial.quote.trim()}" \
         <cite class="testimonial-citation" name="testimonial-citation">--${randomTestimonial.citation}</cite>`;
+      }
+    } else {
+      if (blockQuote)
+        blockQuote.innerHTML = `Loading testimonials...`;
     }
   } catch (error) {
     if (blockQuote) {
