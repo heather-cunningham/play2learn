@@ -23,9 +23,9 @@
     <div id="logo-div">
       <a href="../../index.html" alt="Play2Learn Home" title="Play2Learn Home">
         <img id="logo"
-         src="../../images/play2Learn_logo.png"
-         alt="Play2Learn Logo"
-         aria-description="AI generated image"
+             src="../../images/play2Learn_logo.png"
+             alt="Play2Learn Logo"
+             aria-description="AI generated image"
         />
       </a>
     </div>
@@ -95,11 +95,11 @@
     
     <hr id="header-rule"/>
   </header>
+  <h2 class="page-name">Math Facts</h2>
   
   <main>
-    <div class="site-page-div">
-      <h2 class="page-name">Math Facts</h2>
-      
+    <!-- style="display: none" -->
+    <div id="math-facts-start" class="site-page-div" style="display: none">
       <p class="game-description">
         This game is for practicing arithmetic operations:
       </p>
@@ -112,7 +112,7 @@
       </label>
       
       <div class="game-select-div">
-        <select id="math-facts-select" name="operation-selection">
+        <select id="math-facts-select" class="game-select" name="game-selection">
           <option value="0">Please, select one</option>
           <option value="addition">Addition</option>
           <option value="subtraction">Subtraction</option>
@@ -132,6 +132,69 @@
           <li>How many problems you can solve in 30 seconds?</li>
         </ol>
       </div>
+    </div>
+    
+    <!-- style="display: none" -->
+    <div id="math-facts-game" class="site-page-div">
+      <h3 id="math-operation-selected">Addition</h3>
+      
+      <div id="math-question-answer-div" class="question-answer-div">
+        <label id="math-question-lbl"
+               for="math-answer-input"
+               class="question-lbl">
+          5 + 3
+        </label>
+        <input id="math-answer-input"
+               class="answer-input"
+               type="text"
+               placeholder="Enter your answer here"
+               value="" />
+      </div>
+      
+      <div id="calculator">
+        <div id="calculator-buttons">
+          <button>1</button>
+          <button>2</button>
+          <button>3</button>
+          <button>4</button>
+          <button>5</button>
+          <button>6</button>
+          <button>7</button>
+          <button>8</button>
+          <button>9</button>
+          <button>0</button>
+          <button>CLEAR</button>
+        </div>
+      </div>
+      
+      <form class="score-form" novalidate>
+        <div class="score-input-div">
+          <label id="math-score-lbl"
+                for="math-score-input"
+                class="score-lbl">
+            Score:
+          </label>
+          <input id="math-score-input"
+                 class="score-input"
+                 type="text"
+                 value=""
+                 readonly />
+        </div>
+        
+        <div class="time-left-div">
+          <label id="math-time-left-lbl"
+               for="math-time-input"
+               class="time-left-lbl">
+            Time Left:
+          </label>
+          <input id="math-time-input"
+                 class="time-left-input"
+                 type="text"
+                 value=""
+                 readonly />
+        </div>
+      </form>
+    
     </div>
   </main>
   
@@ -177,6 +240,7 @@
 </div>
 
 <script src="../../scripts/scripts.js"></script>
+<script src="../../scripts/math-facts-scripts.js"></script>
 </body>
 
 </html>
