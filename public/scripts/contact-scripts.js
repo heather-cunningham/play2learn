@@ -171,7 +171,7 @@ const validateEmailAddySent = () => {
   xmlHttpReq.open("POST", "/contact-response-msg", true);
 
   xmlHttpReq.onreadystatechange = () => {
-    if (xmlHttpReq.readyState == XMLHttpRequest.DONE && xmlHttpReq.status == 200) { 
+    if (xmlHttpReq.readyState === XMLHttpRequest.DONE && xmlHttpReq.status === 200) {
       contactResponse.style.display = "block";
       contactResponse.innerHTML = xmlHttpReq.responseText;
     }

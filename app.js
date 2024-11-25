@@ -56,4 +56,6 @@ app.post("/contact-response-msg",
     response.send(responseMsg);
 });
 
-app.listen(port); // 8081
+app.listen(port, ()=>{
+  console.log("Express / Node.js app running on port: " + port);
+}); // 8081
