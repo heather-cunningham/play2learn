@@ -98,8 +98,7 @@
   <h2 class="page-name">Math Facts</h2>
   
   <main>
-    <!-- style="display: none" -->
-    <div id="math-facts-start" class="site-page-div" style="display: none">
+    <div id="math-facts-start" class="site-page-div">
       <p class="game-description">
         This game is for practicing arithmetic operations:
       </p>
@@ -129,13 +128,13 @@
         <ol class="game-rules-list">
           <li>Select an arithmetic operation to practice.</li>
           <li>Press "<strong>Go!</strong>"</li>
-          <li>How many problems you can solve in 30 seconds?</li>
+          <li>How many problems can you solve in 30 seconds?</li>
         </ol>
       </div>
     </div>
     
-    <!-- style="display: none" -->
-    <div id="math-facts-game" class="site-page-div">
+    <!-- START - Game Board -->
+    <div id="math-facts-game" class="site-page-div" style="display: none">
       <h3 id="math-operation-selected-header">Addition</h3>
       
       <div id="math-question-answer-div" class="question-answer-div">
@@ -196,9 +195,12 @@
                  value=""
                  readonly />
         </div>
+        
+        <button id="math-facts-exit-btn" class="exit-btn" type="button" name="exit" value="Exit">
+          Exit
+        </button>
       </form>
-    
-    </div>
+    </div> <!-- END - Game Board -->
   </main>
   
   <footer>

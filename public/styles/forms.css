@@ -134,8 +134,11 @@ div.error {
 
 #reset-form-btn:active, #reset-register-form-btn:active {
   background-color: gray;
-  border-color: lightgrey;
-  border-style: inset;
+  border: 2px inset white;
+}
+
+#reset-form-btn:hover, #reset-register-form-btn:hover {
+  background-color: gray;
 }
 
 #contact-disclaimer {

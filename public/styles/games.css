@@ -73,7 +73,10 @@ p.game-description, #math-facts-select-lbl, .game-select-div {
 }
 
 .question-lbl {
+  width: auto;
   height: 2.5rem;
+  margin: 0;
+  padding: 0;
   font-size: 1.5rem;
   font-weight: bold;
 }
@@ -81,7 +84,7 @@ p.game-description, #math-facts-select-lbl, .game-select-div {
 .answer-input {
   width: 19rem;
   height: 2.5rem;
-  margin: 1rem auto;
+  margin: 0.33rem auto 1rem  auto;
   padding: 0.67rem;
   border: 1px solid grey;
   box-shadow: 0.17rem 0.17rem 0.17rem grey;
@@ -90,7 +93,7 @@ p.game-description, #math-facts-select-lbl, .game-select-div {
 .score-form {
   width: 19rem;
   height: auto;
-  margin: 24px auto;
+  margin: 1rem auto;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
@@ -99,7 +102,7 @@ p.game-description, #math-facts-select-lbl, .game-select-div {
 .score-input-div, .time-left-div {
   width: 100%;
   height: auto;
-  margin-bottom: 1rem;
+  margin-bottom: 0.67rem;
   padding: 0;
   display: flex;
   flex-direction: row;
@@ -126,6 +129,28 @@ p.game-description, #math-facts-select-lbl, .game-select-div {
   border: none;
 }
 
+.exit-btn {
+  width: 75%;
+  height: 2.5rem;
+  margin: 0 auto;
+  color: white;
+  background-color: red;
+  font-weight: bold;
+  font-size: larger;
+  border: none;
+  border-radius: 0.3rem;
+  box-shadow: 0.17rem 0.17rem 0.17rem grey;
+}
+
+.exit-btn:hover {
+  background-color: gray;
+}
+
+.exit-btn:active {
+  background-color: gray;
+  border: 2px inset white;
+}
+
 /* ------------------------------------ CSS for playing Math Facts operations -------------------------------  */
 div#math-facts-game {
   display: flex;
@@ -133,6 +158,11 @@ div#math-facts-game {
   flex-wrap: nowrap;
   align-content: center;
   text-align: center;
+}
+
+h3#math-operation-selected-header {
+  margin: 0 0 1rem 0;
+  padding: 0;
 }
 
 #math-question-answer-div > * {

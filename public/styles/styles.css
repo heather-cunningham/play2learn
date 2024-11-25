@@ -280,10 +280,13 @@ button[name="register"] {
   width: 8rem;
 }
 
+button:hover {
+  background-color: gray;
+}
+
 button:active {
   background-color: gray;
-  border-color: lightgrey;
-  border-style: inset;
+  border: 2px inset white;
 }
 
 button a {
