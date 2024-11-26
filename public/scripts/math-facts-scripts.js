@@ -1,5 +1,6 @@
-const mathFactsSelect = document.getElementById("math-facts-select");
 const mathFactsSelectDiv = document.getElementById("math-facts-select-div");
+const mathFactsSelect = document.getElementById("math-facts-select");
+const mathFactsOptions = document.querySelectorAll("#math-facts-select option")
 
 const mathFactsStartDiv = document.getElementById("math-facts-start");
 const mathFactsGameDiv = document.getElementById("math-facts-game");
@@ -33,7 +34,7 @@ window.addEventListener("load", ()=>{
   focusMathFactsInput(mathFactsSelect);
 });
 
-const addRemoveErrorToSelect = ()=>{
+const addRemoveErrorOnSelect = ()=>{
   if (mathFactsSelect.selectedIndex === 0
     && mathFactsSelectDiv.previousElementSibling.className !== 'error') {
       //addError div:
@@ -68,11 +69,11 @@ const checkMathFactsSelect = (event) => {
   // If the option selected is still the default of 0
   if (mathFactsSelect.selectedIndex === 0 ) {
     mathFactsSelect.setCustomValidity('Invalid');
-    addRemoveErrorToSelect();
+    addRemoveErrorOnSelect();
     return false;
   } else {
     mathFactsSelect.setCustomValidity('');
-    addRemoveErrorToSelect();
+    addRemoveErrorOnSelect();
     return true;
   }
 };
@@ -159,6 +160,16 @@ const showGameBoard = (event) =>{
   }
 };
 mathFactsGoBtn.addEventListener("click", showGameBoard);
+mathFactsSelect.addEventListener("keydown", (event)=>{
+  if (event.key === "Enter")
+    showGameBoard(event);
+});
+for(let option of mathFactsOptions){
+  option.addEventListener("keydown", (event)=>{
+    if (event.key === "Enter")
+      showGameBoard(event);
+  });
+}
 
 const resetStartScreen = ()=>{
   mathFactsSelect.selectedIndex = 0;
