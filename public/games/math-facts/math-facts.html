@@ -110,16 +110,20 @@
         Which arithmetic operation would you like to practice?
       </label>
       
-      <div class="game-select-div">
-        <select id="math-facts-select" class="game-select" name="game-selection">
-          <option value="0">Please, select one</option>
-          <option value="addition">Addition</option>
-          <option value="subtraction">Subtraction</option>
-          <option value="multiplication">Multiplication</option>
-          <option value="division">Division</option>
+      <div id="math-facts-select-div" class="game-select-div">
+        <select id="math-facts-select" class="game-select" name="game-selection" required>
+          <option value="0" selected>Please, select one*</option>
+          <option value="Addition">Addition</option>
+          <option value="Subtraction">Subtraction</option>
+          <option value="Multiplication">Multiplication</option>
+          <option value="Division">Division</option>
         </select>
         
-        <button id="math-facts-go-btn" type="button" name="math-facts-go" value="Go">
+        <button id="math-facts-go-btn"
+                class="go-btn"
+                type="button"
+                name="math-facts-go"
+                value="Go">
           Go!
         </button>
       </div>
@@ -135,15 +139,15 @@
     
     <!-- START - Game Board -->
     <div id="math-facts-game" class="site-page-div" style="display: none">
-      <h3 id="math-operation-selected-header">Addition</h3>
+      <h3 id="math-operation-selected-header" class="game-selected-header"></h3>
       
       <div id="math-question-answer-div" class="question-answer-div">
         <label id="math-question-lbl"
-               for="math-answer-input"
+               for="math-facts-answer-input"
                class="question-lbl">
           5 + 3
         </label>
-        <input id="math-answer-input"
+        <input id="math-facts-answer-input"
                class="answer-input"
                type="text"
                placeholder="Enter your answer here"
@@ -161,9 +165,12 @@
           <button type="button" name="7" value="7">7</button>
           <button type="button" name="8" value="8">8</button>
           <button type="button" name="9" value="9">9</button>
-          <button type="button" name="0" value="0">0</button>
           <button id="calculator-clear-btn" type="button" name="clear" value="clear">
-            CLEAR
+            Clear
+          </button>
+          <button type="button" name="0" value="0">0</button>
+          <button id="calculator-enter-btn" type="button" name="enter" value="enter">
+            Enter
           </button>
         </div>
       </div>
@@ -192,12 +199,17 @@
           <input id="math-time-input"
                  class="time-left-input"
                  type="text"
+                 placeholder="0"
                  value=""
                  readonly />
         </div>
         
-        <button id="math-facts-exit-btn" class="exit-btn" type="button" name="exit" value="Exit">
-          Exit
+        <button id="math-facts-quit-btn"
+                class="quit-btn"
+                type="button"
+                name="quit"
+                value="Quit">
+          Quit
         </button>
       </form>
     </div> <!-- END - Game Board -->

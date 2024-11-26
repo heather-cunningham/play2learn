@@ -220,9 +220,6 @@ div#calculator-buttons {
   border: 2px inset white;
 }
 
-#calculator-clear-btn {
-  grid-column: span 2;
-}
 
 /* ------------------------------------ Media Queries for Mobile Responsiveness -------------------------------  */
 /* BEGIN @media (max-width: 1370px)
