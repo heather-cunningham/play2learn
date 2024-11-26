@@ -249,7 +249,7 @@ h3.game-title {
   justify-content: center;
 }
 
-button {
+button, input, select, option, textarea {
   cursor: pointer;
 }
 

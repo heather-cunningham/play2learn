@@ -8,14 +8,17 @@ const mathFactsGoBtn = document.getElementById("math-facts-go-btn");
 const mathFactsQuitBtn = document.getElementById("math-facts-quit-btn");
 
 const opSelectedHeader = document.getElementById("math-operation-selected-header");
-const mathFactsAnswerInput = document.getElementById("math-facts-answer-input");
 let opSelected = "";
 
+const mathFactsAnswerInput = document.getElementById("math-facts-answer-input");
+
+const calcButtonsList = document.querySelectorAll("#calculator-buttons button");
 const calcClearBtn = document.getElementById("calculator-clear-btn");
 const calcEnterBtn = document.getElementById("calculator-enter-btn");
 
 const mathScoreTxtbox = document.getElementById("math-score-input");
 const mathTimeTxtbox = document.getElementById("math-time-input");
+const timeCounter = 30;
 let timerIntervalId;
 
 // -------------------------------------- datasets & Custom Error Msgs ----------------------------------
@@ -53,6 +56,7 @@ const updateSelected = ()=>{
     return mathFactsSelect.options[mathFactsSelect.selectedIndex].value;
   } else {
     mathFactsSelect.options[mathFactsSelect.selectedIndex].removeAttribute('selected');
+    mathFactsSelect.selectedIndex = 0;
     mathFactsSelect.options[0].setAttribute('selected', '');
   }
   return null;
@@ -75,10 +79,30 @@ const checkMathFactsSelect = (event) => {
 mathFactsSelect.addEventListener("change", checkMathFactsSelect);
 
 const resetGameBoard = ()=>{
+  opSelected = updateSelected();
+  // set the operation header to the one selected
+  opSelectedHeader.innerText = opSelected !== null ? opSelected : "";
+  
+  mathFactsAnswerInput.disabled = false;
+  mathFactsAnswerInput.classList.remove("disabled");
+  mathFactsAnswerInput.classList.add("enabled");
   clearCalculatorInput();
   
-  mathScoreTxtbox.value = "";
-  mathScoreTxtbox.innerText = "";
+  for(let button of calcButtonsList){
+    button.disabled = false;
+    button.classList.remove("disabled");
+    button.classList.add("enabled");
+  }
+  
+  mathScoreTxtbox.style.backgroundColor = "floralwhite";
+  mathScoreTxtbox.value = "0";
+  mathScoreTxtbox.innerText = "0";
+  
+  mathTimeTxtbox.classList.remove("shake");
+  mathTimeTxtbox.style.backgroundColor = "floralwhite";
+  
+  mathTimeTxtbox.value = `${timeCounter}`;
+  mathTimeTxtbox.innerText = `${timeCounter}`;
 };
 
 const startTimer = (timeCounter)=>{
@@ -90,10 +114,7 @@ const startTimer = (timeCounter)=>{
         timeCounter--;
       } else {
         stopTimer(timerIntervalId);
-        mathTimeTxtbox.style.backgroundColor = "yellow";
-        mathTimeTxtbox.value = "TIME'S UP!!!";
-        mathTimeTxtbox.innerText = "TIME'S UP!!!";
-        mathTimeTxtbox.classList.add("shake");
+        endGame();
       }
     },
     1000
@@ -104,6 +125,24 @@ const stopTimer = (timerIntervalId)=>{
   clearInterval(timerIntervalId);
 };
 
+const endGame = ()=>{
+  mathFactsAnswerInput.classList.remove("enabled");
+  mathFactsAnswerInput.classList.add("disabled");
+  mathFactsAnswerInput.disabled = true;
+  
+  mathScoreTxtbox.style.backgroundColor = "yellow";
+  mathTimeTxtbox.style.backgroundColor = "yellow";
+  mathTimeTxtbox.value = "TIME'S UP!!!";
+  mathTimeTxtbox.innerText = "TIME'S UP!!!";
+  mathTimeTxtbox.classList.add("shake");
+  
+  for(let button of calcButtonsList){
+    button.classList.remove("enabled");
+    button.classList.add("disabled");
+    button.disabled = true;
+  }
+};
+
 const showGameBoard = (event) =>{
   event.preventDefault();
   
@@ -112,20 +151,9 @@ const showGameBoard = (event) =>{
       mathFactsStartDiv.style.display = "none";
       mathFactsGameDiv.style.display = "block";
       
-      opSelected = updateSelected();
-      if(opSelected){
-        // set the operation header to the one selected
-        opSelectedHeader.innerText = opSelected;
-      }
-      
-      focusMathFactsInput(mathFactsAnswerInput);
       resetGameBoard();
-      
-      const timeCounter = 30;
-      mathTimeTxtbox.value = `${timeCounter}`;
-      mathTimeTxtbox.innerText = `${timeCounter}`;
+      focusMathFactsInput(mathFactsAnswerInput);
       startTimer(timeCounter);
-      
       resetStartScreen();
     }
   }
@@ -143,18 +171,13 @@ const quitGameBoard = (event) =>{
   if(mathFactsStartDiv.style.display === "none") {
     mathFactsGameDiv.style.display = "none";
     mathFactsStartDiv.style.display = "block";
-    focusMathFactsInput(mathFactsSelect);
-    resetStartScreen();
-    
-    // reset game
-    resetGameBoard();
-    opSelected = "";
-    opSelectedHeader.innerText = opSelected;
     
     stopTimer(timerIntervalId);
-    const timeCounter = 30;
-    mathTimeTxtbox.value = `${timeCounter}`;
-    mathTimeTxtbox.innerText = `${timeCounter}`;
+    clearCalculatorInput();
+    
+    focusMathFactsInput(mathFactsSelect);
+    resetStartScreen();
+    resetGameBoard();
   }
 };
 mathFactsQuitBtn.addEventListener("click", quitGameBoard);

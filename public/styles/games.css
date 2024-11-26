@@ -122,6 +122,7 @@ p.game-description, #math-facts-select-lbl, .game-select-div {
 
 .score-input-div input,
 .time-left-div input {
+  cursor: not-allowed;
   width: 62%;
   height: 1.67rem;
   margin: 0;
@@ -178,8 +179,9 @@ p.game-description, #math-facts-select-lbl, .game-select-div {
 
 .shake {
   animation: shake 0.5s;  /*shake for 1/2 a second*/
-  animation-iteration-count: 4; /*repeat animation 4 times*/
+  animation-iteration-count: 3 /*repeat animation 3 times*/
 }
+
 
 /* ------------------------------------ CSS for playing Math Facts operations -------------------------------  */
 div.error {
@@ -235,10 +237,26 @@ div#calculator-buttons {
   color: white;
   font-size: larger;
   font-weight: bold;
+}
+
+#calculator-buttons button.enabled {
+  cursor: pointer;
   background-color: green;
   border: 2px solid darkslategrey;
   box-shadow: 0.17rem 0.17rem 0.17rem grey;
-  cursor: pointer;
+}
+
+#calculator-buttons button.disabled {
+  cursor: not-allowed;
+  background-color: darkslategrey;
+  border: none;
+  box-shadow: none;
+}
+
+#calculator-buttons button.disabled:hover {
+  background-color: darkslategrey;
+  border: none;
+  box-shadow: none;
 }
 
 #calculator-buttons button:hover {
@@ -248,6 +266,20 @@ div#calculator-buttons {
 
 #calculator-buttons button:active {
   border: 2px inset white;
+}
+
+#math-facts-answer-input.enabled {
+  cursor: pointer;
+  background-color: white;
+  border: 1px solid grey;
+  box-shadow: 0.17rem 0.17rem 0.17rem grey;
+}
+
+#math-facts-answer-input.disabled {
+  cursor: not-allowed;
+  background-color: lightslategray;
+  border: none;
+  box-shadow: none;
 }
 
 
