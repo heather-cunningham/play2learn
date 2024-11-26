@@ -81,11 +81,7 @@ const resetGameBoard = ()=>{
   mathScoreTxtbox.innerText = "";
 };
 
-const setTimer = ()=>{
-  let timeCounter = 30;
-  mathTimeTxtbox.value = `${timeCounter}`;
-  mathTimeTxtbox.innerText = `${timeCounter}`;
-  
+const startTimer = (timeCounter)=>{
   timerIntervalId = setInterval(
     () => {
       if(timeCounter >= 0) {
@@ -124,7 +120,11 @@ const showGameBoard = (event) =>{
       
       focusMathFactsInput(mathFactsAnswerInput);
       resetGameBoard();
-      setTimer();
+      
+      const timeCounter = 30;
+      mathTimeTxtbox.value = `${timeCounter}`;
+      mathTimeTxtbox.innerText = `${timeCounter}`;
+      startTimer(timeCounter);
       
       resetStartScreen();
     }
@@ -150,7 +150,11 @@ const quitGameBoard = (event) =>{
     resetGameBoard();
     opSelected = "";
     opSelectedHeader.innerText = opSelected;
+    
     stopTimer(timerIntervalId);
+    const timeCounter = 30;
+    mathTimeTxtbox.value = `${timeCounter}`;
+    mathTimeTxtbox.innerText = `${timeCounter}`;
   }
 };
 mathFactsQuitBtn.addEventListener("click", quitGameBoard);
