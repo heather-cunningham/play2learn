@@ -9,7 +9,7 @@ const mathFactsGoBtn = document.getElementById("math-facts-go-btn");
 const mathFactsQuitBtn = document.getElementById("math-facts-quit-btn");
 
 const opSelectedHeader = document.getElementById("math-operation-selected-header");
-let opSelected = "";
+let operationSelected = "";
 
 const mathFactsAnswerInput = document.getElementById("math-facts-answer-input");
 
@@ -21,6 +21,15 @@ const mathScoreTxtbox = document.getElementById("math-score-input");
 const mathTimeTxtbox = document.getElementById("math-time-input");
 const timeCounter = 30;
 let timerIntervalId;
+
+const selectedOperatorSpan = document.getElementById("selected-operator");
+const operandSpansList = document.querySelectorAll(".operand");
+const arithmeticOperatorsObj = {
+  addition: "+",
+  subtraction: "-",
+  division: "/",
+  multiplication: "*"
+};
 
 // -------------------------------------- datasets & Custom Error Msgs ----------------------------------
 mathFactsSelect.dataset.errorMsg = "You must select one:";
@@ -79,21 +88,51 @@ const checkMathFactsSelect = (event) => {
 };
 mathFactsSelect.addEventListener("change", checkMathFactsSelect);
 
-const resetGameBoard = ()=>{
-  opSelected = updateSelected();
+/*
+* Returns a random integer between zero to nine
+* */
+const getRandomInt = ()=>{
+  return Math.floor(Math.random() * 10);
+};
+
+const setOperationAndExpression = ()=>{
+  operationSelected = updateSelected();
   // set the operation header to the one selected
-  opSelectedHeader.innerText = opSelected !== null ? opSelected : "";
+  opSelectedHeader.innerText = operationSelected !== null ? operationSelected : "";
+  operationSelected = operationSelected.toLowerCase();
   
+  // set the operator for the arithmetic expression per the operation selected
+  const operatorSelected = arithmeticOperatorsObj[operationSelected];
+  selectedOperatorSpan.innerText = operatorSelected !== null ? operatorSelected : "";
+  
+  // set the operands
+  let operand1 = getRandomInt();
+  let operand2 = getRandomInt();
+  if(operationSelected === "division" && operand2 === 0){
+    while(operand2 <= 0 ){
+      operand2 = getRandomInt();
+    }
+  }
+  operandSpansList[0].innerText = `${operand1}`;
+  operandSpansList[1].innerText = `${operand2}`;
+};
+
+const enableGameBoard = ()=>{
   mathFactsAnswerInput.disabled = false;
   mathFactsAnswerInput.classList.remove("disabled");
   mathFactsAnswerInput.classList.add("enabled");
-  clearCalculatorInput();
   
   for(let button of calcButtonsList){
     button.disabled = false;
     button.classList.remove("disabled");
     button.classList.add("enabled");
   }
+};
+
+const resetGameBoard = ()=>{
+  enableGameBoard();
+  setOperationAndExpression();
+  clearCalculatorInput();
   
   mathScoreTxtbox.style.backgroundColor = "floralwhite";
   mathScoreTxtbox.value = "0";
@@ -126,22 +165,28 @@ const stopTimer = (timerIntervalId)=>{
   clearInterval(timerIntervalId);
 };
 
-const endGame = ()=>{
+const disableGameBoard = ()=>{
   mathFactsAnswerInput.classList.remove("enabled");
   mathFactsAnswerInput.classList.add("disabled");
   mathFactsAnswerInput.disabled = true;
-  
-  mathScoreTxtbox.style.backgroundColor = "yellow";
-  mathTimeTxtbox.style.backgroundColor = "yellow";
-  mathTimeTxtbox.value = "TIME'S UP!!!";
-  mathTimeTxtbox.innerText = "TIME'S UP!!!";
-  mathTimeTxtbox.classList.add("shake");
   
   for(let button of calcButtonsList){
     button.classList.remove("enabled");
     button.classList.add("disabled");
     button.disabled = true;
   }
+};
+
+const endGame = ()=>{
+  mathScoreTxtbox.style.backgroundColor = "yellow";
+  
+  mathTimeTxtbox.style.backgroundColor = "yellow";
+  mathTimeTxtbox.value = "TIME'S UP!!!";
+  mathTimeTxtbox.innerText = "TIME'S UP!!!";
+  mathTimeTxtbox.classList.add("shake");
+  
+  clearCalculatorInput();
+  disableGameBoard();
 };
 
 const showGameBoard = (event) =>{
@@ -196,6 +241,7 @@ mathFactsQuitBtn.addEventListener("click", quitGameBoard);
 const clearCalculatorInput = ()=>{
   mathFactsAnswerInput.innerText = "";
   mathFactsAnswerInput.value = "";
+  focusMathFactsInput(mathFactsAnswerInput);
 };
 calcClearBtn.addEventListener("click", clearCalculatorInput);
 

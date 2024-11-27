@@ -98,6 +98,7 @@
   <h2 class="page-name">Math Facts</h2>
   
   <main>
+    <!-- START Screen - Math Facts -->
     <div id="math-facts-start" class="site-page-div">
       <p class="game-description">
         This game is for practicing arithmetic operations:
@@ -136,6 +137,7 @@
         </ol>
       </div>
     </div>
+    <!-- END start Screen - Math Facts -->
     
     <!-- START - Game Board -->
     <div id="math-facts-game" class="site-page-div" style="display: none">
@@ -145,7 +147,9 @@
         <label id="math-question-lbl"
                for="math-facts-answer-input"
                class="question-lbl">
-          5 + 3
+          <span id="firstOperand" class="operand"></span>
+          <span id="selected-operator" class="operator"></span>
+          <span id="secondOperand" class="operand"></span>
         </label>
         <input id="math-facts-answer-input"
                class="answer-input enabled"
@@ -165,10 +169,16 @@
           <button class="enabled" type="button" name="7" value="7">7</button>
           <button class="enabled" type="button" name="8" value="8">8</button>
           <button class="enabled" type="button" name="9" value="9">9</button>
+          <button class="enabled" id="calculator-negate-btn" type="button" name="negate" value="negate">
+            +/-
+          </button>
+          <button class="enabled" id="calculator-decimal-btn" type="button" name="decimal" value="decimal">
+            .
+          </button>
+          <button class="enabled" type="button" name="0" value="0">0</button>
           <button class="enabled" id="calculator-clear-btn" type="button" name="clear" value="clear">
             Clear
           </button>
-          <button class="enabled" type="button" name="0" value="0">0</button>
           <button class="enabled" id="calculator-enter-btn" type="button" name="enter" value="enter">
             Enter
           </button>

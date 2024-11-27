@@ -230,6 +230,10 @@ div#calculator-buttons {
   gap: 1.67rem;
 }
 
+#calculator-enter-btn {
+  grid-column: span 2;
+}
+
 #calculator-buttons button {
   min-width: 5rem;
   min-height: 2.5rem;
