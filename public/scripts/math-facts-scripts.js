@@ -40,6 +40,7 @@ let timerIntervalId;
 // -------------------------------------- datasets & Custom Error Msgs ----------------------------------
 mathFactsSelect.dataset.errorMsg = "You must select one:";
 
+mathFactsAnswerInput.dataset.errorMsg = "NOT A NUMBER!";
 
 // -------------------------------------- addEventListener()'s ---------------------------------------
 const focusMathFactsInput = (inputEl)=>{
@@ -245,6 +246,10 @@ const quitGameBoard = (event) =>{
 mathFactsQuitBtn.addEventListener("click", quitGameBoard);
 
 const clearCalculatorInput = ()=>{
+  mathFactsAnswerInput.style.backgroundColor = "white";
+  mathFactsAnswerInput.style.fontWeight = "normal";
+  mathFactsAnswerInput.style.color = "black";
+  
   mathFactsAnswerInput.innerText = "";
   mathFactsAnswerInput.value = "";
   mathFactsAnswerInput.setAttribute("value", "");
@@ -266,7 +271,7 @@ for(let numButton of calcNumButtonsList){
 
 const clickCalcDecimalBtn = (event)=>{
   event.preventDefault();
-  let decimalPoint = event.target.value;
+  let decimalPoint = event.target.value === "." ? event.target.value : ".";
   
   if(mathFactsAnswerInput.value === "" && mathFactsAnswerInput.innerText === ""){
     mathFactsAnswerInput.value = "0" + decimalPoint;
@@ -291,13 +296,14 @@ calcDecimalBtn.addEventListener("click", clickCalcDecimalBtn);
 
 const clickCalcNegateBtn = (event)=>{
   event.preventDefault();
-  const negativeSymbol = event.target.value;
+  const negativeSymbol = event.target.value === "-" ? event.target.value : "-";
   
   if (mathFactsAnswerInput.value === "0" || mathFactsAnswerInput.innerText === "0") {
     mathFactsAnswerInput.value = "0";
     mathFactsAnswerInput.setAttribute("value", "0");
     mathFactsAnswerInput.innerText = "0";
-  } else if(mathFactsAnswerInput.value === "" || mathFactsAnswerInput.innerText === ""){
+  } else if((mathFactsAnswerInput.value === "" || mathFactsAnswerInput.innerText === "")
+    && (mathFactsAnswerInput.value.length <= 0 && mathFactsAnswerInput.innerText.length <= 0)){
     mathFactsAnswerInput.value = negativeSymbol;
     mathFactsAnswerInput.setAttribute("value", negativeSymbol);
     mathFactsAnswerInput.innerText = mathFactsAnswerInput.value;
@@ -314,11 +320,42 @@ const clickCalcNegateBtn = (event)=>{
 };
 calcNegateBtn.addEventListener("click", clickCalcNegateBtn);
 
-// const validateMathFactsAnswerInput = (event)=>{
-//
-// };
-// mathFactsAnswerInput.addEventListener("keydown", (event)=>{
-//   if(event.key === "Enter"){
-//     validateMathFactsAnswerInput(event);
-//   }
-// });
+const validateMathFactsAnswerInput = (event)=>{
+  const regExPattern = /^-?\d*\.?\d*$/;
+  const entry = mathFactsAnswerInput.value;
+  
+  if(!entry.match(regExPattern)) {
+    event.preventDefault();
+    mathFactsAnswerInput.value = `${mathFactsAnswerInput.dataset.errorMsg}`;
+    mathFactsAnswerInput.style.backgroundColor = "yellow";
+    mathFactsAnswerInput.style.fontWeight = "bold";
+    mathFactsAnswerInput.style.color = "red";
+    setTimeout(()=> clearCalculatorInput(), 1000 );
+  } else if ((mathFactsAnswerInput.value.charAt(0) === "0" || mathFactsAnswerInput.innerText.charAt(0) === "0")
+    && (mathFactsAnswerInput.value.charAt(1) !== "." || mathFactsAnswerInput.value.charAt(1) !== ".") ) {
+    // NOTE:  Could not even get Copilot to create the correct regex pattern to check for this condtion.
+    // This works, but now can't type a zero into the input w/o throwing the error.
+    // Need to do the touched/untouched code pattern so the error doesn't throw until user is done
+    // typing.
+    event.preventDefault();
+    mathFactsAnswerInput.value = `${mathFactsAnswerInput.dataset.errorMsg}`;
+    mathFactsAnswerInput.style.backgroundColor = "yellow";
+    mathFactsAnswerInput.style.fontWeight = "bold";
+    mathFactsAnswerInput.style.color = "red";
+    setTimeout(()=> clearCalculatorInput(), 1000 );
+  } else if (mathFactsAnswerInput.value.charAt(0) === "."
+    || mathFactsAnswerInput.innerText.charAt(0) === ".") {
+      mathFactsAnswerInput.value = "0" + mathFactsAnswerInput.value;
+      mathFactsAnswerInput.setAttribute("value", mathFactsAnswerInput.value);
+      mathFactsAnswerInput.innerText = mathFactsAnswerInput.value;
+  }
+};
+calcEnterBtn.addEventListener("click", validateMathFactsAnswerInput);
+
+mathFactsAnswerInput.addEventListener("keydown", (event)=>{
+  if(event.key ===  "Enter")
+    validateMathFactsAnswerInput(event);
+});
+
+mathFactsAnswerInput.addEventListener("input", validateMathFactsAnswerInput);
+
