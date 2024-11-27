@@ -14,13 +14,15 @@ let operationSelected = "";
 const mathFactsAnswerInput = document.getElementById("math-facts-answer-input");
 
 const calcButtonsList = document.querySelectorAll("#calculator-buttons button");
+const calcNumButtonsList = document.querySelectorAll(".calc-num-btn");
+
 const calcClearBtn = document.getElementById("calculator-clear-btn");
+const calcNegateBtn = document.getElementById("calculator-negate-btn");
+const calcDecimalBtn = document.getElementById("calculator-decimal-btn");
 const calcEnterBtn = document.getElementById("calculator-enter-btn");
 
 const mathScoreTxtbox = document.getElementById("math-score-input");
 const mathTimeTxtbox = document.getElementById("math-time-input");
-const timeCounter = 30;
-let timerIntervalId;
 
 const selectedOperatorSpan = document.getElementById("selected-operator");
 const operandSpansList = document.querySelectorAll(".operand");
@@ -30,6 +32,10 @@ const arithmeticOperatorsObj = {
   division: "/",
   multiplication: "*"
 };
+
+const timeCounter = 30;
+let timerIntervalId;
+
 
 // -------------------------------------- datasets & Custom Error Msgs ----------------------------------
 mathFactsSelect.dataset.errorMsg = "You must select one:";
@@ -241,7 +247,65 @@ mathFactsQuitBtn.addEventListener("click", quitGameBoard);
 const clearCalculatorInput = ()=>{
   mathFactsAnswerInput.innerText = "";
   mathFactsAnswerInput.value = "";
+  mathFactsAnswerInput.setAttribute("value", "");
   focusMathFactsInput(mathFactsAnswerInput);
 };
 calcClearBtn.addEventListener("click", clearCalculatorInput);
 
+const clickCalculatorNumBtn = (event)=>{
+  event.preventDefault();
+  const numValue = event.target.value;
+  
+  mathFactsAnswerInput.value += numValue;
+  mathFactsAnswerInput.setAttribute("value", mathFactsAnswerInput.value);
+  mathFactsAnswerInput.innerText += numValue;
+};
+for(let numButton of calcNumButtonsList){
+  numButton.addEventListener("click", clickCalculatorNumBtn);
+}
+
+const clickCalcDecimalBtn = (event)=>{
+  event.preventDefault();
+  let decimalPoint = event.target.value;
+  
+  if(mathFactsAnswerInput.value === "" && mathFactsAnswerInput.innerText === ""){
+    mathFactsAnswerInput.value = "0" + decimalPoint;
+    mathFactsAnswerInput.setAttribute("value", mathFactsAnswerInput.value);
+    mathFactsAnswerInput.innerText = "0" + decimalPoint;
+  } else if (mathFactsAnswerInput.value.charAt(0) === decimalPoint
+      || mathFactsAnswerInput.innerText.charAt(0) === decimalPoint) {
+        mathFactsAnswerInput.value = "0" + mathFactsAnswerInput.value;
+        mathFactsAnswerInput.setAttribute("value", mathFactsAnswerInput.value);
+        mathFactsAnswerInput.innerText = "0" + mathFactsAnswerInput.innerText;
+  } else if (mathFactsAnswerInput.value.includes(decimalPoint)
+      || mathFactsAnswerInput.innerText.includes(decimalPoint)) {// don't add another decimal point
+        const decimalPnt1Index = mathFactsAnswerInput.value.indexOf(decimalPoint);
+        mathFactsAnswerInput.value = mathFactsAnswerInput.value.slice(0, decimalPnt1Index + 1)
+          + mathFactsAnswerInput.value.slice(decimalPnt1Index + 1).replaceAll(decimalPoint, "");
+        mathFactsAnswerInput.setAttribute("value", mathFactsAnswerInput.value);
+        mathFactsAnswerInput.innerText = mathFactsAnswerInput.innerText.slice(0, decimalPnt1Index + 1)
+          + mathFactsAnswerInput.innerText.slice(decimalPnt1Index + 1).replaceAll(decimalPoint, "");
+  }
+};
+calcDecimalBtn.addEventListener("click", clickCalcDecimalBtn);
+
+const clickCalcNegateBtn = (event)=>{
+  event.preventDefault();
+  const negativeSymbol = event.target.value;
+  
+  if(mathFactsAnswerInput.value === "" && mathFactsAnswerInput.innerText === ""){
+    mathFactsAnswerInput.value = negativeSymbol;
+    mathFactsAnswerInput.setAttribute("value", negativeSymbol);
+    mathFactsAnswerInput.innerText = negativeSymbol;
+  } else if (mathFactsAnswerInput.value.charAt(0) === negativeSymbol
+      || mathFactsAnswerInput.innerText.charAt(0) === negativeSymbol) {
+        mathFactsAnswerInput.value = mathFactsAnswerInput.value.slice(1);
+        mathFactsAnswerInput.setAttribute("value", mathFactsAnswerInput.value);
+        mathFactsAnswerInput.innerText = mathFactsAnswerInput.innerText.slice(1);
+  } else {
+    mathFactsAnswerInput.value = negativeSymbol + mathFactsAnswerInput.value;
+    mathFactsAnswerInput.setAttribute("value", mathFactsAnswerInput.value);
+    mathFactsAnswerInput.innerText = negativeSymbol + mathFactsAnswerInput.innerText;
+  }
+};
+calcNegateBtn.addEventListener("click", clickCalcNegateBtn);
