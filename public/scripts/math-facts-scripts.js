@@ -159,8 +159,8 @@ const startTimer = (timeCounter)=>{
         mathTimeTxtbox.innerText = `${timeCounter}`;
         timeCounter--;
       } else {
-        stopTimer(timerIntervalId);
-        endGame();
+        // stopTimer(timerIntervalId);
+        // endGame();
       }
     },
     1000
@@ -205,7 +205,7 @@ const showGameBoard = (event) =>{
       
       resetGameBoard();
       focusMathFactsInput(mathFactsAnswerInput);
-      startTimer(timeCounter);
+      //startTimer(timeCounter);
       resetStartScreen();
     }
   }
@@ -234,7 +234,7 @@ const quitGameBoard = (event) =>{
     mathFactsGameDiv.style.display = "none";
     mathFactsStartDiv.style.display = "block";
     
-    stopTimer(timerIntervalId);
+    // stopTimer(timerIntervalId);
     clearCalculatorInput();
     
     focusMathFactsInput(mathFactsSelect);
@@ -258,7 +258,7 @@ const clickCalculatorNumBtn = (event)=>{
   
   mathFactsAnswerInput.value += numValue;
   mathFactsAnswerInput.setAttribute("value", mathFactsAnswerInput.value);
-  mathFactsAnswerInput.innerText += numValue;
+  mathFactsAnswerInput.innerText += mathFactsAnswerInput.value;
 };
 for(let numButton of calcNumButtonsList){
   numButton.addEventListener("click", clickCalculatorNumBtn);
@@ -271,20 +271,20 @@ const clickCalcDecimalBtn = (event)=>{
   if(mathFactsAnswerInput.value === "" && mathFactsAnswerInput.innerText === ""){
     mathFactsAnswerInput.value = "0" + decimalPoint;
     mathFactsAnswerInput.setAttribute("value", mathFactsAnswerInput.value);
-    mathFactsAnswerInput.innerText = "0" + decimalPoint;
+    mathFactsAnswerInput.innerText = mathFactsAnswerInput.value;
   } else if (mathFactsAnswerInput.value.charAt(0) === decimalPoint
       || mathFactsAnswerInput.innerText.charAt(0) === decimalPoint) {
         mathFactsAnswerInput.value = "0" + mathFactsAnswerInput.value;
         mathFactsAnswerInput.setAttribute("value", mathFactsAnswerInput.value);
-        mathFactsAnswerInput.innerText = "0" + mathFactsAnswerInput.innerText;
+        mathFactsAnswerInput.innerText = mathFactsAnswerInput.value;
   } else if (mathFactsAnswerInput.value.includes(decimalPoint)
-      || mathFactsAnswerInput.innerText.includes(decimalPoint)) {// don't add another decimal point
-        const decimalPnt1Index = mathFactsAnswerInput.value.indexOf(decimalPoint);
-        mathFactsAnswerInput.value = mathFactsAnswerInput.value.slice(0, decimalPnt1Index + 1)
-          + mathFactsAnswerInput.value.slice(decimalPnt1Index + 1).replaceAll(decimalPoint, "");
-        mathFactsAnswerInput.setAttribute("value", mathFactsAnswerInput.value);
-        mathFactsAnswerInput.innerText = mathFactsAnswerInput.innerText.slice(0, decimalPnt1Index + 1)
-          + mathFactsAnswerInput.innerText.slice(decimalPnt1Index + 1).replaceAll(decimalPoint, "");
+      || mathFactsAnswerInput.innerText.includes(decimalPoint)) {
+    // don't add another decimal point
+    const decimalPnt1Index = mathFactsAnswerInput.value.indexOf(decimalPoint);
+    mathFactsAnswerInput.value = mathFactsAnswerInput.value.slice(0, decimalPnt1Index + 1)
+      + mathFactsAnswerInput.value.slice(decimalPnt1Index + 1).replaceAll(decimalPoint, "");
+    mathFactsAnswerInput.setAttribute("value", mathFactsAnswerInput.value);
+    mathFactsAnswerInput.innerText = mathFactsAnswerInput.value;
   }
 };
 calcDecimalBtn.addEventListener("click", clickCalcDecimalBtn);
@@ -293,19 +293,32 @@ const clickCalcNegateBtn = (event)=>{
   event.preventDefault();
   const negativeSymbol = event.target.value;
   
-  if(mathFactsAnswerInput.value === "" && mathFactsAnswerInput.innerText === ""){
+  if (mathFactsAnswerInput.value === "0" || mathFactsAnswerInput.innerText === "0") {
+    mathFactsAnswerInput.value = "0";
+    mathFactsAnswerInput.setAttribute("value", "0");
+    mathFactsAnswerInput.innerText = "0";
+  } else if(mathFactsAnswerInput.value === "" || mathFactsAnswerInput.innerText === ""){
     mathFactsAnswerInput.value = negativeSymbol;
     mathFactsAnswerInput.setAttribute("value", negativeSymbol);
-    mathFactsAnswerInput.innerText = negativeSymbol;
+    mathFactsAnswerInput.innerText = mathFactsAnswerInput.value;
   } else if (mathFactsAnswerInput.value.charAt(0) === negativeSymbol
       || mathFactsAnswerInput.innerText.charAt(0) === negativeSymbol) {
-        mathFactsAnswerInput.value = mathFactsAnswerInput.value.slice(1);
-        mathFactsAnswerInput.setAttribute("value", mathFactsAnswerInput.value);
-        mathFactsAnswerInput.innerText = mathFactsAnswerInput.innerText.slice(1);
+    mathFactsAnswerInput.value = mathFactsAnswerInput.value.slice(1);
+    mathFactsAnswerInput.setAttribute("value", mathFactsAnswerInput.value);
+    mathFactsAnswerInput.innerText = mathFactsAnswerInput.value;
   } else {
     mathFactsAnswerInput.value = negativeSymbol + mathFactsAnswerInput.value;
     mathFactsAnswerInput.setAttribute("value", mathFactsAnswerInput.value);
-    mathFactsAnswerInput.innerText = negativeSymbol + mathFactsAnswerInput.innerText;
+    mathFactsAnswerInput.innerText = mathFactsAnswerInput.value;
   }
 };
 calcNegateBtn.addEventListener("click", clickCalcNegateBtn);
+
+// const validateMathFactsAnswerInput = (event)=>{
+//
+// };
+// mathFactsAnswerInput.addEventListener("keydown", (event)=>{
+//   if(event.key === "Enter"){
+//     validateMathFactsAnswerInput(event);
+//   }
+// });
