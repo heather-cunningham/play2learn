@@ -320,42 +320,64 @@ const clickCalcNegateBtn = (event)=>{
 };
 calcNegateBtn.addEventListener("click", clickCalcNegateBtn);
 
+const flashAnErrorInTextInput = (textInputEl)=>{
+  textInputEl.value = `${textInputEl.dataset.errorMsg}`;
+  textInputEl.style.backgroundColor = "yellow";
+  textInputEl.style.fontWeight = "bold";
+  textInputEl.style.color = "red";
+  
+  setTimeout(()=> clearCalculatorInput(), 1500 );
+};
+
+const checkFirstDigit = (textInputEl)=>{
+  const entry = textInputEl.value;
+  const firstDigit = entry.charAt(0);
+  
+  switch (firstDigit) {
+    case " ":
+      return false;
+    case "0":
+      return !(entry.length > 1 && entry.charAt(1) !== ".");
+    case "-":
+      return !(entry.length >= 3 && entry.charAt(1) === "0" && entry.charAt(2) !== ".");
+    case ".":
+      textInputEl.value = "0" + textInputEl.value;
+      textInputEl.innerText = textInputEl.value;
+      return true;
+    default:
+      return true;
+  }//end switch
+};
+
 const validateMathFactsAnswerInput = (event)=>{
   const regExPattern = /^-?\d*\.?\d*$/;
   const entry = mathFactsAnswerInput.value;
   
   if(!entry.match(regExPattern)) {
     event.preventDefault();
-    mathFactsAnswerInput.value = `${mathFactsAnswerInput.dataset.errorMsg}`;
-    mathFactsAnswerInput.style.backgroundColor = "yellow";
-    mathFactsAnswerInput.style.fontWeight = "bold";
-    mathFactsAnswerInput.style.color = "red";
-    setTimeout(()=> clearCalculatorInput(), 1000 );
-  } else if ((mathFactsAnswerInput.value.charAt(0) === "0" || mathFactsAnswerInput.innerText.charAt(0) === "0")
-    && (mathFactsAnswerInput.value.charAt(1) !== "." || mathFactsAnswerInput.value.charAt(1) !== ".") ) {
-    // NOTE:  Could not even get Copilot to create the correct regex pattern to check for this condtion.
-    // This works, but now can't type a zero into the input w/o throwing the error.
-    // Need to do the touched/untouched code pattern so the error doesn't throw until user is done
-    // typing.
+    flashAnErrorInTextInput(mathFactsAnswerInput);
+    return false;
+  } else if(!checkFirstDigit(mathFactsAnswerInput)) {
     event.preventDefault();
-    mathFactsAnswerInput.value = `${mathFactsAnswerInput.dataset.errorMsg}`;
-    mathFactsAnswerInput.style.backgroundColor = "yellow";
-    mathFactsAnswerInput.style.fontWeight = "bold";
-    mathFactsAnswerInput.style.color = "red";
-    setTimeout(()=> clearCalculatorInput(), 1000 );
-  } else if (mathFactsAnswerInput.value.charAt(0) === "."
-    || mathFactsAnswerInput.innerText.charAt(0) === ".") {
-      mathFactsAnswerInput.value = "0" + mathFactsAnswerInput.value;
-      mathFactsAnswerInput.setAttribute("value", mathFactsAnswerInput.value);
-      mathFactsAnswerInput.innerText = mathFactsAnswerInput.value;
+    flashAnErrorInTextInput(mathFactsAnswerInput);
+    return false;
+  } else {
+    mathFactsAnswerInput.setAttribute("value", mathFactsAnswerInput.value);
+    return true;
   }
 };
-calcEnterBtn.addEventListener("click", validateMathFactsAnswerInput);
+mathFactsAnswerInput.addEventListener("input", validateMathFactsAnswerInput);
 
+const checkAnswer = (event)=>{
+  if(validateMathFactsAnswerInput(event)){
+  
+  }
+};
+//calcEnterBtn.addEventListener("click", validateMathFactsAnswerInput);
 mathFactsAnswerInput.addEventListener("keydown", (event)=>{
-  if(event.key ===  "Enter")
-    validateMathFactsAnswerInput(event);
+  if(event.key === "Enter") {
+    //validateMathFactsAnswerInput(event);
+  }
 });
 
-mathFactsAnswerInput.addEventListener("input", validateMathFactsAnswerInput);
 
