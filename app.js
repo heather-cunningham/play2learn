@@ -56,6 +56,50 @@ app.post("/contact-response-msg",
     response.send(responseMsg);
 });
 
+
+// ------------------------------------- Math Facts game page Final Screen for end of game  ----------------------
+app.get("/math-facts-final-screen",
+  (request, response)=>
+  {
+    const jsonStr = request.query["jsonStr"];
+    const endGameObj = JSON.parse(jsonStr);
+    
+    const operation = endGameObj.operation;
+    const timesUpNote = endGameObj.timesupnote;
+    const playersFinalScore = endGameObj.score;
+    
+    // response HTML:
+    const responseMsg = `
+        <div id="math-facts-final-screen" class="site-page-div final-screen">
+          <h3 id="math-facts-operation" class="game-header">
+            ${operation}
+          </h3>
+          <p id="math-facts-times-up-note" class="times-up-note">
+            ${timesUpNote}
+          </p>
+          <h3 id="math-facts-final-score-header" class="final-score-header">
+            Your final score is:
+          </h3>
+          <h3 id="math-facts-final-score" class="final-score">
+            ${playersFinalScore}
+          </h3>
+          <button id="play-math-facts-again-btn"
+                  class="play-again-btn"
+                  alt="Play the Math Facts game again"
+                  name="again"
+                  type="button"
+                  value="Play Again">
+            Play Again
+          </button>
+        </div>`;
+    
+    response.status(200);
+    response.send(responseMsg);
+});
+
+
+
+// ------------------------------------------ App listening port ------------------------------------------------
 app.listen(port, ()=>{
   console.log("Express / Node.js app running on port: " + port);
 }); // 8081

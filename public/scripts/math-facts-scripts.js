@@ -33,6 +33,7 @@ const arithmeticOperatorsObj = {
   multiplication: "*"
 };
 
+const timesUpStr = "TIME'S UP!!!";
 const timeCounter = 30;
 let timerIntervalId;
 
@@ -203,11 +204,24 @@ const disableGameBoard = ()=>{
   }
 };
 
+const displayFinalScreen = ()=>{
+  const endGameObj = {
+    operation: operationSelected,
+    timesupnote: timesUpStr,
+    score: finalScore
+  };
+};
+
 const endGame = ()=>{
+  operationSelected = operationSelected.slice(0, 1).toUpperCase() + operationSelected.slice(1);
+  console.log("#### endGAME  operationSelected: " + operationSelected);
+  
+  finalScore = mathScoreTxtbox.value;
+  console.log("#### endGAME  finalScore: " + finalScore);
   mathScoreTxtbox.style.backgroundColor = "yellow";
   
   mathTimeTxtbox.style.backgroundColor = "yellow";
-  mathTimeTxtbox.value = "TIME'S UP!!!";
+  mathTimeTxtbox.value = timesUpStr;
   mathTimeTxtbox.setAttribute("value", mathTimeTxtbox.value);
   mathTimeTxtbox.innerText = mathTimeTxtbox.value;
   mathTimeTxtbox.classList.add("shake");
