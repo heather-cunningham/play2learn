@@ -166,7 +166,9 @@ main {
   min-height: 100%;
 }
 
-#site-welcome-div > p, .site-page-div > p:not(.game-description) {
+#site-welcome-div > p,
+.site-page-div > p:not(.game-description),
+.site-page-div > p:not(.times-up-note) {
   margin: 0.6rem 1rem 2.3rem;
   padding: 1rem 1rem 1.5rem;
   font-size: 1.2rem;
@@ -257,7 +259,8 @@ button[name="play"],
 button[name="send"],
 button[name="login"],
 button[name="register"],
-button[name="math-facts-go"] {
+button[name="math-facts-go"],
+button[name="again"] {
   height: 2.5rem;
   padding: 0.3rem;
   color: white;
@@ -276,7 +279,8 @@ button[name="math-facts-go"] {
   width: 6rem;
 }
 
-button[name="register"] {
+button[name="register"],
+button[name="again"] {
   width: 8rem;
 }
 
