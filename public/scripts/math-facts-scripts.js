@@ -33,16 +33,18 @@ const arithmeticOperatorsObj = {
   multiplication: "*"
 };
 
-const invalidNumberErrorMsg = "NOT A NUMBER!";
-const incorrectAnswerErrorMsg = "Incorrect";
-
 const timeCounter = 30;
 let timerIntervalId;
-// NOTE!!!  Some'in wrong w/ this score not resetting to 0 when start a new game if already played a game
+
 let usersScore = 0;
+let finalScore = 0;
 
 // -------------------------------------- datasets & Custom Error Msgs ----------------------------------
 mathFactsSelect.dataset.errorMsg = "You must select one:";
+
+const invalidNumberErrorMsg = "NOT A NUMBER!";
+const incorrectAnswerErrorMsg = "Incorrect";
+
 
 // -------------------------------------- addEventListener()'s ---------------------------------------
 const focusMathFactsInput = (inputEl)=>{
@@ -144,14 +146,12 @@ const enableGameBoard = ()=>{
   }
 };
 
-const resetGameBoard = ()=>{
-  enableGameBoard();
-  setOperationAndExpression();
-  clearCalculatorInput();
+const resetScoreAndTimer = () =>{
+  usersScore = 0;
   
   mathScoreTxtbox.style.backgroundColor = "floralwhite";
-  mathScoreTxtbox.value = "0";
-  mathScoreTxtbox.setAttribute("valuee", mathScoreTxtbox.value);
+  mathScoreTxtbox.value = `${usersScore}`;
+  mathScoreTxtbox.setAttribute("value", mathScoreTxtbox.value);
   mathScoreTxtbox.innerText = mathScoreTxtbox.value;
   
   mathTimeTxtbox.classList.remove("shake");
@@ -160,6 +160,13 @@ const resetGameBoard = ()=>{
   mathTimeTxtbox.value = `${timeCounter}`;
   mathTimeTxtbox.setAttribute("value", mathTimeTxtbox.value);
   mathTimeTxtbox.innerText = `${mathTimeTxtbox.value}`;
+};
+
+const resetGameBoard = ()=>{
+  enableGameBoard();
+  setOperationAndExpression();
+  clearCalculatorInput();
+  resetScoreAndTimer();
 };
 
 const startTimer = (timeCounter)=>{
