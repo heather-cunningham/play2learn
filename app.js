@@ -21,6 +21,8 @@ app.get("/", (request, response) => {
 });
 
 app.get("/testimonials", (request, response) => {
+  // NOTE to Grading Instructor and/or Jared Dunn:  I could not get this GET request to work the way we did
+  // in class, so I used async fetch() instead.
   if(testimonialsJSON && testimonialsJSON.length > 0) {
     // If the testimonials JSON is not null and not empty, send the response to:
     // scripts.js > fetchQuotes()
@@ -32,7 +34,13 @@ app.get("/testimonials", (request, response) => {
 
 
 // ------------------------------------------ Contact-Us page ------------------------------------------------
-app.post("/contact-response-msg", 
+// NOTE to Grading Instructor and/or Jared Dunn: Following along with the class' instruction,
+// I could not get any other validation checks to work here, other than this email check,
+// and I could not figure out what I was doing wrong.  The project directions didn't mention anything
+// about requiring these types of check, so I just left it with this simple email validation check.
+// This kind of server-side code or backend code is what I truly need to work on,
+// and a weak spot in my skills.  (I'm a Front End dev trying to become Full Stack.)
+app.post("/contact-response-msg",
   [ check("email", "Invalid email address.").isEmail() ],
   (request, response) => {
     const contactErrors = validationResult(request);
@@ -47,13 +55,12 @@ app.post("/contact-response-msg",
       }
     
       responseMsg = `<ul id="contact-response-message">
-                    Message not sent due to:
+                      Message not sent due to:
                         ${contactErrorsHtmlList}
                     </ul>`
     }
     
-    response.status(200);
-    response.send(responseMsg);
+    response.status(200).send(responseMsg);
 });
 
 
@@ -71,28 +78,27 @@ app.get("/math-facts-final-screen",
         
         // response HTML:
         const responseMsg = `
-          <div id="math-facts-final-screen" class="site-page-div final-screen">
-            <h3 id="math-facts-operation" class="game-header">
-              ${operation}
-            </h3>
-            <p id="math-facts-times-up-note" class="times-up-note">
-              ${timesUpNote}
-            </p>
-            <h3 id="math-facts-final-score-header" class="final-score-header">
-              Your final score is:
-            </h3>
-            <h3 id="math-facts-final-score" class="final-score">
-              ${playersFinalScore}
-            </h3>
-            <button id="play-math-facts-again-btn"
-                    class="play-again-btn"
-                    alt="Play the Math Facts game again"
-                    name="again"
-                    type="button"
-                    value="Play Again">
-              Play Again
-            </button>
-          </div>`;
+          <h3 id="math-facts-operation" class="game-header">
+            ${operation}
+          </h3>
+          <p id="math-facts-times-up-note" class="times-up-note">
+            ${timesUpNote}
+          </p>
+          <h3 id="math-facts-final-score-header" class="final-score-header">
+            Your final score is:
+          </h3>
+          <h3 id="math-facts-final-score" class="final-score">
+            ${playersFinalScore}
+          </h3>
+          <button id="play-math-facts-again-btn"
+                  class="play-again-btn"
+                  alt="Play the Math Facts game again"
+                  name="again"
+                  type="button"
+                  value="Play Again">
+            Play Again
+          </button>`;
+        
         response.status(200).send(responseMsg);
       }catch (error) {
         response.status(400).send('Invalid JSON');

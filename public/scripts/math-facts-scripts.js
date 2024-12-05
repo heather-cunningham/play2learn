@@ -4,6 +4,7 @@ const mathFactsOptions = document.querySelectorAll("#math-facts-select option")
 
 const mathFactsStartDiv = document.getElementById("math-facts-start");
 const mathFactsGameDiv = document.getElementById("math-facts-game");
+const mathFactsFinalScreenDiv = document.getElementById("math-facts-final-screen");
 
 const mathFactsGoBtn = document.getElementById("math-facts-go-btn");
 const mathFactsQuitBtn = document.getElementById("math-facts-quit-btn");
@@ -39,6 +40,7 @@ let timerIntervalId;
 
 let usersScore = 0;
 let finalScore = 0;
+
 
 // -------------------------------------- datasets & Custom Error Msgs ----------------------------------
 mathFactsSelect.dataset.errorMsg = "You must select one:";
@@ -176,7 +178,6 @@ const startTimer = (timeCounter)=>{
       if(timeCounter >= 0) {
         mathTimeTxtbox.value = `${timeCounter}`;
         mathTimeTxtbox.setAttribute("value", mathTimeTxtbox.value);
-        // mathTimeTxtbox.innerText = `${timeCounter}`;
         mathTimeTxtbox.innerText = mathTimeTxtbox.value;
         timeCounter--;
       } else {
@@ -204,7 +205,23 @@ const disableGameBoard = ()=>{
   }
 };
 
+const showStartScreen = (event) => {
+  event.preventDefault();
+  
+  if (mathFactsStartDiv.style.display === "none") {
+    mathFactsStartDiv.style.display = "block";
+    mathFactsFinalScreenDiv.style.display = "none";
+    mathFactsGameDiv.style.display = "none";
+    
+    focusMathFactsInput(mathFactsSelect);
+    resetStartScreen();
+  }
+};
+
 const displayFinalScreen = () => {
+  mathFactsStartDiv.style.display = "none";
+  mathFactsGameDiv.style.display = "none";
+  
   const endGameObj = {
     operation: operationSelected,
     timesupnote: timesUpStr, // ie, "TIMES UP!!!"
@@ -212,9 +229,9 @@ const displayFinalScreen = () => {
   };
   const jsonStr = encodeURIComponent(JSON.stringify(endGameObj));
   const xmlHttpReq = new XMLHttpRequest();
-  const main = document.querySelector("main");
   
-  main.innerHTML = "Finalizing score...";
+  mathFactsFinalScreenDiv.style.display = "block";
+  mathFactsFinalScreenDiv.innerHTML = `<p>Finalizing score...</p>`;
   
   xmlHttpReq.open("GET", `/math-facts-final-screen?jsonStr=${jsonStr}`, true);
   
@@ -223,31 +240,35 @@ const displayFinalScreen = () => {
       if (xmlHttpReq.status === 200) {
         // noinspection UnnecessaryLocalVariableJS
         const endOfGameResponse = xmlHttpReq.responseText;
-        main.innerHTML = endOfGameResponse;
+        mathFactsFinalScreenDiv.innerHTML = endOfGameResponse;
       } else {
-        main.innerHTML = `
-          <div id="math-facts-final-screen" class="site-page-div final-screen">
-              <h3 id="math-facts-operation" class="game-header">
-                ${operationSelected}
-              </h3>
-              <p id="math-facts-times-up-note" class="times-up-note">
-                ${timesUpStr}
-              </p>
-              <h3 id="math-facts-final-score-header" class="final-score-header">
-                Your final score is: ${finalScore}
-              </h3>
-              <p class="apology">
-                Apologies, an error occurred recording your final score, and it was not saved for posterity.
-              </p>
-              <button id="play-math-facts-again-btn"
-                      class="play-again-btn"
-                      alt="Play the Math Facts game again"
-                      name="again"
-                      type="button"
-                      value="Play Again">
-                Play Again
-              </button>
-            </div>`;
+        mathFactsFinalScreenDiv.innerHTML = `
+          <h3 id="math-facts-operation" class="game-header">
+            ${operationSelected}
+          </h3>
+          <p id="math-facts-times-up-note" class="times-up-note">
+            ${timesUpStr}
+          </p>
+          <h3 id="math-facts-final-score-header" class="final-score-header">
+            Your final score is: ${finalScore}
+          </h3>
+          <p class="apology">
+            Apologies, an error occurred recording your final score, and it was not saved for posterity.
+          </p>
+          <button id="play-math-facts-again-btn"
+                  class="play-again-btn"
+                  alt="Play the Math Facts game again"
+                  name="again"
+                  type="button"
+                  value="Play Again">
+            Play Again
+          </button>`;
+      } // end if (xmlHttpReq.status === 200)
+      
+      // Handle click PLay Again btn:
+      const mathFactsPlayAgainBtn = document.getElementById("play-math-facts-again-btn");
+      if(mathFactsPlayAgainBtn) {
+        mathFactsPlayAgainBtn.addEventListener("click", showStartScreen);
       }
     }
   };
@@ -257,10 +278,8 @@ const displayFinalScreen = () => {
 
 const endGame = ()=>{
   operationSelected = operationSelected.slice(0, 1).toUpperCase() + operationSelected.slice(1);
-  console.log("#### endGAME  operationSelected: " + operationSelected);
   
   finalScore = mathScoreTxtbox.value;
-  console.log("#### endGAME  finalScore: " + finalScore);
   mathScoreTxtbox.style.backgroundColor = "yellow";
   
   mathTimeTxtbox.style.backgroundColor = "yellow";
@@ -469,7 +488,6 @@ const verifyEntryIsRealNumber = (usersAnswer, event)=>{
     parseFloat(usersAnswer);
     return true;
   } catch (error) {
-    console.log(error);
     event.preventDefault();
     flashAnErrorInTextInput(mathFactsAnswerInput, invalidNumberErrorMsg);
     return false;
@@ -532,5 +550,3 @@ mathFactsAnswerInput.addEventListener("keydown", (event)=>{
     checkAnswer(event);
   }
 });
-
-
