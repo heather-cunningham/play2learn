@@ -49,28 +49,7 @@ const invalidNumberErrorMsg = "NOT A NUMBER!";
 const incorrectAnswerErrorMsg = "Incorrect";
 
 
-// -------------------------------------- addEventListener()'s ---------------------------------------
-const focusMathFactsInput = (inputEl)=>{
-  inputEl.focus();
-};
-window.addEventListener("load", ()=>{
-  focusMathFactsInput(mathFactsSelect);
-});
-
-const addRemoveErrorOnSelect = ()=>{
-  if (mathFactsSelect.selectedIndex === 0
-    && mathFactsSelectDiv.previousElementSibling.className !== 'error') {
-      //addError div:
-      const errorDiv = document.createElement('div');
-      errorDiv.innerHTML = `${mathFactsSelect.dataset.errorMsg}`;
-      errorDiv.className = 'error';
-      mathFactsSelectDiv.parentNode.insertBefore(errorDiv, mathFactsSelectDiv);
-  } else if(mathFactsSelect.selectedIndex !== 0
-    && mathFactsSelectDiv.previousElementSibling.className === 'error') {
-      //removeError div
-      mathFactsSelectDiv.previousElementSibling.remove();
-  }
-};
+// -------------------------------------- Helper Fcns -----------------------------------------------
 
 const updateSelected = ()=>{
   // If the option selected is NOT the default of 0
@@ -86,21 +65,20 @@ const updateSelected = ()=>{
   return null;
 };
 
-const checkMathFactsSelect = (event) => {
-  event.preventDefault();
-  
-  // If the option selected is still the default of 0
-  if (mathFactsSelect.selectedIndex === 0 ) {
-    mathFactsSelect.setCustomValidity('Invalid');
-    addRemoveErrorOnSelect();
-    return false;
-  } else {
-    mathFactsSelect.setCustomValidity('');
-    addRemoveErrorOnSelect();
-    return true;
+const addRemoveErrorOnSelect = ()=>{
+  if (mathFactsSelect.selectedIndex === 0
+    && mathFactsSelectDiv.previousElementSibling.className !== 'error') {
+    //addError div:
+    const errorDiv = document.createElement('div');
+    errorDiv.innerHTML = `${mathFactsSelect.dataset.errorMsg}`;
+    errorDiv.className = 'error';
+    mathFactsSelectDiv.parentNode.insertBefore(errorDiv, mathFactsSelectDiv);
+  } else if(mathFactsSelect.selectedIndex !== 0
+    && mathFactsSelectDiv.previousElementSibling.className === 'error') {
+    //removeError div
+    mathFactsSelectDiv.previousElementSibling.remove();
   }
 };
-mathFactsSelect.addEventListener("change", checkMathFactsSelect);
 
 /*
 * Returns a random integer between zero to nine
@@ -205,6 +183,148 @@ const disableGameBoard = ()=>{
   }
 };
 
+const endGame = ()=>{
+  operationSelected = operationSelected.slice(0, 1).toUpperCase() + operationSelected.slice(1);
+  
+  finalScore = mathScoreTxtbox.value;
+  mathScoreTxtbox.style.backgroundColor = "yellow";
+  
+  mathTimeTxtbox.style.backgroundColor = "yellow";
+  mathTimeTxtbox.value = timesUpStr;
+  mathTimeTxtbox.setAttribute("value", mathTimeTxtbox.value);
+  mathTimeTxtbox.innerText = mathTimeTxtbox.value;
+  mathTimeTxtbox.classList.add("shake");
+  
+  clearCalculatorInput();
+  disableGameBoard();
+  
+  // Wait a second and then display the final screen/view
+  setTimeout(
+    ()=>{
+      displayFinalScreen();
+    },
+    1000
+  );
+};
+
+const resetStartScreen = ()=>{
+  mathFactsSelect.selectedIndex = 0;
+  updateSelected();
+};
+
+const flashAnErrorInTextInput = (textInputEl, errorMessage)=>{
+  textInputEl.dataset.errorMsg = errorMessage;
+  
+  textInputEl.value = `${textInputEl.dataset.errorMsg}`;
+  textInputEl.style.backgroundColor = "yellow";
+  textInputEl.style.fontWeight = "bold";
+  textInputEl.style.color = "red";
+  
+  setTimeout(()=> clearCalculatorInput(), 750 );
+  
+  focusMathFactsInput(textInputEl);
+};
+
+const checkFirstDigit = (textInputEl)=>{
+  const entry = textInputEl.value;
+  const firstDigit = entry.charAt(0);
+  
+  switch (firstDigit) {
+    case " ":
+      return false;
+    case "0":
+      return !(entry.length > 1 && entry.charAt(1) !== ".");
+    case "-":
+      return !(entry.length >= 3 && entry.charAt(1) === "0" && entry.charAt(2) !== ".");
+    case ".":
+      textInputEl.value = "0" + textInputEl.value;
+      textInputEl.setAttribute("value", textInputEl.value);
+      textInputEl.innerText = textInputEl.value;
+      return true;
+    default:
+      return true;
+  }
+};
+
+const verifyEntryIsRealNumber = (usersAnswer, event)=>{
+  if(usersAnswer === "-0" || usersAnswer === "-0."){
+    event.preventDefault();
+    flashAnErrorInTextInput(mathFactsAnswerInput, invalidNumberErrorMsg);
+    return false;
+  }
+  
+  try {
+    parseFloat(usersAnswer);
+    return true;
+  } catch (error) {
+    event.preventDefault();
+    flashAnErrorInTextInput(mathFactsAnswerInput, invalidNumberErrorMsg);
+    return false;
+  }
+};
+
+const getCorrectAnswer = ()=>{
+  let firstOperand = document.getElementById("first-operand");
+  firstOperand = parseInt(firstOperand.innerText);
+  let secondOperand = document.getElementById("second-operand");
+  secondOperand = parseInt(secondOperand.innerText);
+  
+  switch (operationSelected) {
+    case "addition":
+      return firstOperand + secondOperand;
+    case "subtraction":
+      return firstOperand - secondOperand;
+    case "multiplication":
+      return firstOperand * secondOperand;
+    case "division":
+      // Cut off any floats at two digits past the decimal point and round to nearest digit
+      return Math.round((firstOperand / secondOperand).toFixed(2) * 100)/100;
+    default:
+      return null;
+  }
+};
+
+const checkIfUsersAnswerCorrect = (usersAnswer, correctAnswer)=>{
+  if (usersAnswer === correctAnswer) {
+    // 1) increment score
+    usersScore += 1;
+    mathScoreTxtbox.value = usersScore;
+    mathScoreTxtbox.setAttribute("value", mathScoreTxtbox.value);
+    mathScoreTxtbox.innerText = mathScoreTxtbox.value;
+    //  2) clear the answer input
+    clearCalculatorInput();
+    //  3) ensure focus is on answer input again
+    focusMathFactsInput(mathFactsAnswerInput);
+  } else {
+    flashAnErrorInTextInput(mathFactsAnswerInput, incorrectAnswerErrorMsg);
+  }
+};
+
+
+// -------------------------------------- addEventListener()'s ---------------------------------------
+const focusMathFactsInput = (inputEl)=>{
+  inputEl.focus();
+};
+window.addEventListener("load", ()=>{
+  focusMathFactsInput(mathFactsSelect);
+});
+
+const checkMathFactsSelect = (event) => {
+  event.preventDefault();
+  
+  // If the option selected is still the default of 0
+  if (mathFactsSelect.selectedIndex === 0 ) {
+    mathFactsSelect.setCustomValidity('Invalid');
+    addRemoveErrorOnSelect();
+    return false;
+  } else {
+    mathFactsSelect.setCustomValidity('');
+    addRemoveErrorOnSelect();
+    return true;
+  }
+};
+mathFactsSelect.addEventListener("change", checkMathFactsSelect);
+
 const showStartScreen = (event) => {
   event.preventDefault();
   
@@ -276,30 +396,6 @@ const displayFinalScreen = () => {
   xmlHttpReq.send(null);
 };
 
-const endGame = ()=>{
-  operationSelected = operationSelected.slice(0, 1).toUpperCase() + operationSelected.slice(1);
-  
-  finalScore = mathScoreTxtbox.value;
-  mathScoreTxtbox.style.backgroundColor = "yellow";
-  
-  mathTimeTxtbox.style.backgroundColor = "yellow";
-  mathTimeTxtbox.value = timesUpStr;
-  mathTimeTxtbox.setAttribute("value", mathTimeTxtbox.value);
-  mathTimeTxtbox.innerText = mathTimeTxtbox.value;
-  mathTimeTxtbox.classList.add("shake");
-  
-  clearCalculatorInput();
-  disableGameBoard();
-  
-  // Wait a second and then display the final screen/view
-  setTimeout(
-    ()=>{
-      displayFinalScreen();
-    },
-    1000
-  );
-};
-
 const showGameBoard = (event) =>{
   event.preventDefault();
   
@@ -326,11 +422,6 @@ for(let option of mathFactsOptions){
       showGameBoard(event);
   });
 }
-
-const resetStartScreen = ()=>{
-  mathFactsSelect.selectedIndex = 0;
-  updateSelected();
-};
 
 const quitGameBoard = (event) =>{
   event.preventDefault();
@@ -424,40 +515,6 @@ const clickCalcNegateBtn = (event)=>{
 };
 calcNegateBtn.addEventListener("click", clickCalcNegateBtn);
 
-const flashAnErrorInTextInput = (textInputEl, errorMessage)=>{
-  textInputEl.dataset.errorMsg = errorMessage;
-  
-  textInputEl.value = `${textInputEl.dataset.errorMsg}`;
-  textInputEl.style.backgroundColor = "yellow";
-  textInputEl.style.fontWeight = "bold";
-  textInputEl.style.color = "red";
-  
-  setTimeout(()=> clearCalculatorInput(), 750 );
-  
-  focusMathFactsInput(textInputEl);
-};
-
-const checkFirstDigit = (textInputEl)=>{
-  const entry = textInputEl.value;
-  const firstDigit = entry.charAt(0);
-  
-  switch (firstDigit) {
-    case " ":
-      return false;
-    case "0":
-      return !(entry.length > 1 && entry.charAt(1) !== ".");
-    case "-":
-      return !(entry.length >= 3 && entry.charAt(1) === "0" && entry.charAt(2) !== ".");
-    case ".":
-      textInputEl.value = "0" + textInputEl.value;
-      textInputEl.setAttribute("value", textInputEl.value);
-      textInputEl.innerText = textInputEl.value;
-      return true;
-    default:
-      return true;
-  }
-};
-
 const validateMathFactsAnswerInput = (event)=>{
   const regExPattern = /^-?\d*\.?\d*$/;
   const entry = mathFactsAnswerInput.value;
@@ -476,60 +533,6 @@ const validateMathFactsAnswerInput = (event)=>{
   }
 };
 mathFactsAnswerInput.addEventListener("input", validateMathFactsAnswerInput);
-
-const verifyEntryIsRealNumber = (usersAnswer, event)=>{
-  if(usersAnswer === "-0" || usersAnswer === "-0."){
-    event.preventDefault();
-    flashAnErrorInTextInput(mathFactsAnswerInput, invalidNumberErrorMsg);
-    return false;
-  }
-  
-  try {
-    parseFloat(usersAnswer);
-    return true;
-  } catch (error) {
-    event.preventDefault();
-    flashAnErrorInTextInput(mathFactsAnswerInput, invalidNumberErrorMsg);
-    return false;
-  }
-};
-
-const getCorrectAnswer = ()=>{
-  let firstOperand = document.getElementById("first-operand");
-  firstOperand = parseInt(firstOperand.innerText);
-  let secondOperand = document.getElementById("second-operand");
-  secondOperand = parseInt(secondOperand.innerText);
-  
-  switch (operationSelected) {
-    case "addition":
-      return firstOperand + secondOperand;
-    case "subtraction":
-      return firstOperand - secondOperand;
-    case "multiplication":
-      return firstOperand * secondOperand;
-    case "division":
-      // Cut off any floats at two digits past the decimal point and round to nearest digit
-      return Math.round((firstOperand / secondOperand).toFixed(2) * 100)/100;
-    default:
-      return null;
-  }
-};
-
-const checkIfUsersAnswerCorrect = (usersAnswer, correctAnswer)=>{
-  if (usersAnswer === correctAnswer) {
-    // 1) increment score
-    usersScore += 1;
-    mathScoreTxtbox.value = usersScore;
-    mathScoreTxtbox.setAttribute("value", mathScoreTxtbox.value);
-    mathScoreTxtbox.innerText = mathScoreTxtbox.value;
-    //  2) clear the answer input
-    clearCalculatorInput();
-    //  3) ensure focus is on answer input again
-    focusMathFactsInput(mathFactsAnswerInput);
-  } else {
-    flashAnErrorInTextInput(mathFactsAnswerInput, incorrectAnswerErrorMsg);
-  }
-};
 
 const checkAnswer = (event)=>{
   if(validateMathFactsAnswerInput(event)){
