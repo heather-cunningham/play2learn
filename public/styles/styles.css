@@ -166,11 +166,17 @@ main {
   min-height: 100%;
 }
 
-#site-welcome-div > p,
-.site-page-div > p:not(.game-description),
-.site-page-div > p:not(.times-up-note) {
+#site-welcome-div > p {
   margin: 0.6rem 1rem 2.3rem;
   padding: 1rem 1rem 1.5rem;
+}
+
+.site-page-para {
+  margin: 0.6rem auto;
+  padding: 0;
+}
+
+#site-welcome-div > p, .site-page-para {
   font-size: 1.2rem;
 }
 
@@ -194,10 +200,14 @@ h3 {
   font-size: 1.5rem;
 }
 
-#disclaimer {
+#about, #disclaimer {
   clear: both;
   margin-bottom: 3rem;
   text-align: center;
+}
+
+.disclaimer {
+  color: red;
 }
 
 #under-construction-image {
