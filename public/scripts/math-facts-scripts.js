@@ -204,12 +204,55 @@ const disableGameBoard = ()=>{
   }
 };
 
-const displayFinalScreen = ()=>{
+const displayFinalScreen = () => {
   const endGameObj = {
     operation: operationSelected,
-    timesupnote: timesUpStr,
+    timesupnote: timesUpStr, // ie, "TIMES UP!!!"
     score: finalScore
   };
+  const jsonStr = encodeURIComponent(JSON.stringify(endGameObj));
+  const xmlHttpReq = new XMLHttpRequest();
+  const main = document.querySelector("main");
+  
+  main.innerHTML = "Finalizing score...";
+  
+  xmlHttpReq.open("GET", `/math-facts-final-screen?jsonStr=${jsonStr}`, true);
+  
+  xmlHttpReq.onreadystatechange = () => {
+    if (xmlHttpReq.readyState === XMLHttpRequest.DONE) {
+      if (xmlHttpReq.status === 200) {
+        // noinspection UnnecessaryLocalVariableJS
+        const endOfGameResponse = xmlHttpReq.responseText;
+        main.innerHTML = endOfGameResponse;
+      } else {
+        main.innerHTML = `
+          <div id="math-facts-final-screen" class="site-page-div final-screen">
+              <h3 id="math-facts-operation" class="game-header">
+                ${operationSelected}
+              </h3>
+              <p id="math-facts-times-up-note" class="times-up-note">
+                ${timesUpStr}
+              </p>
+              <h3 id="math-facts-final-score-header" class="final-score-header">
+                Your final score is: ${finalScore}
+              </h3>
+              <p class="apology">
+                Apologies, an error occurred recording your final score, and it was not saved for posterity.
+              </p>
+              <button id="play-math-facts-again-btn"
+                      class="play-again-btn"
+                      alt="Play the Math Facts game again"
+                      name="again"
+                      type="button"
+                      value="Play Again">
+                Play Again
+              </button>
+            </div>`;
+      }
+    }
+  };
+  
+  xmlHttpReq.send(null);
 };
 
 const endGame = ()=>{
@@ -228,6 +271,14 @@ const endGame = ()=>{
   
   clearCalculatorInput();
   disableGameBoard();
+  
+  // Wait a second and then display the final screen/view
+  setTimeout(
+    ()=>{
+      displayFinalScreen();
+    },
+    1000
+  );
 };
 
 const showGameBoard = (event) =>{

@@ -320,6 +320,11 @@ div#calculator-buttons {
   font-size: 3rem;
 }
 
+.apology {
+  color: red;
+  font-weight: bold;
+}
+
 .play-again-btn {
   margin: 0.5rem auto 2.4rem;
 }
