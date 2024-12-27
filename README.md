@@ -1,4 +1,5 @@
-# Play2Learn Class Project 1
+# Play2Learn Class Project 1  
+# A Node.js Web App
 ## North Shore Community College 
 ## Full Stack Software Developer Program
 
